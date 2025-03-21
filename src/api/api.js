@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://www.eungming.com',
+    baseURL: 'https://pf.eungming.com',
 });
 

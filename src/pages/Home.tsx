@@ -1,11 +1,12 @@
 import React from "react";
+import Main from "../components/Main";
 import "./Home.css";
 
 const Home: React.FC = () => {
     return (
-        <div className="home-container">
-            <h1 className="intro-text">Min's Portfolio</h1>
-            <p className="sub-text">Creative Developer & Designer</p>
+        <div>
+            <Main />
+            {/* 이후 About, Skills 등 추가 가능 */}
         </div>
     );
 };

@@ -1,0 +1,58 @@
+.main-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* 기본: 라이트 모드 (흰 배경, 검은 글씨) */
+.main-section {
+    background-color: black;
+    color: white;
+}
+
+/* 다크모드: 검정 배경 + 흰 글씨 */
+.dark-mode .main-section {
+    background-color: white;
+    color: black;
+}
+
+.main-text {
+    font-size: 64px;
+    font-weight: bold;
+    display: flex;
+    gap: 20px;
+    transition: transform 1s ease, opacity 1s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.main-text .left,
+.main-text .right {
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.main-text.split .left {
+    transform: translateX(-100vw);
+    opacity: 0;
+}
+
+.main-text.split .right {
+    transform: translateX(100vw);
+    opacity: 0;
+}
+
+.after-section {
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: white;
+    color: black;
+}
+
+.dark-mode .after-section {
+    background-color: black;
+    color: white;
+}

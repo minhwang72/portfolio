@@ -1,3 +1,21 @@
+/* 전체 레이아웃을 flex column으로 설정 */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 본문은 커지도록 설정 */
+.main-content {
+    flex: 1;
+}
+
+/* 기존 설정 유지 */
 body {
     background-color: black;
     color: white;

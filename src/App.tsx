@@ -19,10 +19,12 @@ const App: React.FC = () => {
     return (
         <div className={`App ${darkMode ? "dark-mode" : ""}`}>
             <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-            </Routes>
+            <main className="main-content">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                </Routes>
+            </main>
             <Footer />
         </div>
     );
