@@ -1,0 +1,31 @@
+.archiving-section {
+    min-height: 80vh;
+    padding: 4rem 2rem;
+    text-align: center;
+    transition: background 1s ease-in-out;
+}
+
+.archive-links {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.archive-item img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.archive-item a {
+    font-size: 1.2rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.archive-item {
+    display: flex;
+    align-items: center;
+}

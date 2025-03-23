@@ -1,24 +1,17 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 999;
 }
 
-.logo {
-    font-size: 24px;
-}
-
-.dark-mode-toggle {
-    cursor: pointer;
-    background: none;
+.toggle-container button {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
     border: none;
-    font-size: 20px;
-}
-
-.menu-button {
-    font-size: 24px;
-    background: none;
-    border: none;
+    border-radius: 8px;
     cursor: pointer;
+    backdrop-filter: blur(6px);
 }

@@ -1,11 +1,10 @@
-import React from 'react';
-import './Footer.css';
+import React from "react";
+import "./Footer.css";
 
-const Footer: React.FC = () => {
-    const currentYear = new Date().getFullYear();
+const Footer: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
     return (
-        <footer className="footer">
-            <p>© {currentYear} Hwang Min All rights reserved.</p>
+        <footer className={`footer ${darkMode ? "dark" : "light"}`}>
+            <p>© {new Date().getFullYear()} Hwang Min. All rights reserved.</p>
         </footer>
     );
 };

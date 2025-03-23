@@ -1,53 +1,18 @@
-/* 전체 레이아웃을 flex column으로 설정 */
-html, body, #root {
-    height: 100%;
+body, html, #root, .app-container {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
 }
 
-.App {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* 본문은 커지도록 설정 */
-.main-content {
-    flex: 1;
-}
-
-/* 기존 설정 유지 */
-body {
-    background-color: black;
+.dark {
+    background: black;
     color: white;
-    transition: background 0.3s, color 0.3s;
 }
 
-body.dark {
-    background-color: white;
+.light {
+    background: white;
     color: black;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-
-.logo {
-    font-size: 24px;
-}
-
-.dark-mode-toggle {
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-size: 20px;
-}
-
-.menu-button {
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
 }

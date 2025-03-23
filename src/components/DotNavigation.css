@@ -1,0 +1,75 @@
+.dot-nav-container {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 999;
+}
+
+/* wrapper: 위치 고정, hover 확장 */
+.dot-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+}
+
+/* 화살표 */
+.dot-arrow {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #f5f3c8;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8); /* 흰 배경에서도 보이도록 그림자 */
+}
+
+/* dot-content: 기본은 원형, hover시 확장 */
+.dot-content {
+    display: flex;
+    align-items: center;
+    background-color: #1f1f1f; /* 불투명 배경 */
+    padding: 8px;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    width: 14px;
+}
+
+/* 정원형 dot */
+.dot {
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    min-height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease;
+}
+
+/* 이름 */
+.dot-label {
+    color: #f5f3c8;
+    font-size: 12px;
+    margin-left: 10px;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover 상태 */
+.dot-wrapper.hovered .dot-content {
+    width: auto;
+    padding: 8px 14px;
+    background-color: #2c2c2c; /* 어두운 불투명 배경 */
+}
+
+.dot-wrapper.hovered .dot {
+    background-color: #f5f3c8; /* 별빛 색상 */
+}

@@ -5,3 +5,4 @@ interface Window {
 interface Window {
     naver: any;
 }
+declare module 'suncalc';
