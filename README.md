@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Min Hwang의 개발자 포트폴리오
 
-## Getting Started
+<div align="center">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+</div>
 
-First, run the development server:
+## 🌟 프로젝트 소개
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+이 프로젝트는 Next.js와 TypeScript를 기반으로 제작된 개발자 포트폴리오 웹사이트입니다. 
+현대적이고 세련된 디자인으로 제작되었으며, 다크/라이트 모드를 지원합니다.
+
+## ✨ 주요 기능
+
+- **반응형 디자인**: 모든 디바이스에서 최적화된 경험 제공
+- **다크/라이트 모드**: 사용자 선호에 따른 테마 전환
+- **스크롤 네비게이션**: 섹션별 부드러운 스크롤 이동
+- **모던한 UI**: Tailwind CSS를 활용한 세련된 디자인
+- **성능 최적화**: Next.js의 정적 생성을 활용한 빠른 로딩
+
+## 🛠 기술 스택
+
+- **프레임워크**: Next.js 15
+- **언어**: TypeScript
+- **스타일링**: Tailwind CSS
+- **배포**: Vercel
+
+## 📁 프로젝트 구조
+
+```
+src/
+├── app/
+│   ├── components/     # 재사용 가능한 컴포넌트
+│   ├── sections/       # 각 섹션별 컴포넌트
+│   └── styles/         # 전역 스타일
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 시작하기
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. 저장소 클론
+```bash
+git clone https://github.com/yourusername/portfolio.git
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. 의존성 설치
+```bash
+yarn install
+```
 
-## Learn More
+3. 개발 서버 실행
+```bash
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. 프로덕션 빌드
+```bash
+yarn build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📱 데모
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[포트폴리오 웹사이트](https://your-portfolio-url.vercel.app)
 
-## Deploy on Vercel
+## 📝 섹션 구성
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Hero**: 인트로 및 간단한 소개
+- **About**: 자기소개 및 경력
+- **Skills**: 기술 스택
+- **Projects**: 주요 프로젝트
+- **Career**: 경력 사항
+- **Contact**: 연락처 및 소셜 링크
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 기여하기
+
+이 프로젝트에 기여하고 싶으시다면, Pull Request를 보내주세요!
+
+## 📄 라이센스
+
+이 프로젝트는 MIT 라이센스를 따릅니다.
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ by Min Hwang</sub>
+</div>
