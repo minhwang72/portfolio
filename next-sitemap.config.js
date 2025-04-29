@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://minhwang.dev',
+  siteUrl: 'https://pf.eungming.com',
   generateRobotsTxt: true,
   changefreq: 'daily',
   priority: 0.7,
@@ -8,7 +8,7 @@ module.exports = {
   exclude: ['/server-sitemap.xml'],
   robotsTxtOptions: {
     additionalSitemaps: [
-      'https://minhwang.dev/server-sitemap.xml',
+      'https://pf.eungming.com/server-sitemap.xml',
     ],
   },
 } 

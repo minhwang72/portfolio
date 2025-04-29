@@ -1,8 +1,20 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
-const Projects: React.FC = () => {
+const Projects = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start']
+  });
+
+  // 스크롤에 따른 섹션 전환 효과
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50]);
+
   const projects = [
     {
       title: 'Portfolio Website',
@@ -37,72 +49,64 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-6xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="section-header"
-        >
-          <h2 className="section-title">Projects</h2>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        >
-          {projects.map((project) => (
-            <motion.div
-              key={project.title}
-              className="project-card"
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="relative aspect-video mb-4 overflow-hidden rounded-lg">
-                <div className="absolute inset-0 bg-accent-color/20"></div>
-              </div>
-              
-              <h3 className="text-xl font-semibold mb-2 text-text-color">{project.title}</h3>
-              <p className="text-text-color mb-4">{project.description}</p>
-              
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="tech-tag"
+    <div ref={containerRef} className="min-h-screen flex items-center justify-center px-0">
+      <motion.div
+        style={{ opacity, scale, y }}
+        className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-12 text-left text-white">
+            <span className="text-blue-400 text-xl sm:text-2xl mr-2">//</span>PROJECTS
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {projects.map((project) => (
+              <motion.div
+                key={project.title}
+                className="bg-gray-800/50 p-6 rounded-lg hover:bg-gray-800/70 transition-colors duration-300"
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="relative aspect-video mb-4 overflow-hidden rounded-lg">
+                  <div className="absolute inset-0 bg-accent-color/20"></div>
+                </div>
+                
+                <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
+                <p className="text-gray-300 mb-4">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-gray-700/50 rounded-full text-sm text-gray-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                <div className="flex gap-4 mt-4">
+                  <a
+                    href={project.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-text-color hover:text-accent-color transition-colors"
                   >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              
-              <div className="flex gap-4">
-                <a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-text-color hover:text-accent-color transition-colors"
-                >
-                  <span className="terminal">GitHub →</span>
-                </a>
-                <a
-                  href={project.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-text-color hover:text-accent-color transition-colors"
-                >
-                  <span className="terminal">Live Demo →</span>
-                </a>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+                    <span className="terminal">GitHub →</span>
+                  </a>
+                  <a
+                    href={project.links.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-text-color hover:text-accent-color transition-colors"
+                  >
+                    <span className="terminal">Live Demo →</span>
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };

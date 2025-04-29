@@ -9,27 +9,27 @@ import Contact from './sections/Contact';
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <div className="space-bg" />
       <Header />
       
-      <main>
-        <section id="home" className="relative z-10">
+      <main className="w-full max-w-[1920px] mx-auto">
+        <section id="home" className="relative z-10 w-full">
           <Hero />
         </section>
-        <section id="about" className="relative z-10">
+        <section id="about" className="relative z-10 w-full">
           <About />
         </section>
-        <section id="skills" className="relative z-10">
+        <section id="skills" className="relative z-10 w-full">
           <Skills />
         </section>
-        <section id="projects" className="relative z-10">
+        <section id="projects" className="relative z-10 w-full">
           <Projects />
         </section>
-        <section id="career" className="relative z-10">
+        <section id="career" className="relative z-10 w-full">
           <Career />
         </section>
-        <section id="contact" className="relative z-10">
+        <section id="contact" className="relative z-10 w-full">
           <Contact />
         </section>
       </main>

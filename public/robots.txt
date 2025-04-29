@@ -1,3 +1,10 @@
+# *
 User-agent: *
 Allow: /
-Sitemap: https://minhwang.dev/sitemap.xml 
+
+# Host
+Host: https://pf.eungming.com
+
+# Sitemaps
+Sitemap: https://pf.eungming.com/sitemap.xml
+Sitemap: https://pf.eungming.com/server-sitemap.xml

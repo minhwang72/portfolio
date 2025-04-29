@@ -11,13 +11,16 @@
 }
 
 :root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --accent-color: #00ff00;
+  --text-color: #ffffff;
   --background-color: #ffffff;
-  --text-color: #111827;
   --primary-color: #111827;
   --border-color: #e5e7eb;
   --section-bg: #f9fafb;
   --secondary-color: #4A4A4A;
-  --accent-color: #3B82F6;
   --subtle-color: #F3F4F6;
   --code-bg: #F8F8F8;
   --hero-bg: #FFFFFF;
@@ -60,17 +63,28 @@
   --depth-shadow-6: 0 4px 6px rgba(0, 0, 0, 0.35);
 }
 
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
   font-family: 'Inter', sans-serif;
   line-height: 1.8;
   letter-spacing: -0.01em;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 /* Section styling */
@@ -318,9 +332,7 @@ p {
 }
 
 .section {
-  padding: 8rem 0;
-  max-width: 65ch;
-  margin: 0 auto;
+  padding: 4rem 0;
 }
 
 .card {
@@ -614,7 +626,6 @@ section {
 }
 
 section > div {
-  max-width: 65ch;
   margin: 0 auto;
   padding: 0 1rem;
 }
