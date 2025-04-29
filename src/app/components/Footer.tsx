@@ -1,13 +1,11 @@
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+import React from "react";
 
+const Footer = () => {
   return (
-    <footer className="py-4 border-t border-border-color">
-      <div className="container mx-auto px-6 text-center">
-        <p className="text-sm text-secondary">
-          © {currentYear} Hwang Min · All rights reserved
-        </p>
-      </div>
+    <footer className="w-full py-4 text-center text-[11px] text-gray-400 dark:text-gray-500">
+      <p className="mb-0">© 2025 Min Hwang. All rights reserved.</p>
     </footer>
   );
-} 
+};
+
+export default Footer; 
