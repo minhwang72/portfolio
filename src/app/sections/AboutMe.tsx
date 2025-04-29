@@ -4,18 +4,16 @@ import { motion } from 'framer-motion';
 
 const AboutMe = () => {
   return (
-    <section id="about" className="py-20">
-      <div className="container mx-auto px-6">
+    <div className="py-20">
+      <div className="w-full max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto"
+          className="px-4"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-color">
-            About Me
-          </h2>
+          <h2 className="section-title">About Me</h2>
           
           <div className="space-y-6">
             <p className="text-lg leading-relaxed text-text-color">
@@ -53,7 +51,7 @@ const AboutMe = () => {
           </div>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 };
 

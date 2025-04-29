@@ -1,65 +1,68 @@
 'use client';
 
-const Skills: React.FC = () => {
-  const skills = {
-    frontend: [
-      { name: 'React', level: 90 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'Next.js', level: 85 },
-      { name: 'Tailwind CSS', level: 90 },
-    ],
-    backend: [
-      { name: 'Node.js', level: 80 },
-      { name: 'Express', level: 85 },
-      { name: 'Python', level: 75 },
-      { name: 'Django', level: 70 },
-    ],
-    database: [
-      { name: 'MongoDB', level: 85 },
-      { name: 'PostgreSQL', level: 80 },
-      { name: 'Redis', level: 75 },
-    ],
-    devops: [
-      { name: 'Docker', level: 80 },
-      { name: 'AWS', level: 75 },
-      { name: 'CI/CD', level: 70 },
-    ],
-  };
+import { motion } from 'framer-motion';
+
+const Skills = () => {
+  const skills = [
+    {
+      category: 'Frontend',
+      items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    },
+    {
+      category: 'Backend',
+      items: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'GraphQL'],
+    },
+    {
+      category: 'DevOps',
+      items: ['Docker', 'AWS', 'Git', 'CI/CD', 'Linux'],
+    },
+    {
+      category: 'Tools',
+      items: ['VS Code', 'GitHub', 'Figma', 'Postman', 'Jira'],
+    },
+  ];
 
   return (
-    <section id="skills" className="min-h-screen flex items-center justify-center">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-primary-color">
-          Technical Skills
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {Object.entries(skills).map(([category, items]) => (
-            <div key={category} className="bg-section-bg p-6 rounded-xl border border-border-color">
-              <h3 className="text-xl font-semibold mb-6 capitalize text-primary-color">
-                {category}
+    <div className="min-h-screen flex items-center justify-center py-20">
+      <div className="w-full max-w-6xl mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="section-header mb-12"
+        >
+          <h2 className="section-title">Skills</h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="code-block p-6 rounded-lg"
+            >
+              <h3 className="text-xl font-bold mb-4 text-accent-color">
+                {skill.category}
               </h3>
-              <div className="space-y-4">
-                {items.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-text-color">{skill.name}</span>
-                      <span className="text-accent-color">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-subtle-color rounded-full h-2">
-                      <div
-                        className="bg-accent-color h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+              <div className="space-y-2">
+                {skill.items.map((item) => (
+                  <div
+                    key={item}
+                    className="tech-tag"
+                  >
+                    {item}
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

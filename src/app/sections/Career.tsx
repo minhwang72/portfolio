@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 const Career: React.FC = () => {
   const experiences = [
     {
@@ -38,11 +40,19 @@ const Career: React.FC = () => {
   ];
 
   return (
-    <section id="career" className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-primary-color">
-          Career
-        </h2>
+        <div className="w-full max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="section-header"
+          >
+            <h2 className="section-title">Career</h2>
+          </motion.div>
+        </div>
         
         <div className="max-w-4xl mx-auto">
           <div className="space-y-8">
@@ -81,7 +91,7 @@ const Career: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

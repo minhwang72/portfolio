@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 const Projects: React.FC = () => {
   const projects = [
     {
@@ -35,27 +37,44 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-primary-color">
-          Projects
-        </h2>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-full max-w-6xl mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="section-header"
+        >
+          <h2 className="section-title">Projects</h2>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
           {projects.map((project) => (
-            <div key={project.title} className="bg-section-bg p-6 rounded-xl border border-border-color group">
+            <motion.div
+              key={project.title}
+              className="project-card"
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.2 }}
+            >
               <div className="relative aspect-video mb-4 overflow-hidden rounded-lg">
                 <div className="absolute inset-0 bg-accent-color/20"></div>
               </div>
               
-              <h3 className="text-xl font-semibold mb-2 text-primary-color">{project.title}</h3>
+              <h3 className="text-xl font-semibold mb-2 text-text-color">{project.title}</h3>
               <p className="text-text-color mb-4">{project.description}</p>
               
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-1 text-sm bg-accent-color/10 text-accent-color rounded"
+                    className="tech-tag"
                   >
                     {tag}
                   </span>
@@ -69,7 +88,7 @@ const Projects: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-sm text-text-color hover:text-accent-color transition-colors"
                 >
-                  GitHub →
+                  <span className="terminal">GitHub →</span>
                 </a>
                 <a
                   href={project.links.live}
@@ -77,14 +96,14 @@ const Projects: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-sm text-text-color hover:text-accent-color transition-colors"
                 >
-                  Live Demo →
+                  <span className="terminal">Live Demo →</span>
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </div>
   );
 };
 
