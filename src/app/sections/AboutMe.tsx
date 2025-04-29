@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { User, Calendar, MapPin, Phone, Mail, GraduationCap } from 'lucide-react';
+import Image from 'next/image';
 
 const AboutMe = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -60,7 +61,7 @@ const AboutMe = () => {
               transition={{ duration: 0.5 }}
               className="text-blue-400 text-xl sm:text-2xl mr-2"
             >
-              //
+              {'//'}
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 20 }}
@@ -77,9 +78,11 @@ const AboutMe = () => {
               {/* 왼쪽: 프로필 사진 */}
               <div className="flex justify-center md:justify-start w-full md:w-auto">
                 <div className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-full overflow-hidden shadow-2xl">
-                  <img
+                  <Image
                     src="/images/profile/profile.jpeg"
                     alt="Profile"
+                    width={256}
+                    height={256}
                     className="object-cover w-full h-full object-[center_bottom] scale-125 grayscale hover:grayscale-0 transition-all duration-500 ease-out"
                   />
                 </div>
@@ -100,9 +103,9 @@ const AboutMe = () => {
                       <div className="text-accent-color mt-1">
                         {info.icon}
                       </div>
-                      <div className="flex flex-col min-w-0">
-                        <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{info.label}</div>
-                        <div className="text-sm sm:text-base font-semibold break-words truncate">{info.value}</div>
+                      <div className="flex flex-col">
+                        <div className="text-xs sm:text-sm text-gray-400">{info.label}</div>
+                        <div className="text-sm sm:text-base font-semibold break-words">{info.value}</div>
                       </div>
                     </motion.div>
                   ))}
@@ -114,7 +117,7 @@ const AboutMe = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white text-left"
+                    className="text-xl sm:text-2xl font-bold text-white text-left"
                   >
                     안녕하세요, 풀스택 개발자 황민입니다.
                   </motion.h3>
@@ -129,7 +132,7 @@ const AboutMe = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                        className="hover:text-blue-600 dark:hover:text-accent-color transition-colors duration-300 break-words"
+                        className="hover:text-accent-color transition-colors duration-300 break-words"
                       >
                         {text}
                       </motion.p>

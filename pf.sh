@@ -5,7 +5,7 @@ IMAGE_NAME="zxcyui6181/portfolio:latest"
 
 # 도커 이미지 빌드
 echo "Building Docker image..."
-docker build -t $IMAGE_NAME . || { echo "Docker build failed!"; exit 1; }
+docker buildx build --platform linux/amd64 -t $IMAGE_NAME . || { echo "Docker build failed!"; exit 1; }
 
 # 도커 이미지 푸시
 echo "Pushing Docker image to registry..."

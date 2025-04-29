@@ -56,7 +56,7 @@ const Projects = () => {
       >
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl sm:text-5xl font-bold mb-12 text-left text-white">
-            <span className="text-blue-400 text-xl sm:text-2xl mr-2">//</span>PROJECTS
+            <span className="text-blue-400 text-xl sm:text-2xl mr-2">{'//'}</span>PROJECTS
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project) => (

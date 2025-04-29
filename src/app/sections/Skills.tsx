@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -77,7 +78,7 @@ const Skills = () => {
       >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 sm:mb-12 text-left text-white">
-            <span className="text-blue-400 text-lg sm:text-xl lg:text-2xl mr-2">//</span>SKILLS
+            <span className="text-blue-400 text-lg sm:text-xl lg:text-2xl mr-2">{'//'}</span>SKILLS
           </h2>
 
           <div className="bg-gray-800/50 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl flex flex-col gap-8 sm:gap-10 lg:gap-12">
@@ -86,10 +87,13 @@ const Skills = () => {
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 sm:mb-6 lg:mb-8 text-white">{group.category}</h3>
                 <div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6">
                   {group.items.map((skill) => (
-                    <img
+                    <Image
                       key={skill.name}
                       src={skill.badge}
                       alt={skill.name}
+                      width={100}
+                      height={40}
+                      unoptimized
                       className="h-7 sm:h-8 lg:h-10 object-contain hover:scale-105 transition-transform duration-300"
                     />
                   ))}

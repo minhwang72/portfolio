@@ -47,7 +47,7 @@ const Career = () => {
       >
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl sm:text-5xl font-bold mb-12 text-left text-white">
-            <span className="text-blue-400 text-xl sm:text-2xl mr-2">//</span>CAREER
+            <span className="text-blue-400 text-xl sm:text-2xl mr-2">{'//'}</span>CAREER
           </h2>
           <div className="space-y-8">
             {experiences.map((exp, index) => (
