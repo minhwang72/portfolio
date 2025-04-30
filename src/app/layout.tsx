@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Min Hwang", url: "https://pf.eungming.com" }],
   creator: "Min Hwang",
   publisher: "Min Hwang",
-  robots: "index, follow",
+  robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   icons: {
     icon: [
       { url: "https://pf.eungming.com/favicon.ico", sizes: "any" },
@@ -54,11 +54,45 @@ export const metadata: Metadata = {
     images: ["https://pf.eungming.com/images/profile/profile.jpeg"],
   },
   verification: {
-    google: "your-google-site-verification-code",
+    google: "_6y4DjCJpX30-CdY9nGiBrTi4GBpxu1vjrXbxLDnq6M",
+    other: {
+      "naver-site-verification": "8bbd77d95e169bcaf54dc7840b0553693db295d6"
+    }
   },
   alternates: {
     canonical: "https://pf.eungming.com",
   },
+  category: "portfolio",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  manifest: "https://pf.eungming.com/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Min Hwang Portfolio",
+  },
+  applicationName: "Min Hwang Portfolio",
+  other: {
+    "msapplication-TileColor": "#000000",
+    "msapplication-config": "https://pf.eungming.com/browserconfig.xml",
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
+    "apple-mobile-web-app-title": "Min Hwang Portfolio",
+  }
 };
 
 export default function RootLayout({
@@ -72,9 +106,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <meta name="naver-site-verification" content="your-naver-site-verification-code" />
-        <meta name="google-site-verification" content="your-google-site-verification-code" />
+        <meta name="naver-site-verification" content="8bbd77d95e169bcaf54dc7840b0553693db295d6" />
+        <meta name="google-site-verification" content="_6y4DjCJpX30-CdY9nGiBrTi4GBpxu1vjrXbxLDnq6M" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
       </head>
       <body className={`${inter.className} ${notoSansKR.className}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>

@@ -34,6 +34,10 @@ const nextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
           }
         ]
       }
@@ -52,6 +56,18 @@ const nextConfig = {
         permanent: true,
         destination: 'https://pf.eungming.com/:path*',
       },
+    ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/sitemap.xml',
+      },
+      {
+        source: '/robots.txt',
+        destination: '/robots.txt',
+      }
     ]
   }
 }

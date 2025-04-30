@@ -1,0 +1,16 @@
+{
+  "name": "Min Hwang Portfolio",
+  "short_name": "Min Hwang",
+  "description": "Building ideas into reality. Full-Stack Engineer based in Seoul, South Korea.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+} 
