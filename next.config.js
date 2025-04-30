@@ -49,13 +49,25 @@ const nextConfig = {
         source: '/:path*',
         has: [
           {
-            type: 'host',
-            value: 'pf.eungming.com',
+            type: 'header',
+            key: 'x-forwarded-host',
+            value: '(?!pf\\.eungming\\.com).*',
           },
         ],
         permanent: true,
         destination: 'https://pf.eungming.com/:path*',
       },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: '(?!pf\\.eungming\\.com).*',
+          },
+        ],
+        permanent: true,
+        destination: 'https://pf.eungming.com/:path*',
+      }
     ]
   },
   async rewrites() {
