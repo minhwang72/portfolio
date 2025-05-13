@@ -14,7 +14,6 @@ export default function Home() {
       <Header />
       
       <main className="w-full max-w-[1920px] mx-auto">
-        <div className="w-[80%] mx-auto">
           <section id="home" className="relative z-10 w-full">
             <div className="w-full max-w-7xl mx-auto">
               <Hero />
@@ -45,7 +44,6 @@ export default function Home() {
               <Contact />
             </div>
           </section>
-        </div>
       </main>
       
       <Footer />

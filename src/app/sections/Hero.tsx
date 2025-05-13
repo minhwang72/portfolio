@@ -38,10 +38,10 @@ const Hero = () => {
     { text: "INTO REALITY", align: "center", color: "text-line-2", direction: 'up' },
     { text: "FULL-STACK ENGINEER", align: "center", color: "text-line-3", direction: 'right' },
     { text: "MIN HWANG", align: "center", size: "small", color: "text-line-4", direction: 'down' }
-  ];  
+  ];
 
   return (
-    <div ref={containerRef} className="h-screen flex items-center justify-center overflow-hidden relative px-0">
+    <div ref={containerRef} className="h-screen flex items-center justify-center overflow-hidden relative px-0 sm:px-6 lg:px-8">
       <motion.div
         style={{ opacity, scale, y }}
         className="w-full max-w-[1920px] mx-auto"
@@ -51,7 +51,7 @@ const Hero = () => {
             key={lineIndex}
             initial="hidden"
             animate="visible"
-            className="w-full flex justify-center mb-4 sm:mb-8"
+            className="w-full flex justify-center mb-2 sm:mb-4 md:mb-8"
           >
             <div className="flex flex-wrap justify-center">
               {line.text.split('').map((char, i) => (
@@ -62,15 +62,15 @@ const Hero = () => {
                   className={`inline-block ${line.color}`}
                   style={{
                     fontSize: line.size === "small" 
-                      ? 'clamp(1.5rem, 5vw, 5rem)'
+                      ? 'clamp(1.25rem, 4vw, 3.5rem)'
                       : lineIndex === 0 
-                      ? 'clamp(2.5rem, 8vw, 10rem)' 
+                      ? 'clamp(2rem, 6vw, 7rem)' 
                       : lineIndex === 1 
-                      ? 'clamp(2rem, 7vw, 9rem)' 
-                      : 'clamp(1.75rem, 6vw, 7rem)',
+                      ? 'clamp(1.75rem, 5vw, 6rem)' 
+                      : 'clamp(1.5rem, 4vw, 4.5rem)',
                     fontWeight: lineIndex === 2 ? '700' : '900',
                     letterSpacing: line.size === "small" ? '-0.02em' : '-0.04em',
-                    lineHeight: '1',
+                    lineHeight: '1.1',
                     textTransform: 'uppercase',
                   }}
                 >

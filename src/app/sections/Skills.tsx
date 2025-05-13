@@ -71,7 +71,7 @@ const Skills = () => {
   ];
 
   return (
-    <div className="w-full py-24 sm:py-32">
+    <div className="w-full py-12 sm:py-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -80,12 +80,12 @@ const Skills = () => {
         className="w-full"
       >
         <div className="w-full">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-left text-white overflow-hidden">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-blue-400 text-xl sm:text-2xl mr-2"
+              className="text-blue-400 text-lg sm:text-xl mr-2"
             >
               {'//'}
             </motion.span>
@@ -98,11 +98,11 @@ const Skills = () => {
             </motion.span>
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {skills.map((group) => (
-              <div key={group.category} className="glass p-8 rounded-2xl">
-                <h3 className="text-xl sm:text-2xl font-semibold mb-8 text-white">{group.category}</h3>
-                <div className="grid grid-cols-2 gap-6">
+              <div key={group.category} className="glass p-4 sm:p-6 lg:p-8 rounded-2xl">
+                <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-white">{group.category}</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
                   {group.items.map((skill) => (
                     <Image
                       key={skill.name}
@@ -111,7 +111,7 @@ const Skills = () => {
                       width={200}
                       height={80}
                       unoptimized
-                      className="h-16 sm:h-20 lg:h-24 object-contain hover:scale-105 transition-transform duration-300"
+                      className="h-12 sm:h-16 lg:h-20 object-contain hover:scale-105 transition-transform duration-300"
                     />
                   ))}
                 </div>

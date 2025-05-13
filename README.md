@@ -91,13 +91,6 @@ yarn build
 
 ---
 
-## 🤝 기여 안내
-
-포트폴리오 개선 아이디어가 있다면 자유롭게 PR(Pull Request)을 보내주세요!  
-함께 성장할 수 있는 기회를 환영합니다. 🙌
-
----
-
 <div align="center">
-  <sub>Made with ❤️ by Min Hwang</sub>
+  <sub>Made by Min Hwang</sub>
 </div>

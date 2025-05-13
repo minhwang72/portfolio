@@ -18,30 +18,30 @@ const Contact = () => {
 
   const contactButtons = [
     {
-      icon: <Mail className="w-5 h-5 sm:w-6 sm:h-6" />,
+      icon: <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
       label: 'Email',
       href: 'mailto:zxcyui6181@naver.com',
-      color: 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600',
-      description: 'zxcyui6181@naver.com'
+      color: 'glass hover:bg-white/10',
+      description: '이메일로 연락하기'
     },
     {
-      icon: <Github className="w-5 h-5 sm:w-6 sm:h-6" />,
+      icon: <Github className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
       label: 'GitHub',
       href: 'https://github.com/minhwang72',
-      color: 'bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700',
-      description: 'github.com/minhwang72'
+      color: 'glass hover:bg-white/10',
+      description: '깃허브 프로필 보기'
     },
     {
-      icon: <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />,
+      icon: <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />,
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/min-hwang-071b18316/',
-      color: 'bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600',
-      description: 'linkedin.com/in/min-hwang'
+      color: 'glass hover:bg-white/10',
+      description: '링크드인 프로필 보기'
     }
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full py-12 sm:py-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -50,12 +50,12 @@ const Contact = () => {
         className="w-full"
       >
         <div className="w-full">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-left text-white overflow-hidden">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-blue-400 text-xl sm:text-2xl mr-2"
+              className="text-blue-400 text-lg sm:text-xl mr-2"
             >
               {'//'}
             </motion.span>
@@ -68,31 +68,29 @@ const Contact = () => {
             </motion.span>
           </h2>
 
-          <div className="bg-white/50 dark:bg-gray-800/50 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl overflow-hidden">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-              {contactButtons.map((button, index) => (
-                <motion.a
-                  key={index}
-                  href={button.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`${button.color} p-6 sm:p-8 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl flex flex-col items-center justify-center gap-4 sm:gap-6 group`}
-                >
-                  <div className="p-3 sm:p-4 rounded-full bg-gray-200/50 dark:bg-white/10 group-hover:bg-gray-300/50 dark:group-hover:bg-white/20 transition-colors duration-300">
-                    {button.icon}
-                  </div>
-                  <div className="text-center">
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-2">{button.label}</h3>
-                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">
-                      {button.description}
-                    </p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {contactButtons.map((button, index) => (
+              <motion.a
+                key={index}
+                href={button.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`glass p-4 sm:p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl flex flex-col items-center justify-center gap-3 sm:gap-4 group cursor-pointer`}
+              >
+                <div className="p-2 sm:p-3 rounded-full bg-gray-200/50 dark:bg-white/10 group-hover:bg-gray-300/50 dark:group-hover:bg-white/20 transition-colors duration-300">
+                  {button.icon}
+                </div>
+                <div className="text-center">
+                  <h3 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{button.label}</h3>
+                  <p className="text-xs sm:text-sm text-gray-300 group-hover:text-white transition-colors duration-300">
+                    {button.description}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
           </div>
         </div>
       </motion.div>

@@ -40,14 +40,14 @@ const AboutMe = () => {
   const personalInfo = [
     { icon: <User className="w-5 h-5" />, label: '이름', value: '황민' },
     { icon: <Calendar className="w-5 h-5" />, label: '생년월일', value: '96.10.27' },
-    { icon: <MapPin className="w-5 h-5" />, label: '위치', value: '서울시 구로구' },
-    { icon: <Phone className="w-5 h-5" />, label: '연락처', value: '010-3698-6181' },
-    { icon: <Mail className="w-5 h-5" />, label: '이메일', value: 'zxcyui6181@naver.com' },
-    { icon: <GraduationCap className="w-5 h-5" />, label: '학력', value: '방송통신대학교 (컴퓨터과학과)' },
+    { icon: <MapPin className="w-5 h-5" />, label: '위치', value: '서울시 구로구', autoSize: true },
+    { icon: <Phone className="w-5 h-5" />, label: '연락처', value: '010-3698-6181', autoSize: true },
+    { icon: <Mail className="w-5 h-5" />, label: '이메일', value: 'zxcyui6181@naver.com', long: true },
+    { icon: <GraduationCap className="w-5 h-5" />, label: '학력', value: '방송통신대학교 (컴퓨터과학과)', long: true },
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full py-12 sm:py-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -56,12 +56,12 @@ const AboutMe = () => {
         className="w-full"
       >
         <div className="w-full">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-left text-white overflow-hidden">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-blue-400 text-xl sm:text-2xl mr-2"
+              className="text-blue-400 text-lg sm:text-xl mr-2"
             >
               {'//'}
             </motion.span>
@@ -74,36 +74,42 @@ const AboutMe = () => {
             </motion.span>
           </h2>
 
-          <div className="glass p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl overflow-hidden">
-            <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+          <div className="glass p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl overflow-hidden">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
               <div className="flex justify-center md:justify-start w-full md:w-auto">
-                <div className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-full overflow-hidden shadow-2xl">
+                <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-2xl">
                   <Image
                     src="/images/profile/profile.jpeg"
                     alt="Profile"
-                    width={256}
-                    height={256}
+                    width={192}
+                    height={192}
                     className="object-cover w-full h-full object-[center_bottom] scale-125 transition-all duration-500 ease-out"
                   />
                 </div>
               </div>
 
               <div className="flex-1 w-full">
-                <div className="grid grid-cols-2 gap-x-8 gap-y-6 mb-10">
+                <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
                   {personalInfo.map((info, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="flex items-start gap-4 text-gray-200 hover:text-blue-400 transition-colors duration-300"
+                      className={`flex items-start gap-3 text-gray-200 hover:text-blue-400 transition-colors duration-300 ${
+                        info.long ? 'col-span-2 sm:col-span-1' : ''
+                      }`}
                     >
-                      <div className="text-blue-400 mt-1">
+                      <div className="text-blue-400 mt-1 flex-shrink-0">
                         {info.icon}
                       </div>
-                      <div className="flex flex-col">
+                      <div className="flex flex-col min-w-0">
                         <div className="text-xs sm:text-sm text-gray-400">{info.label}</div>
-                        <div className="text-sm sm:text-base font-semibold break-words">{info.value}</div>
+                        <div className={`text-sm sm:text-base font-semibold ${
+                          info.autoSize ? 'text-[clamp(0.75rem,2vw,1rem)]' : 'truncate'
+                        }`}>
+                          {info.value}
+                        </div>
                       </div>
                     </motion.div>
                   ))}

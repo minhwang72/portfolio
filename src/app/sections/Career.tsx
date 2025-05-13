@@ -1,43 +1,16 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Career = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start']
-  });
-
-  // 스크롤에 따른 섹션 전환 효과
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
-  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50]);
-
-  const experiences = [
-    {
-      company: "Company A",
-      period: "2020 - Present",
-      position: "Full Stack Developer",
-      description: "Description of work at Company A",
-      achievements: [
-        "Achievement 1",
-        "Achievement 2",
-        "Achievement 3"
-      ]
-    },
-    {
-      company: "Company B",
-      period: "2018 - 2020",
-      position: "Frontend Developer",
-      description: "Description of work at Company B",
-      achievements: [
-        "Achievement 1",
-        "Achievement 2"
-      ]
-    }
-  ];
+  const startDate = new Date('2023-03-27');
+  const now = new Date();
+  const diffTime = Math.abs(now.getTime() - startDate.getTime());
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const years = Math.floor(diffDays / 365);
+  const months = Math.floor((diffDays % 365) / 30);
+  const duration = `${years}년 ${months}개월`;
 
   return (
     <div className="w-full">
@@ -67,40 +40,60 @@ const Career = () => {
             </motion.span>
           </h2>
 
-          <div className="bg-white/50 dark:bg-gray-800/50 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl overflow-hidden">
-            <div className="space-y-8 overflow-hidden">
-              {experiences.map((exp, index) => (
-                <div key={exp.company} className="bg-gray-800/50 p-6 rounded-lg relative">
-                  {index !== experiences.length - 1 && (
-                    <div className="absolute w-px h-full bg-accent-color/20 top-0 left-[24px]"></div>
-                  )}
-                  
-                  <div className="flex gap-6">
-                    <div className="w-12 h-12 rounded-full bg-accent-color/20 flex items-center justify-center flex-shrink-0">
-                      <div className="w-3 h-3 rounded-full bg-accent-color"></div>
-                    </div>
-                    
-                    <div>
-                      <div className="flex items-center gap-4 mb-2">
-                        <h3 className="text-xl font-semibold text-white">{exp.company}</h3>
-                        <span className="text-sm text-gray-300">{exp.period}</span>
-                      </div>
-                      
-                      <h4 className="text-lg text-accent-color mb-2">{exp.position}</h4>
-                      <p className="text-gray-300 mb-4">{exp.description}</p>
-                      
-                      <ul className="space-y-2">
-                        {exp.achievements.map((achievement) => (
-                          <li key={achievement} className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent-color"></span>
-                            <span className="text-gray-300">{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+          <div className="glass p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl overflow-hidden">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-white p-2 shadow-xl">
+                <Image
+                  src="/images/company/hexaveil_logo.png"
+                  alt="HEXAVEIL"
+                  width={192}
+                  height={192}
+                  className="object-contain rounded-full"
+                />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <div className="flex flex-col md:flex-row md:items-end mb-1">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">HEXAVEIL</h3>
+                  <p className="text-sm sm:text-base text-blue-400 font-semibold ml-2">주임연구원 Full-Stack Developer</p>
+                </div>
+                <p className="text-sm sm:text-base text-gray-400 mb-4">2023.03.27 - 현재 ({duration})</p>
+                <div className="space-y-8">
+                  <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6">
+                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-medium">
+                      Flutter 기반 모바일 앱부터 React 기반 웹 프론트엔드, Django 및 Spring Boot를 활용한 백엔드 API 개발,
+                      CI/CD 자동화, 클라우드 인프라 운영까지 전방위로 담당하고 있습니다.
+                    </p>
+                  </div>
+                  <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base text-gray-300 font-medium">
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                        Flutter/Android/iOS 앱 설계 및 구현
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                        Next.js 기반 웹 프론트엔드 개발
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                        Firebase, Django, Spring Boot 백엔드 구축
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                        Docker, GitHub Actions, TeamCity 기반 배포 자동화
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                        AWS 환경에서 인프라 및 DB 운영 (MariaDB, Supabase)
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                        디자인 협업 및 UI/UX 개선 (Figma, Zeplin)
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
@@ -109,4 +102,4 @@ const Career = () => {
   );
 };
 
-export default Career; 
+export default Career;
