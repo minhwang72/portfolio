@@ -9,10 +9,7 @@ const AboutMe = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [titleSize, setTitleSize] = useState('text-4xl');
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start']
-  });
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const adjustTitleSize = () => {
@@ -33,9 +30,47 @@ const AboutMe = () => {
     return () => window.removeEventListener('resize', adjustTitleSize);
   }, []);
 
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
-  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
+  const y = useTransform(scrollYProgress, [0, 0.2], [20, 0]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: 0.2,
+        ease: "easeOut"
+      }
+    }
+  };
 
   const personalInfo = [
     { icon: <User className="w-5 h-5" />, label: '이름', value: '황민' },
@@ -49,26 +84,25 @@ const AboutMe = () => {
   return (
     <div className="w-full py-12 sm:py-16 md:py-24">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
         className="w-full"
       >
         <div className="w-full">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-left text-white overflow-hidden">
             <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              initial="hidden"
+              animate="visible"
+              variants={titleVariants}
               className="text-blue-400 text-lg sm:text-xl mr-2"
             >
               {'//'}
             </motion.span>
             <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              initial="hidden"
+              animate="visible"
+              variants={titleVariants}
             >
               ABOUT ME
             </motion.span>
@@ -93,9 +127,9 @@ const AboutMe = () => {
                   {personalInfo.map((info, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      initial="hidden"
+                      animate="visible"
+                      variants={contentVariants}
                       className={`flex items-start gap-3 text-gray-200 hover:text-blue-400 transition-colors duration-300 ${
                         info.long ? 'col-span-2 sm:col-span-1' : ''
                       }`}
@@ -117,9 +151,9 @@ const AboutMe = () => {
 
                 <div className="space-y-4 sm:space-y-6">
                   <motion.h3
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
+                    initial="hidden"
+                    animate="visible"
+                    variants={contentVariants}
                     className="text-xl sm:text-2xl font-bold text-white text-left"
                   >
                     안녕하세요, 풀스택 개발자 황민입니다.
@@ -132,9 +166,9 @@ const AboutMe = () => {
                     ].map((text, index) => (
                       <motion.p
                         key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                        initial="hidden"
+                        animate="visible"
+                        variants={contentVariants}
                         className="hover:text-blue-400 transition-colors duration-300 break-words"
                       >
                         {text}
