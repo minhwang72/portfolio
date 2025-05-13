@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
     domains: ['img.shields.io'],
     unoptimized: true,
   },
+  env: {
+    HOST: '0.0.0.0',
+    PORT: '3000'
+  },
   async headers() {
     return [
       {

@@ -29,7 +29,6 @@ COPY --from=builder /app/.next/static ./.next/static
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV HOSTNAME=pf.eungming.com
 ENV HOST=0.0.0.0
 
 # Expose the port
