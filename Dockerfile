@@ -28,10 +28,11 @@ COPY --from=builder /app/.next/static ./.next/static
 
 # Set environment variables
 ENV NODE_ENV=production
-ENV PORT=80
+ENV PORT=3000
+ENV HOSTNAME=pf.eungming.com
 
 # Expose the port
-EXPOSE 80
+EXPOSE 3000
 
 # Start the application
 CMD ["node", "server.js"] 

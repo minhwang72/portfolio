@@ -71,30 +71,44 @@ const Skills = () => {
   ];  
 
   return (
-    <div ref={containerRef} className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div ref={containerRef} className="min-h-screen flex items-center justify-center px-0">
       <motion.div
         style={{ opacity, scale, y }}
-        className="w-full max-w-[1920px] mx-auto"
+        className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 sm:mb-12 text-left text-white">
-            <span className="text-blue-400 text-lg sm:text-xl lg:text-2xl mr-2">{'//'}</span>SKILLS
+        <div className="max-w-[1920px] mx-auto">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-blue-400 text-xl sm:text-2xl mr-2"
+            >
+              {'//'}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              SKILLS
+            </motion.span>
           </h2>
 
           <div className="bg-gray-800/50 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl flex flex-col gap-8 sm:gap-10 lg:gap-12">
             {skills.map((group) => (
               <div key={group.category}>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 sm:mb-6 lg:mb-8 text-white">{group.category}</h3>
-                <div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
                   {group.items.map((skill) => (
                     <Image
                       key={skill.name}
                       src={skill.badge}
                       alt={skill.name}
-                      width={100}
-                      height={40}
+                      width={160}
+                      height={64}
                       unoptimized
-                      className="h-7 sm:h-8 lg:h-10 object-contain hover:scale-105 transition-transform duration-300"
+                      className="h-10 sm:h-12 lg:h-14 object-contain hover:scale-105 transition-transform duration-300"
                     />
                   ))}
                 </div>

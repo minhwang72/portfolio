@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  // 프로덕션 환경에서만 standalone 모드 사용
+  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
   images: {
     remotePatterns: [
       {
@@ -16,59 +17,36 @@ const nextConfig = {
         source: '/:path*',
         headers: [
           {
+            key: 'Cache-Control',
+            value: 'no-store, must-revalidate',
+          },
+          {
             key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload'
+            value: 'max-age=63072000; includeSubDomains; preload',
           },
           {
             key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
+            value: 'SAMEORIGIN',
           },
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            value: 'nosniff',
           },
           {
             key: 'X-XSS-Protection',
-            value: '1; mode=block'
+            value: '1; mode=block',
           },
           {
             key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin'
+            value: 'strict-origin-when-cross-origin',
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()'
-          }
-        ]
-      }
-    ]
-  },
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'header',
-            key: 'x-forwarded-host',
-            value: '(?!pf\\.eungming\\.com).*',
+            value: 'camera=(), microphone=(), geolocation=()',
           },
         ],
-        permanent: true,
-        destination: 'https://pf.eungming.com/:path*',
       },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: '(?!pf\\.eungming\\.com).*',
-          },
-        ],
-        permanent: true,
-        destination: 'https://pf.eungming.com/:path*',
-      }
-    ]
+    ];
   },
   async rewrites() {
     return [
@@ -79,9 +57,9 @@ const nextConfig = {
       {
         source: '/robots.txt',
         destination: '/robots.txt',
-      }
-    ]
-  }
-}
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig;

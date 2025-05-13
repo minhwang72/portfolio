@@ -47,8 +47,22 @@ const Contact = () => {
         className="w-full max-w-[1920px] mx-auto"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 sm:mb-12 text-left text-gray-900 dark:text-white">
-            <span className="text-blue-600 dark:text-blue-400 text-lg sm:text-xl lg:text-2xl mr-2">{'//'}</span>CONTACT
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-blue-400 text-xl sm:text-2xl mr-2"
+            >
+              {'//'}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              CONTACT
+            </motion.span>
           </h2>
 
           <div className="bg-white/50 dark:bg-gray-800/50 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl">

@@ -55,8 +55,22 @@ const Projects = () => {
         className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-12 text-left text-white">
-            <span className="text-blue-400 text-xl sm:text-2xl mr-2">{'//'}</span>PROJECTS
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-blue-400 text-xl sm:text-2xl mr-2"
+            >
+              {'//'}
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              PROJECTS
+            </motion.span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project) => (

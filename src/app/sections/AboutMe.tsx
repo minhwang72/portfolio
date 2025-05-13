@@ -83,7 +83,7 @@ const AboutMe = () => {
                     alt="Profile"
                     width={256}
                     height={256}
-                    className="object-cover w-full h-full object-[center_bottom] scale-125 grayscale hover:grayscale-0 transition-all duration-500 ease-out"
+                    className="object-cover w-full h-full object-[center_bottom] scale-125 transition-all duration-500 ease-out"
                   />
                 </div>
               </div>
