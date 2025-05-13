@@ -1,21 +1,9 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin } from 'lucide-react';
 
 const Contact = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start']
-  });
-
-  // 스크롤에 따른 섹션 전환 효과
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
-  const y = useTransform(scrollYProgress, [0, 0.2], [20, 0]);
-
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 20 },
     visible: { 

@@ -1,39 +1,10 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { User, Calendar, MapPin, Phone, Mail, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
 
 const AboutMe = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const [titleSize, setTitleSize] = useState('text-4xl');
-  const { scrollYProgress } = useScroll();
-
-  useEffect(() => {
-    const adjustTitleSize = () => {
-      if (titleRef.current) {
-        const width = titleRef.current.offsetWidth;
-        if (width < 300) {
-          setTitleSize('text-3xl');
-        } else if (width < 400) {
-          setTitleSize('text-4xl');
-        } else {
-          setTitleSize('text-5xl');
-        }
-      }
-    };
-
-    adjustTitleSize();
-    window.addEventListener('resize', adjustTitleSize);
-    return () => window.removeEventListener('resize', adjustTitleSize);
-  }, []);
-
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
-  const y = useTransform(scrollYProgress, [0, 0.2], [20, 0]);
-
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 20 },
     visible: { 
