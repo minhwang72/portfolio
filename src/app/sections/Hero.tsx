@@ -34,10 +34,10 @@ const Hero = () => {
   });
 
   const lines = [
-    { text: "BUILDING IDEAS", align: "start", color: "text-white", direction: 'left' },
-    { text: "INTO REALITY", align: "center", color: "text-gray-200", direction: 'up' },
-    { text: "FULL-STACK ENGINEER", align: "end", color: "text-gray-400", direction: 'right' },
-    { text: "MIN HWANG", align: "center", color: "text-gray-100", size: "small", direction: 'down' }
+    { text: "BUILDING IDEAS", align: "center", color: "text-line-1", direction: 'left' },
+    { text: "INTO REALITY", align: "center", color: "text-line-2", direction: 'up' },
+    { text: "FULL-STACK ENGINEER", align: "center", color: "text-line-3", direction: 'right' },
+    { text: "MIN HWANG", align: "center", size: "small", color: "text-line-4", direction: 'down' }
   ];  
 
   return (
@@ -51,15 +51,9 @@ const Hero = () => {
             key={lineIndex}
             initial="hidden"
             animate="visible"
-            className={`w-full flex ${
-              line.align === "start" 
-                ? "justify-start" 
-                : line.align === "center" 
-                ? "justify-center" 
-                : "justify-end"
-            } ${lineIndex === 3 ? "mt-8 sm:mt-16" : "mb-4 sm:mb-8"}`}
+            className="w-full flex justify-center mb-4 sm:mb-8"
           >
-            <div className="flex flex-wrap justify-center sm:justify-start">
+            <div className="flex flex-wrap justify-center">
               {line.text.split('').map((char, i) => (
                 <motion.span
                   key={i}

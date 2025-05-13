@@ -14,38 +14,13 @@
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
-  --accent-color: #00ff00;
+  --accent-color: #60A5FA;
   --text-color: #ffffff;
-  --background-color: #ffffff;
-  --primary-color: #111827;
-  --border-color: #e5e7eb;
-  --section-bg: #f9fafb;
-  --secondary-color: #4A4A4A;
-  --subtle-color: #F3F4F6;
-  --code-bg: #F8F8F8;
-  --hero-bg: #FFFFFF;
-  --about-bg: #FDFDFD;
-  --skills-bg: #FCFCFC;
-  --projects-bg: #FBFBFB;
-  --career-bg: #FAFAFA;
-  --contact-bg: #F9F9F9;
-  --shadow-color: rgba(0, 0, 0, 0.02);
-  --depth-shadow-1: 0 4px 6px rgba(0, 0, 0, 0.01);
-  --depth-shadow-2: 0 4px 6px rgba(0, 0, 0, 0.015);
-  --depth-shadow-3: 0 4px 6px rgba(0, 0, 0, 0.02);
-  --depth-shadow-4: 0 4px 6px rgba(0, 0, 0, 0.025);
-  --depth-shadow-5: 0 4px 6px rgba(0, 0, 0, 0.03);
-  --depth-shadow-6: 0 4px 6px rgba(0, 0, 0, 0.035);
-}
-
-.dark {
   --background-color: #111827;
-  --text-color: #f9fafb;
-  --primary-color: #f9fafb;
+  --primary-color: #ffffff;
   --border-color: #374151;
   --section-bg: #1f2937;
   --secondary-color: #9CA3AF;
-  --accent-color: #60A5FA;
   --subtle-color: #1F2937;
   --code-bg: #1A1A1A;
   --hero-bg: #111827;
@@ -61,6 +36,21 @@
   --depth-shadow-4: 0 4px 6px rgba(0, 0, 0, 0.25);
   --depth-shadow-5: 0 4px 6px rgba(0, 0, 0, 0.3);
   --depth-shadow-6: 0 4px 6px rgba(0, 0, 0, 0.35);
+}
+
+@layer utilities {
+  .text-line-1 {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-200;
+  }
+  .text-line-2 {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-gray-200 to-gray-300;
+  }
+  .text-line-3 {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-gray-300 to-gray-400;
+  }
+  .text-line-4 {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-gray-400 to-gray-500;
+  }
 }
 
 html {

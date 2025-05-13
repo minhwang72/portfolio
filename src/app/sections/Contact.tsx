@@ -41,12 +41,15 @@ const Contact = () => {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div className="w-full">
       <motion.div
-        style={{ opacity, scale, y }}
-        className="w-full max-w-[1920px] mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="w-full"
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="w-full">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
@@ -65,7 +68,7 @@ const Contact = () => {
             </motion.span>
           </h2>
 
-          <div className="bg-white/50 dark:bg-gray-800/50 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl">
+          <div className="bg-white/50 dark:bg-gray-800/50 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl overflow-hidden">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
               {contactButtons.map((button, index) => (
                 <motion.a

@@ -21,30 +21,30 @@ const Skills = () => {
       items: [
         { name: 'Dart', badge: 'https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white' },
         { name: 'Java', badge: 'https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white' },
+        { name: 'JavaScript', badge: 'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black' },
         { name: 'Kotlin', badge: 'https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white' },
         { name: 'Python', badge: 'https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white' },
-        { name: 'JavaScript', badge: 'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black' },
         { name: 'TypeScript', badge: 'https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white' },
       ]
     },
     {
       category: "Frontend",
       items: [
+        { name: 'Flutter', badge: 'https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white' },
         { name: 'Next.js', badge: 'https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white' },
         { name: 'React', badge: 'https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black' },
         { name: 'Tailwind CSS', badge: 'https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white' },
-        { name: 'Flutter', badge: 'https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white' },
       ]
     },
     {
       category: "Backend",
       items: [
-        { name: 'Spring Boot', badge: 'https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white' },
         { name: 'Django', badge: 'https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white' },
         { name: 'Firebase', badge: 'https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black' },
-        { name: 'Supabase', badge: 'https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white' },
         { name: 'MariaDB', badge: 'https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white' },
         { name: 'MySQL', badge: 'https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white' },
+        { name: 'Spring Boot', badge: 'https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white' },
+        { name: 'Supabase', badge: 'https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white' },
       ]
     },
     {
@@ -60,23 +60,26 @@ const Skills = () => {
     {
       category: "Tools & IDE",
       items: [
-        { name: 'VS Code', badge: 'https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white' },
-        { name: 'IntelliJ IDEA', badge: 'https://img.shields.io/badge/IntelliJ_IDEA-000000?style=for-the-badge&logo=intellij-idea&logoColor=white' },
         { name: 'Android Studio', badge: 'https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white' },
-        { name: 'Figma', badge: 'https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white' },
-        { name: 'Zeplin', badge: 'https://img.shields.io/badge/Zeplin-FFAE00?style=for-the-badge&logo=zeplin&logoColor=white' },
         { name: 'Cursor', badge: 'https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white' },
+        { name: 'Figma', badge: 'https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white' },
+        { name: 'IntelliJ IDEA', badge: 'https://img.shields.io/badge/IntelliJ_IDEA-000000?style=for-the-badge&logo=intellij-idea&logoColor=white' },
+        { name: 'VS Code', badge: 'https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white' },
+        { name: 'Zeplin', badge: 'https://img.shields.io/badge/Zeplin-FFAE00?style=for-the-badge&logo=zeplin&logoColor=white' },
       ]
     },
-  ];  
+  ];
 
   return (
-    <div ref={containerRef} className="min-h-screen flex items-center justify-center px-0">
+    <div className="w-full py-24 sm:py-32">
       <motion.div
-        style={{ opacity, scale, y }}
-        className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="w-full"
       >
-        <div className="max-w-[1920px] mx-auto">
+        <div className="w-full">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
@@ -95,20 +98,20 @@ const Skills = () => {
             </motion.span>
           </h2>
 
-          <div className="bg-gray-800/50 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl flex flex-col gap-8 sm:gap-10 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {skills.map((group) => (
-              <div key={group.category}>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 sm:mb-6 lg:mb-8 text-white">{group.category}</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+              <div key={group.category} className="glass p-8 rounded-2xl">
+                <h3 className="text-xl sm:text-2xl font-semibold mb-8 text-white">{group.category}</h3>
+                <div className="grid grid-cols-2 gap-6">
                   {group.items.map((skill) => (
                     <Image
                       key={skill.name}
                       src={skill.badge}
                       alt={skill.name}
-                      width={160}
-                      height={64}
+                      width={200}
+                      height={80}
                       unoptimized
-                      className="h-10 sm:h-12 lg:h-14 object-contain hover:scale-105 transition-transform duration-300"
+                      className="h-16 sm:h-20 lg:h-24 object-contain hover:scale-105 transition-transform duration-300"
                     />
                   ))}
                 </div>

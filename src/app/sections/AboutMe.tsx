@@ -47,14 +47,16 @@ const AboutMe = () => {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen flex items-center justify-center px-0">
+    <div className="w-full">
       <motion.div
-        style={{ opacity, scale, y }}
-        className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="w-full"
       >
-        <div className="max-w-5xl mx-auto">
-          {/* 제목 */}
-          <h2 ref={titleRef} className={`${titleSize} font-bold mb-12 text-left text-white overflow-hidden`}>
+        <div className="w-full">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -72,10 +74,8 @@ const AboutMe = () => {
             </motion.span>
           </h2>
 
-          {/* 메인 카드 */}
-          <div className="bg-gray-900/50 p-4 sm:p-6 md:p-10 rounded-2xl">
+          <div className="glass p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl overflow-hidden">
             <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
-              {/* 왼쪽: 프로필 사진 */}
               <div className="flex justify-center md:justify-start w-full md:w-auto">
                 <div className="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-full overflow-hidden shadow-2xl">
                   <Image
@@ -88,9 +88,7 @@ const AboutMe = () => {
                 </div>
               </div>
 
-              {/* 오른쪽: 개인정보 + 자기소개 */}
               <div className="flex-1 w-full">
-                {/* 개인정보 */}
                 <div className="grid grid-cols-2 gap-x-8 gap-y-6 mb-10">
                   {personalInfo.map((info, index) => (
                     <motion.div
@@ -98,9 +96,9 @@ const AboutMe = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="flex items-start gap-4 text-white hover:text-accent-color transition-colors duration-300"
+                      className="flex items-start gap-4 text-gray-200 hover:text-blue-400 transition-colors duration-300"
                     >
-                      <div className="text-accent-color mt-1">
+                      <div className="text-blue-400 mt-1">
                         {info.icon}
                       </div>
                       <div className="flex flex-col">
@@ -111,7 +109,6 @@ const AboutMe = () => {
                   ))}
                 </div>
 
-                {/* 자기소개 */}
                 <div className="space-y-4 sm:space-y-6">
                   <motion.h3
                     initial={{ opacity: 0, y: 20 }}
@@ -132,7 +129,7 @@ const AboutMe = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                        className="hover:text-accent-color transition-colors duration-300 break-words"
+                        className="hover:text-blue-400 transition-colors duration-300 break-words"
                       >
                         {text}
                       </motion.p>
