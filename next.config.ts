@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['img.shields.io'],
     unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   env: {
     HOST: '0.0.0.0',
@@ -17,7 +20,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'no-store, must-revalidate',
+            value: 'public, max-age=31536000, immutable',
           },
           {
             key: 'Strict-Transport-Security',

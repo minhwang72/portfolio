@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import DotNavigation from "./components/DotNavigation";
 import ScrollToTop from './components/ScrollToTop';
 import { Inter } from 'next/font/google'
+import Script from 'next/script';
 
 const notoSansKR = Noto_Sans_KR({ 
   subsets: ["latin"],
@@ -14,11 +15,43 @@ const notoSansKR = Noto_Sans_KR({
 
 const inter = Inter({ subsets: ['latin'] })
 
+// 구조화된 데이터 정의
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Min Hwang",
+  "url": "https://pf.eungming.com",
+  "jobTitle": "Full-Stack Engineer",
+  "description": "Full-Stack Engineer specializing in React, Next.js, and Node.js. Building scalable web applications with modern technologies.",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance"
+  },
+  "sameAs": [
+    "https://github.com/minhwang72",
+    "https://www.linkedin.com/in/min-hwang-72b2b724b/"
+  ],
+  "knowsAbout": [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "Web Development",
+    "Full Stack Development"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Seoul",
+    "addressCountry": "KR"
+  }
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://pf.eungming.com'),
   title: "Min Hwang | Full-Stack Engineer",
-  description: "Building ideas into reality. Full-Stack Engineer based in Seoul, South Korea.",
-  keywords: "풀스택 개발자, 웹 개발자, React, Next.js, TypeScript, Node.js, Python, 포트폴리오, 황민, Min Hwang",
+  description: "Full-Stack Engineer specializing in React, Next.js, and Node.js. Building scalable web applications with modern technologies. Based in Seoul, South Korea.",
+  keywords: "풀스택 개발자, 웹 개발자, React, Next.js, TypeScript, Node.js, Python, 포트폴리오, 황민, Min Hwang, 웹 개발, 프론트엔드, 백엔드",
   authors: [{ name: "Min Hwang", url: "https://pf.eungming.com" }],
   creator: "Min Hwang",
   publisher: "Min Hwang",
@@ -30,28 +63,6 @@ export const metadata: Metadata = {
     ],
     shortcut: "https://pf.eungming.com/favicon.ico",
     apple: "https://pf.eungming.com/favicon.ico",
-  },
-  openGraph: {
-    title: "Min Hwang | Full-Stack Engineer",
-    description: "Building ideas into reality. Full-Stack Engineer based in Seoul, South Korea.",
-    url: "https://pf.eungming.com",
-    siteName: "Min Hwang Portfolio",
-    images: [
-      {
-        url: "https://pf.eungming.com/images/profile/profile.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Min Hwang Profile",
-      },
-    ],
-    locale: "ko_KR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Min Hwang | Full-Stack Engineer",
-    description: "Building ideas into reality. Full-Stack Engineer based in Seoul, South Korea.",
-    images: ["https://pf.eungming.com/images/profile/profile.jpeg"],
   },
   verification: {
     google: "_6y4DjCJpX30-CdY9nGiBrTi4GBpxu1vjrXbxLDnq6M",
@@ -110,6 +121,11 @@ export default function RootLayout({
         <meta name="google-site-verification" content="_6y4DjCJpX30-CdY9nGiBrTi4GBpxu1vjrXbxLDnq6M" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${inter.className} ${notoSansKR.className}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
