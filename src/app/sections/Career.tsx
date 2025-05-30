@@ -5,8 +5,8 @@ import Image from 'next/image';
 
 const Career = () => {
   const startDate = new Date('2023-03-27');
-  const now = new Date();
-  const diffTime = Math.abs(now.getTime() - startDate.getTime());
+  const endDate = new Date('2025-05-16');
+  const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   const years = Math.floor(diffDays / 365);
   const months = Math.floor((diffDays % 365) / 30);
@@ -56,7 +56,7 @@ const Career = () => {
                   <h3 className="text-2xl sm:text-3xl font-bold text-white">HEXAVEIL</h3>
                   <p className="text-sm sm:text-base text-blue-400 font-semibold ml-2">주임연구원 Full-Stack Developer</p>
                 </div>
-                <p className="text-sm sm:text-base text-gray-400 mb-4">2023.03.27 - 현재 ({duration})</p>
+                <p className="text-sm sm:text-base text-gray-400 mb-4">2023.03.27 - 2025.05.16 ({duration})</p>
                 <div className="space-y-8">
                   <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6">
                     <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-medium">
@@ -84,7 +84,7 @@ const Career = () => {
                       </li>
                       <li className="flex items-center gap-3">
                         <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
-                        AWS 환경에서 인프라 및 DB 운영 (MariaDB, Supabase)
+                        AWS 환경에서 인프라 및 DB 운영 (MariaDB)
                       </li>
                       <li className="flex items-center gap-3">
                         <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
