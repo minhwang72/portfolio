@@ -10,22 +10,22 @@ const formatDuration = (years: number, months: number): string => {
   return `${years}년 ${months}개월`;
 };
 
+const calculateDuration = (startDate: Date, endDate: Date) => {
+  const diff = Math.abs(endDate.getTime() - startDate.getTime());
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+  const years = Math.floor(days / 365);
+  const months = Math.floor((days % 365) / 30);
+  return { days, years, months, formatted: formatDuration(years, months) };
+};
+
 const Career = () => {
-  const hexaStartDate = new Date('2023-03-27');
-  const hexaEndDate = new Date('2025-05-16');
-  const hexaDiff = Math.abs(hexaEndDate.getTime() - hexaStartDate.getTime());
-  const hexaDays = Math.ceil(hexaDiff / (1000 * 60 * 60 * 24));
-  const hexaYears = Math.floor(hexaDays / 365);
-  const hexaMonths = Math.floor((hexaDays % 365) / 30);
-  const durationHexa = formatDuration(hexaYears, hexaMonths);
-  
-  const cocoaStartDate = new Date('2025-06-16');
-  const cocoaEndDate = new Date();
-  const cocoaDiff = Math.abs(cocoaEndDate.getTime() - cocoaStartDate.getTime());
-  const cocoaDays = Math.ceil(cocoaDiff / (1000 * 60 * 60 * 24));
-  const cocoaYears = Math.floor(cocoaDays / 365);
-  const cocoaMonths = Math.floor((cocoaDays % 365) / 30);
-  const durationCocoa = formatDuration(cocoaYears, cocoaMonths);  
+  const hexa = calculateDuration(new Date('2023-03-27'), new Date('2025-05-16'));
+  const cocoa = calculateDuration(new Date('2025-06-16'), new Date());
+
+  const totalDays = hexa.days + cocoa.days;
+  const totalYears = Math.floor(totalDays / 365);
+  const totalMonths = Math.floor((totalDays % 365) / 30);
+  const totalDuration = formatDuration(totalYears, totalMonths);
 
   return (
     <div className="w-full">
@@ -37,7 +37,8 @@ const Career = () => {
         className="w-full"
       >
         <div className="w-full">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-12 text-left text-white overflow-hidden flex items-end">
+          <div className="flex items-end">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -53,7 +54,17 @@ const Career = () => {
             >
               CAREER
             </motion.span>
-          </h2>
+          </div>
+
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-sm sm:text-base text-gray-400 ml-6"
+          >
+            총 경력 {totalDuration}
+          </motion.span>
+        </h2>
 
           {/* 코코아소프트 경력 */}
           <div className="glass p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl overflow-hidden mb-10">
@@ -71,7 +82,7 @@ const Career = () => {
                   <h3 className="text-2xl sm:text-3xl font-bold text-white">코코아소프트</h3>
                   <p className="text-sm sm:text-base text-blue-400 font-semibold ml-2">선임연구원</p>
                 </div>
-                <p className="text-sm sm:text-base text-gray-400 mb-4">2025.06.16 - 현재 ({durationCocoa})</p>
+                <p className="text-sm sm:text-base text-gray-400 mb-4">2025.06.16 - 현재 ({cocoa.formatted})</p>
                 <div className="space-y-8">
                   <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6">
                     <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-medium">
@@ -123,7 +134,7 @@ const Career = () => {
                   <h3 className="text-2xl sm:text-3xl font-bold text-white">HEXAVEIL</h3>
                   <p className="text-sm sm:text-base text-blue-400 font-semibold ml-2">주임연구원</p>
                 </div>
-                <p className="text-sm sm:text-base text-gray-400 mb-4">2023.03.27 - 2025.05.16 ({durationHexa})</p>
+                <p className="text-sm sm:text-base text-gray-400 mb-4">2023.03.27 - 2025.05.16 ({hexa.formatted})</p>
                 <div className="space-y-8">
                   <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6">
                     <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-medium">
