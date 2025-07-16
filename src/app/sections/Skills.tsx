@@ -84,6 +84,14 @@ const Skills = () => {
       ]
     },
     {
+      category: "Automation / RPA",
+      items: [
+        { name: 'UiPath Studio', badge: 'https://img.shields.io/badge/UiPath_Studio-FF6C37?style=for-the-badge&logo=uipath&logoColor=white' },
+        { name: 'UiPath Orchestrator', badge: 'https://img.shields.io/badge/UiPath_Orchestrator-FF6C37?style=for-the-badge&logo=uipath&logoColor=white' },
+        { name: 'REFramework', badge: 'https://img.shields.io/badge/REFramework-333333?style=for-the-badge&logo=uipath&logoColor=white' },
+      ]
+    },
+    {
       category: "Tools & IDE",
       items: [
         { name: 'Android Studio', badge: 'https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white' },
