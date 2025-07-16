@@ -40,6 +40,36 @@ const Career = () => {
             </motion.span>
           </h2>
 
+          {/* 코코아소프트 경력 먼저 */}
+          <div className="glass p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl overflow-hidden mb-10">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-white p-2 shadow-xl">
+                <Image
+                  src="/images/company/cocoa.png"
+                  alt="코코아소프트"
+                  width={192}
+                  height={192}
+                  className="object-contain rounded-full"
+                />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <div className="flex flex-col md:flex-row md:items-end mb-1">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white">코코아소프트</h3>
+                  <p className="text-sm sm:text-base text-blue-400 font-semibold ml-2">선임</p>
+                </div>
+                <p className="text-sm sm:text-base text-gray-400 mb-4">2025.06.16 - 현재</p>
+                <div className="space-y-8">
+                  <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6">
+                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-medium">
+                      ai센터 / uipath rpa개발
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* HEXAVEIL 경력 아래로 */}
           <div className="glass p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl overflow-hidden">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-white p-2 shadow-xl">
