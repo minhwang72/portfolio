@@ -13,6 +13,20 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "개발자 블로그",
+    description: "Next.js 14와 TypeScript로 구축한 개인 개발 블로그입니다. Drizzle ORM과 MySQL을 사용한 데이터베이스 관리, 관리자 대시보드, 댓글 시스템, Google AdSense 연동, 다크모드 등 완전한 블로그 기능을 제공합니다. 티스토리와 차별화된 독특한 레이아웃과 모던한 디자인을 적용했습니다.",
+    tags: ["Next.js 14", "TypeScript", "MySQL", "Drizzle ORM", "Tailwind CSS"],
+    github: "https://github.com/minhwang72/blog",
+    demo: "https://www.eungming.com"
+  },
+  {
+    title: "MCP 서버",
+    description: "Model Context Protocol을 구현한 AI 도구 서버입니다. 블로그 관리를 위한 AI 도구들을 제공하며, HTTP/STDIO 전송을 지원합니다. Docker 컨테이너화, 자동 배포, API 키 인증, CORS 보안 등 프로덕션 환경에 필요한 모든 기능을 포함합니다. GitHub Actions를 통한 1분 내 자동 배포가 가능합니다.",
+    tags: ["TypeScript", "MCP Protocol", "Docker", "GitHub Actions", "API"],
+    github: "https://github.com/minhwang72/mcp",
+    demo: "https://mcp.eungming.com"
+  },
+  {
     title: "모바일 청첩장",
     description: "Next.js 기반의 개인 모바일 청첩장 웹사이트입니다. App Router와 Tailwind CSS로 UI를 구성하고, Next.js API Routes를 통해 방명록, 이미지 업로드, 초대장, 관리자 페이지 등의 기능을 제공합니다. 전체 기획 및 개발을 직접 수행한 개인 프로젝트입니다.",
     tags: ["Next.js", "Tailwind CSS", "Next.js API Routes"],
