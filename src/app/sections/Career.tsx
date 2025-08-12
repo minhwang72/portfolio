@@ -13,8 +13,12 @@ const formatDuration = (years: number, months: number): string => {
 const calculateDuration = (startDate: Date, endDate: Date) => {
   const diff = Math.abs(endDate.getTime() - startDate.getTime());
   const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+  
+  // 더 정확한 년/월 계산
   const years = Math.floor(days / 365);
-  const months = Math.floor((days % 365) / 30);
+  const remainingDays = days % 365;
+  const months = Math.floor(remainingDays / 30.44); // 평균 월 일수로 계산
+  
   return { days, years, months, formatted: formatDuration(years, months) };
 };
 
@@ -86,18 +90,20 @@ const Career = () => {
                 <div className="space-y-8">
                   <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6">
                     <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-medium">
-                      AI센터 / UiPath 기반 RPA 자동화 운영 및 유지보수 업무를 수행 중이며, 현재는 외부 운영 기업의 RPA 기술 지원 및 처리 업무를 맡고 있습니다.
+                      AI센터에서 UiPath 기반 RPA 자동화 시스템 개발 및 운영을 담당하고 있습니다. 
+                      현재는 MCP(Model Context Protocol) 기반 UiPath 구동 시스템을 개발 중이며, 
+                      외부 운영 기업의 RPA 기술 지원 및 장애 대응 업무를 수행하고 있습니다.
                     </p>
                   </div>
                   <div className="bg-gray-800/30 rounded-lg p-4 sm:p-6">
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base text-gray-300 font-medium">
                       <li className="flex items-center gap-3">
                         <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
-                        UiPath Studio 기반 업무 자동화 개발
+                        MCP 기반 UiPath 구동 시스템 설계 및 개발
                       </li>
                       <li className="flex items-center gap-3">
                         <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
-                        외부 운영사 기술 지원 및 봇 장애 대응
+                        UiPath Studio를 활용한 업무 자동화 프로세스 개발
                       </li>
                       <li className="flex items-center gap-3">
                         <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
@@ -105,11 +111,15 @@ const Career = () => {
                       </li>
                       <li className="flex items-center gap-3">
                         <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
-                        프로세스 오류 및 개선 요청 사항 대응
+                        외부 운영사 RPA 기술 지원 및 장애 대응
                       </li>
                       <li className="flex items-center gap-3">
                         <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
-                        향후 서버 및 인프라 확장 계획 보유
+                        RPA 프로세스 최적화 및 성능 개선
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                        AI/ML 기술과 RPA 연동 시스템 구축
                       </li>
                     </ul>
                   </div>
