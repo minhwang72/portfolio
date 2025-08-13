@@ -96,6 +96,28 @@ export const metadata: Metadata = {
     title: "Min Hwang Portfolio",
   },
   applicationName: "Min Hwang Portfolio",
+  openGraph: {
+    title: "Min Hwang | Full-Stack Engineer",
+    description: "Full-Stack Engineer specializing in React, Next.js, and Node.js. Building scalable web applications with modern technologies. Based in Seoul, South Korea.",
+    url: "https://pf.eungming.com",
+    siteName: "Min Hwang Portfolio",
+    images: [
+      {
+        url: "https://pf.eungming.com/images/profile/profile.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Min Hwang - Full-Stack Engineer",
+      },
+    ],
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Min Hwang | Full-Stack Engineer",
+    description: "Full-Stack Engineer specializing in React, Next.js, and Node.js. Building scalable web applications with modern technologies.",
+    images: ["https://pf.eungming.com/images/profile/profile.jpeg"],
+  },
   other: {
     "msapplication-TileColor": "#000000",
     "msapplication-config": "https://pf.eungming.com/browserconfig.xml",
