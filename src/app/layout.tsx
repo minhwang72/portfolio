@@ -51,7 +51,16 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://pf.eungming.com'),
   title: "Min Hwang | Full-Stack Engineer",
   description: "Full-Stack Engineer specializing in React, Next.js, and Node.js. Building scalable web applications with modern technologies. Based in Seoul, South Korea.",
-  keywords: "풀스택 개발자, 웹 개발자, React, Next.js, TypeScript, Node.js, Python, 포트폴리오, 황민, Min Hwang, 웹 개발, 프론트엔드, 백엔드",
+  keywords: [
+    "풀스택 개발자", "웹 개발자", "프론트엔드 개발자", "백엔드 개발자",
+    "React", "Next.js", "TypeScript", "Node.js", "Python", "Express.js", "Django", "Flask",
+    "Tailwind CSS", "GraphQL", "Redux",
+    "AWS", "Docker", "GitHub Actions", "CI/CD", "Nginx", "MariaDB", "MySQL", "PostgreSQL",
+    "개발자 포트폴리오", "웹 포트폴리오", "프로젝트 소개", "웹서비스 개발", "앱 개발",
+    "사이드 프로젝트", "오픈소스", "개인 서버", "자동화", "RPA", "UiPath",
+    "황민", "Min Hwang", "Fullstack Developer", "Frontend Developer", "Backend Developer",
+    "한국 개발자 포트폴리오", "Seoul Developer Portfolio"
+  ],
   authors: [{ name: "Min Hwang", url: "https://pf.eungming.com" }],
   creator: "Min Hwang",
   publisher: "Min Hwang",
