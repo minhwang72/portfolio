@@ -67,11 +67,10 @@ export const metadata: Metadata = {
   robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   icons: {
     icon: [
-      { url: "https://pf.eungming.com/favicon.ico", sizes: "any" },
-      { url: "https://pf.eungming.com/favicon.ico", type: "image/x-icon" }
+      { url: "https://pf.eungming.com/favicon.svg", sizes: "any", type: "image/svg+xml" },
     ],
-    shortcut: "https://pf.eungming.com/favicon.ico",
-    apple: "https://pf.eungming.com/favicon.ico",
+    shortcut: "https://pf.eungming.com/favicon.svg",
+    apple: "https://pf.eungming.com/favicon.svg",
   },
   verification: {
     google: "_6y4DjCJpX30-CdY9nGiBrTi4GBpxu1vjrXbxLDnq6M",
@@ -145,9 +144,8 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.svg" />
         <meta name="naver-site-verification" content="8bbd77d95e169bcaf54dc7840b0553693db295d6" />
         <meta name="google-site-verification" content="_6y4DjCJpX30-CdY9nGiBrTi4GBpxu1vjrXbxLDnq6M" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
