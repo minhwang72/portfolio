@@ -20,9 +20,6 @@ FROM --platform=linux/amd64 node:18-alpine AS runner
 
 WORKDIR /app
 
-# Install curl for healthcheck
-RUN apk add --no-cache curl
-
 # Copy necessary files from builder
 COPY --from=builder /app/next.config.ts ./
 COPY --from=builder /app/public ./public
@@ -37,9 +34,8 @@ ENV HOST=0.0.0.0
 # Expose the port
 EXPOSE 3000
 
-# Add healthcheck
-HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=5 \
-  CMD curl -fs http://127.0.0.1:3000/ || exit 1
+# Healthcheck 비활성화
+HEALTHCHECK NONE
 
 # Start the application
 CMD ["node", "server.js"]
