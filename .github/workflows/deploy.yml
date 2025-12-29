@@ -88,11 +88,7 @@ jobs:
           echo "Starting new container..."
           docker run -d \
             --name ${{ env.CONTAINER_NAME }} \
-            --restart unless-stopped \
-            --health-cmd "curl -f http://localhost:${{ env.PORT }} || exit 1" \
-            --health-interval 30s \
-            --health-timeout 3s \
-            --health-retries 3 \
+            --restart always \
             -p ${{ env.PORT }}:${{ env.PORT }} \
             -e HOST=${{ env.HOST }} \
             -e NODE_ENV=${{ env.NODE_ENV }} \
