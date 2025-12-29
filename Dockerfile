@@ -38,8 +38,8 @@ ENV HOST=0.0.0.0
 EXPOSE 3000
 
 # Add healthcheck
-HEALTHCHECK --interval=30s --timeout=3s --start-period=30s --retries=3 \
-    CMD curl -f http://localhost:3000 || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=5 \
+    CMD curl -fs http://127.0.0.1:3000/ || exit 1
 
 # Start the application
 CMD ["node", "server.js"]
