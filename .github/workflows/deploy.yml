@@ -39,6 +39,8 @@ jobs:
 
     - name: Build
       run: yarn build
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
@@ -92,6 +94,7 @@ jobs:
             -p ${{ env.PORT }}:${{ env.PORT }} \
             -e HOST=${{ env.HOST }} \
             -e NODE_ENV=${{ env.NODE_ENV }} \
+            -e GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }} \
             ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
 
           echo "Checking deployment status..."

@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import DotNavigation from "./components/DotNavigation";
 import ScrollToTop from './components/ScrollToTop';
+import ChatBot from './components/ChatBot';
 import { Inter } from 'next/font/google'
 import Script from 'next/script';
 
@@ -161,6 +162,7 @@ export default function RootLayout({
           {children}
           <DotNavigation />
           <ScrollToTop />
+          <ChatBot />
         </ThemeProvider>
       </body>
     </html>
