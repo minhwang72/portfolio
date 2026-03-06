@@ -19,18 +19,11 @@ export default function MobileNavigation({ sections, activeSection, scrollToSect
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isOpen) {
-        setIsOpen(false);
-      }
+      if (isOpen) setIsOpen(false);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isOpen]);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
   const handleSectionClick = (sectionId: string) => {
     scrollToSection(sectionId);
@@ -40,16 +33,16 @@ export default function MobileNavigation({ sections, activeSection, scrollToSect
   return (
     <div className="fixed top-4 right-4 z-50">
       <button
-        onClick={toggleMenu}
-        className="p-2 rounded-lg bg-background-color shadow-lg hover:bg-background-color/90 transition-colors duration-200"
+        onClick={() => setIsOpen(!isOpen)}
+        className="p-2.5 rounded-lg bg-white border border-slate-200 shadow-md hover:shadow-lg transition-all"
         aria-label="Toggle navigation menu"
       >
-        <div className="w-6 h-0.5 bg-current mb-1.5 transition-all duration-300" 
-          style={{ transform: isOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
-        <div className="w-6 h-0.5 bg-current mb-1.5 transition-all duration-300" 
+        <div className="w-5 h-0.5 bg-slate-600 mb-1 transition-all duration-300"
+          style={{ transform: isOpen ? 'rotate(45deg) translate(3px, 3px)' : 'none' }} />
+        <div className="w-5 h-0.5 bg-slate-600 mb-1 transition-all duration-300"
           style={{ opacity: isOpen ? 0 : 1 }} />
-        <div className="w-6 h-0.5 bg-current transition-all duration-300" 
-          style={{ transform: isOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
+        <div className="w-5 h-0.5 bg-slate-600 transition-all duration-300"
+          style={{ transform: isOpen ? 'rotate(-45deg) translate(3px, -3px)' : 'none' }} />
       </button>
 
       <AnimatePresence>
@@ -60,28 +53,28 @@ export default function MobileNavigation({ sections, activeSection, scrollToSect
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-background-color z-40"
+              className="fixed inset-0 bg-black/10 z-40"
               onClick={() => setIsOpen(false)}
             />
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-14 right-0 w-56 bg-zinc-900 border border-zinc-800 rounded-xl shadow-xl overflow-hidden z-50"
+              className="absolute top-14 right-0 w-48 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden z-50"
             >
-              <div className="p-2">
+              <div className="p-1.5">
                 {sections.map((section, index) => (
                   <motion.button
                     key={section.id}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.2, delay: index * 0.05 }}
+                    transition={{ duration: 0.2, delay: index * 0.03 }}
                     onClick={() => handleSectionClick(section.id)}
-                    className={`w-full px-4 py-3 text-left text-sm rounded-lg transition-all duration-200 ${
+                    className={`w-full px-3.5 py-2.5 text-left text-sm rounded-lg transition-all duration-200 ${
                       activeSection === section.id
-                        ? 'bg-[#C4A882]/10 text-[#C4A882] font-medium'
-                        : 'text-stone-400 hover:bg-stone-800 hover:text-stone-200'
+                        ? 'bg-teal-50 text-teal-600 font-medium'
+                        : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700'
                     }`}
                   >
                     {section.label}
@@ -94,4 +87,4 @@ export default function MobileNavigation({ sections, activeSection, scrollToSect
       </AnimatePresence>
     </div>
   );
-} 
+}

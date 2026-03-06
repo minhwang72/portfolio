@@ -47,6 +47,16 @@ const skills = [
     ]
   },
   {
+    category: "AI / ML",
+    items: [
+      { name: 'Google Gemini', badge: 'https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=google-gemini&logoColor=white' },
+      { name: 'Claude API', badge: 'https://img.shields.io/badge/Claude_API-191919?style=for-the-badge&logo=anthropic&logoColor=white' },
+      { name: 'MCP', badge: 'https://img.shields.io/badge/MCP-0D9488?style=for-the-badge&logo=anthropic&logoColor=white' },
+      { name: 'LangChain', badge: 'https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white' },
+      { name: 'RAG', badge: 'https://img.shields.io/badge/RAG-FF6F00?style=for-the-badge&logo=data:image/svg+xml;base64,&logoColor=white' },
+    ]
+  },
+  {
     category: "Automation / RPA",
     items: [
       { name: 'UiPath Studio', badge: 'https://img.shields.io/badge/UiPath_Studio-FF6C37?style=for-the-badge&logo=uipath&logoColor=white' },
@@ -82,8 +92,8 @@ const Skills = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {skills.map((group) => (
-              <div key={group.category} className="bg-zinc-900/80 border border-zinc-800 p-4 sm:p-6 lg:p-8 rounded-2xl hover:border-[#C4A882]/20 transition-colors duration-300">
-                <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-white">{group.category}</h3>
+              <div key={group.category} className="bg-white border border-slate-200 p-4 sm:p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-slate-900">{group.category}</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
                   {group.items.map((skill) => (
                     <Image

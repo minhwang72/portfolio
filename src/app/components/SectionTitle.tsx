@@ -10,13 +10,13 @@ interface SectionTitleProps {
 
 const SectionTitle = ({ children, suffix }: SectionTitleProps) => {
   return (
-    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-left text-white overflow-hidden flex items-end">
+    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-left text-slate-900 overflow-hidden flex items-end">
       <div className="flex items-center">
         <motion.span
           initial="hidden"
           animate="visible"
           variants={titleVariants}
-          className="text-[#C4A882] text-lg sm:text-xl mr-2"
+          className="text-teal-600 text-lg sm:text-xl mr-2 font-mono"
         >
           {'//'}
         </motion.span>

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import SectionTitle from '../components/SectionTitle';
 
 interface Project {
   title: string;
@@ -38,23 +39,7 @@ const Projects = () => {
         className="w-full"
       >
         <div className="w-full">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 text-left text-white overflow-hidden flex items-center">
-            <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-[#C4A882] text-lg sm:text-xl mr-2"
-            >
-              {'//'}
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              PROJECTS
-            </motion.span>
-          </h2>
+          <SectionTitle>PROJECTS</SectionTitle>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
             {projects.map((project, index) => (
@@ -63,23 +48,23 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-zinc-900/80 border border-zinc-800 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl overflow-hidden hover:border-[#C4A882]/20 hover:shadow-[#C4A882]/5 transition-all duration-300 flex flex-col justify-between h-full"
+                className="bg-white border border-slate-200 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full"
               >
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center justify-between">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 flex items-center justify-between">
                     {project.title}
                     {project.title === "포트폴리오" && (
-                      <span className="px-3 py-1 rounded-full bg-[#8B7348] text-xs text-white align-middle">현재 페이지</span>
+                      <span className="px-3 py-1 rounded-full bg-teal-50 text-xs text-teal-600 font-medium">현재 페이지</span>
                     )}
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-300 mb-6 whitespace-pre-line">{project.description}</p>
+                  <p className="text-sm sm:text-base text-slate-600 mb-6 whitespace-pre-line">{project.description}</p>
                 </div>
                 <div className="mt-auto">
                   <div className="flex flex-wrap gap-2 sm:gap-3 mb-6">
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-3 py-1 text-xs sm:text-sm rounded-full bg-[#8B7348]/20 text-[#C4A882]"
+                        className="px-3 py-1 text-xs sm:text-sm rounded-full bg-slate-100 text-slate-600 font-medium"
                       >
                         {tag}
                       </span>
@@ -90,7 +75,7 @@ const Projects = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-white transition-colors duration-300"
+                      className="text-slate-400 hover:text-teal-600 transition-colors duration-300"
                     >
                       <svg
                         className="w-6 h-6"
@@ -110,7 +95,7 @@ const Projects = () => {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-white transition-colors duration-300"
+                        className="text-slate-400 hover:text-teal-600 transition-colors duration-300"
                       >
                         <svg
                           className="w-6 h-6"

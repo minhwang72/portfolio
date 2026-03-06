@@ -23,7 +23,6 @@ export default function DotNavigation() {
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
 
-  // 스크롤 감지 로직 개선
   const handleScroll = useCallback(() => {
     const scrollPosition = window.scrollY;
     let currentSection = 'home';
@@ -33,7 +32,6 @@ export default function DotNavigation() {
       if (element) {
         const { top, height } = element.getBoundingClientRect();
         const elementTop = top + window.scrollY;
-        
         if (scrollPosition >= elementTop - height * 0.3) {
           currentSection = section.id;
         }
@@ -43,18 +41,13 @@ export default function DotNavigation() {
     setActiveSection(currentSection);
   }, []);
 
-  // 모바일 체크
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // 스크롤 이벤트 최적화
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | undefined;
     const throttledScroll = () => {
@@ -86,7 +79,7 @@ export default function DotNavigation() {
   }
 
   return (
-    <nav 
+    <nav
       className="fixed z-30 right-8 top-1/2 transform -translate-y-1/2 flex-col flex gap-4"
       aria-label="Page navigation"
     >
@@ -100,18 +93,18 @@ export default function DotNavigation() {
           >
             <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
               activeSection === section.id
-                ? 'bg-[#C4A882] scale-125'
-                : 'bg-stone-600 hover:bg-stone-400'
+                ? 'bg-teal-600 scale-125'
+                : 'bg-slate-300 hover:bg-slate-400'
             }`} />
           </button>
           <div className="absolute right-6 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-            <div className="bg-zinc-800 text-slate-200 text-xs px-2 py-1 rounded whitespace-nowrap shadow-lg shadow-black/20">
+            <div className="bg-slate-800 text-white text-xs px-2.5 py-1 rounded-md whitespace-nowrap shadow-lg">
               {section.label}
             </div>
-            <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-zinc-800 rotate-45 shadow-lg shadow-black/20" />
+            <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-slate-800 rotate-45" />
           </div>
         </div>
       ))}
     </nav>
   );
-} 
+}

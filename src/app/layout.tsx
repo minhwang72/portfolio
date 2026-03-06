@@ -1,20 +1,33 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import { Noto_Sans_KR, Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import DotNavigation from "./components/DotNavigation";
 import ScrollToTop from './components/ScrollToTop';
 import ChatBot from './components/ChatBot';
-import { Inter } from 'next/font/google'
 import Script from 'next/script';
 
-const notoSansKR = Noto_Sans_KR({ 
+const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   display: "swap",
 });
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-playfair',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-jetbrains',
+});
 
 // 구조화된 데이터 정의
 const jsonLd = {
@@ -22,8 +35,8 @@ const jsonLd = {
   "@type": "Person",
   "name": "Min Hwang",
   "url": "https://pf.eungming.com",
-  "jobTitle": "Full-Stack Engineer",
-  "description": "Full-Stack Engineer specializing in React, Next.js, and Node.js. Building scalable web applications with modern technologies.",
+  "jobTitle": "Full-Stack & AI Engineer",
+  "description": "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and RPA automation. Building intelligent web applications with modern technologies.",
   "worksFor": {
     "@type": "Organization",
     "name": "Freelance"
@@ -39,7 +52,12 @@ const jsonLd = {
     "Node.js",
     "Python",
     "Web Development",
-    "Full Stack Development"
+    "Full Stack Development",
+    "AI/ML",
+    "RPA Automation",
+    "MCP",
+    "Gemini API",
+    "Claude API"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -50,8 +68,8 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pf.eungming.com'),
-  title: "Min Hwang | Full-Stack Engineer",
-  description: "Full-Stack Engineer specializing in React, Next.js, and Node.js. Building scalable web applications with modern technologies. Based in Seoul, South Korea.",
+  title: "Min Hwang | Full-Stack & AI Engineer",
+  description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and RPA automation. Building intelligent web applications with modern technologies. Based in Seoul, South Korea.",
   keywords: [
     "풀스택 개발자", "웹 개발자", "프론트엔드 개발자", "백엔드 개발자",
     "React", "Next.js", "TypeScript", "Node.js", "Python", "Express.js", "Django", "Flask",
@@ -106,8 +124,8 @@ export const metadata: Metadata = {
   },
   applicationName: "Min Hwang Portfolio",
   openGraph: {
-    title: "Min Hwang | Full-Stack Engineer",
-    description: "Full-Stack Engineer specializing in React, Next.js, and Node.js. Building scalable web applications with modern technologies. Based in Seoul, South Korea.",
+    title: "Min Hwang | Full-Stack & AI Engineer",
+    description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and RPA automation. Building intelligent web applications with modern technologies. Based in Seoul, South Korea.",
     url: "https://pf.eungming.com",
     siteName: "Min Hwang Portfolio",
     images: [
@@ -115,7 +133,7 @@ export const metadata: Metadata = {
         url: "https://pf.eungming.com/images/profile/profile.jpeg",
         width: 1200,
         height: 630,
-        alt: "Min Hwang - Full-Stack Engineer",
+        alt: "Min Hwang - Full-Stack & AI Engineer",
       },
     ],
     locale: "ko_KR",
@@ -123,8 +141,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Min Hwang | Full-Stack Engineer",
-    description: "Full-Stack Engineer specializing in React, Next.js, and Node.js. Building scalable web applications with modern technologies.",
+    title: "Min Hwang | Full-Stack & AI Engineer",
+    description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and RPA automation. Building intelligent web applications with modern technologies.",
     images: ["https://pf.eungming.com/images/profile/profile.jpeg"],
   },
   other: {
@@ -157,8 +175,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} ${notoSansKR.className}`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <body className={`${inter.className} ${notoSansKR.className} ${playfair.variable} ${jetbrainsMono.variable}`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {children}
           <DotNavigation />
           <ScrollToTop />
