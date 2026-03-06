@@ -136,7 +136,7 @@ export default function ChatBot() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 z-40 h-full w-full sm:w-[400px] bg-white border-l border-slate-200 shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 z-50 h-full w-full sm:w-[400px] bg-white border-l border-slate-200 shadow-2xl flex flex-col"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
