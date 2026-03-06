@@ -13,12 +13,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "eungming",
-    description: "청첩장 빌더 SaaS 플랫폼입니다. 드래그 앤 드롭으로 청첩장 섹션을 자유롭게 구성하고, 실시간 미리보기를 제공합니다. Prisma ORM과 MySQL로 데이터를 관리하며, NextAuth 기반 인증과 관리자 페이지, 방명록, 결제 시스템을 포함합니다. SVG 애니메이션과 Framer Motion으로 고급스러운 청첩장 UI를 구현했습니다.",
-    tags: ["Next.js", "TypeScript", "Prisma", "MySQL", "NextAuth", "Framer Motion", "DnD Kit"],
-    github: "https://github.com/minhwang72/eungming"
-  },
-  {
     title: "모바일 청첩장",
     description: "Next.js 기반의 개인 모바일 청첩장 웹사이트입니다. App Router와 Tailwind CSS로 UI를 구성하고, Next.js API Routes를 통해 방명록, 이미지 업로드, 초대장, 관리자 페이지 등의 기능을 제공합니다. 전체 기획 및 개발을 직접 수행한 개인 프로젝트입니다.",
     tags: ["Next.js", "Tailwind CSS", "Next.js API Routes"],
@@ -38,9 +32,9 @@ const projects: Project[] = [
     github: "https://github.com/minhwang72/ej-wedding"
   },
   {
-    title: "Sheet",
-    description: "AI 기반 멀티툴 웹 애플리케이션입니다. Anthropic Claude와 Google GenAI를 활용한 AI 기능, 드래그 앤 드롭 인터페이스, DOCX/PDF 문서 내보내기, ABC 악보 표기 등 다양한 기능을 제공합니다. Shadcn UI 기반의 깔끔한 인터페이스로 구현했습니다.",
-    tags: ["Next.js", "TypeScript", "Anthropic SDK", "Google GenAI", "DnD Kit", "Shadcn UI"],
+    title: "CONTI",
+    description: "악보 키 변환 및 셋리스트 관리 도구입니다. Gemini AI로 악보 이미지에서 코드와 가사를 자동 추출하고, 음악 이론 기반으로 원하는 키로 변환한 뒤 악보를 재생성합니다. 드래그 앤 드롭 셋리스트 관리와 PNG/PDF/DOCX 내보내기를 지원합니다.",
+    tags: ["Next.js", "TypeScript", "Google Gemini AI", "DnD Kit", "Shadcn UI"],
     github: "https://github.com/minhwang72/sheet"
   },
   {
