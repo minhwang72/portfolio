@@ -78,6 +78,7 @@ const Career = () => {
                   src="/images/company/cocoa.png"
                   alt="코코아소프트"
                   fill
+                  loading="lazy"
                   className="object-contain rounded-full"
                 />
               </div>
@@ -136,6 +137,7 @@ const Career = () => {
                   src="/images/company/hexaveil_logo.png"
                   alt="HEXAVEIL"
                   fill
+                  loading="lazy"
                   className="object-contain rounded-full"
                 />
               </div>

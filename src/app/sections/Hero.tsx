@@ -41,10 +41,11 @@ const Hero = () => {
   ];
 
   return (
-    <div ref={containerRef} className="h-screen flex items-center justify-center overflow-hidden relative px-0 sm:px-6 lg:px-8">
+    <div ref={containerRef} className="h-screen flex items-center justify-center overflow-hidden relative px-0 sm:px-6 lg:px-8" aria-label="BUILDING IDEAS INTO REALITY - FULL-STACK ENGINEER MIN HWANG">
       <motion.div
         style={{ opacity, scale, y }}
         className="w-full max-w-[1920px] mx-auto"
+        aria-hidden="true"
       >
         {lines.map((line, lineIndex) => (
           <motion.div

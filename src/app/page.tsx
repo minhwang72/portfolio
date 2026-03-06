@@ -1,18 +1,20 @@
+import dynamic from 'next/dynamic';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Hero from './sections/Hero';
-import About from './sections/AboutMe';
-import Skills from './sections/Skills';
-import Projects from './sections/Projects';
-import Career from './sections/Career';
-import Contact from './sections/Contact';
+
+const About = dynamic(() => import('./sections/AboutMe'));
+const Skills = dynamic(() => import('./sections/Skills'));
+const Projects = dynamic(() => import('./sections/Projects'));
+const Career = dynamic(() => import('./sections/Career'));
+const Contact = dynamic(() => import('./sections/Contact'));
 
 export default function Home() {
   return (
     <div className="relative min-h-screen">
       <div className="space-bg" />
       <Header />
-      
+
       <main className="w-full max-w-[1920px] mx-auto">
           <section id="home" className="relative z-10 w-full">
             <div className="w-full max-w-7xl mx-auto">
@@ -45,7 +47,7 @@ export default function Home() {
             </div>
           </section>
       </main>
-      
+
       <Footer />
     </div>
   );
