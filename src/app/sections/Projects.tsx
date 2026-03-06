@@ -13,25 +13,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "모바일 청첩장",
-    description: "Next.js 기반의 개인 모바일 청첩장 웹사이트입니다. App Router와 Tailwind CSS로 UI를 구성하고, Next.js API Routes를 통해 방명록, 이미지 업로드, 초대장, 관리자 페이지 등의 기능을 제공합니다. 전체 기획 및 개발을 직접 수행한 개인 프로젝트입니다.",
-    tags: ["Next.js", "Tailwind CSS", "Next.js API Routes"],
-    github: "https://github.com/minhwang72/monsil-invitation",
-    demo: "https://monsil.eungming.com"
-  },
-  {
-    title: "kevieun 청첩장",
-    description: "Framer Motion 애니메이션을 활용한 모바일 청첩장입니다. 이미지 크롭 및 HEIC 변환 등 이미지 처리 기능과 관리자 페이지를 포함하며, 반응형 디자인과 부드러운 트랜지션으로 완성도 높은 청첩장을 구현했습니다.",
-    tags: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS", "MySQL"],
-    github: "https://github.com/minhwang72/kevieun-wedding"
-  },
-  {
-    title: "EJ 청첩장",
-    description: "Next.js 기반 모바일 청첩장으로, Sharp를 활용한 서버사이드 이미지 최적화와 메타데이터 시스템을 구현했습니다. 관리자 페이지를 통해 청첩장 콘텐츠를 관리할 수 있습니다.",
-    tags: ["Next.js", "TypeScript", "Sharp", "Tailwind CSS", "MySQL"],
-    github: "https://github.com/minhwang72/ej-wedding"
-  },
-  {
     title: "CONTI",
     description: "악보 키 변환 및 셋리스트 관리 도구입니다. Gemini AI로 악보 이미지에서 코드와 가사를 자동 추출하고, 음악 이론 기반으로 원하는 키로 변환한 뒤 악보를 재생성합니다. 드래그 앤 드롭 셋리스트 관리와 PNG/PDF/DOCX 내보내기를 지원합니다.",
     tags: ["Next.js", "TypeScript", "Google Gemini AI", "DnD Kit", "Shadcn UI"],
