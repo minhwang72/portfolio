@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     }));
 
     const response = await ai.models.generateContentStream({
-      model: 'gemini-2.0-flash-lite',
+      model: 'gemini-2.5-flash',
       config: {
         systemInstruction: getSystemPrompt(),
       },

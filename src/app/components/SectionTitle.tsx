@@ -16,7 +16,7 @@ const SectionTitle = ({ children, suffix }: SectionTitleProps) => {
           initial="hidden"
           animate="visible"
           variants={titleVariants}
-          className="text-blue-400 text-lg sm:text-xl mr-2"
+          className="text-violet-400 text-lg sm:text-xl mr-2"
         >
           {'//'}
         </motion.span>

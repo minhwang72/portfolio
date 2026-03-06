@@ -87,7 +87,7 @@ export default function DotNavigation() {
 
   return (
     <nav 
-      className="fixed z-50 right-8 top-1/2 transform -translate-y-1/2 flex-col flex gap-4"
+      className="fixed z-30 right-8 top-1/2 transform -translate-y-1/2 flex-col flex gap-4"
       aria-label="Page navigation"
     >
       {sections.map((section) => (
@@ -100,15 +100,15 @@ export default function DotNavigation() {
           >
             <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
               activeSection === section.id
-                ? 'bg-current scale-125'
-                : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                ? 'bg-violet-500 scale-125'
+                : 'bg-zinc-600 hover:bg-zinc-400'
             }`} />
           </button>
           <div className="absolute right-6 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-            <div className="bg-background-color text-current text-xs px-2 py-1 rounded whitespace-nowrap shadow-lg shadow-black/10 dark:shadow-white/10">
+            <div className="bg-zinc-800 text-slate-200 text-xs px-2 py-1 rounded whitespace-nowrap shadow-lg shadow-black/20">
               {section.label}
             </div>
-            <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-background-color rotate-45 shadow-lg shadow-black/10 dark:shadow-white/10" />
+            <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-zinc-800 rotate-45 shadow-lg shadow-black/20" />
           </div>
         </div>
       ))}

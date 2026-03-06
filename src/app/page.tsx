@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AuroraBackground from './components/AuroraBackground';
 import Hero from './sections/Hero';
 
 const About = dynamic(() => import('./sections/AboutMe'));
@@ -12,7 +13,7 @@ const Contact = dynamic(() => import('./sections/Contact'));
 export default function Home() {
   return (
     <div className="relative min-h-screen">
-      <div className="space-bg" />
+      <AuroraBackground />
       <Header />
 
       <main className="w-full max-w-[1920px] mx-auto">

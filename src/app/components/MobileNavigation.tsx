@@ -68,7 +68,7 @@ export default function MobileNavigation({ sections, activeSection, scrollToSect
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-14 right-0 w-56 bg-[#111827] border border-border-color rounded-xl shadow-xl overflow-hidden z-50"
+              className="absolute top-14 right-0 w-56 bg-zinc-900 border border-zinc-800 rounded-xl shadow-xl overflow-hidden z-50"
             >
               <div className="p-2">
                 {sections.map((section, index) => (
@@ -80,8 +80,8 @@ export default function MobileNavigation({ sections, activeSection, scrollToSect
                     onClick={() => handleSectionClick(section.id)}
                     className={`w-full px-4 py-3 text-left text-sm rounded-lg transition-all duration-200 ${
                       activeSection === section.id
-                        ? 'bg-primary-color/10 text-primary-color font-medium'
-                        : 'text-gray-400 hover:bg-[#1f2937] hover:text-primary-color'
+                        ? 'bg-violet-500/10 text-violet-400 font-medium'
+                        : 'text-gray-400 hover:bg-zinc-800 hover:text-slate-200'
                     }`}
                   >
                     {section.label}

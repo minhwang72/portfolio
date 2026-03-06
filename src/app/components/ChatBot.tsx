@@ -88,14 +88,16 @@ export default function ChatBot() {
 
   return (
     <>
-      {/* 토글 버튼 */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
-        aria-label={isOpen ? '챗봇 닫기' : '챗봇 열기'}
-      >
-        {isOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
-      </button>
+      {/* 토글 버튼 - 패널 닫혀있을 때만 표시 */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-violet-500 hover:bg-violet-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+          aria-label="챗봇 열기"
+        >
+          <MessageCircle className="w-6 h-6" />
+        </button>
+      )}
 
       {/* 사이드 패널 */}
       <AnimatePresence>
@@ -153,7 +155,7 @@ export default function ChatBot() {
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap ${
                       msg.role === 'user'
-                        ? 'bg-blue-500 text-white rounded-br-md'
+                        ? 'bg-violet-500 text-white rounded-br-md'
                         : 'bg-white/10 text-gray-200 rounded-bl-md'
                     }`}
                   >
@@ -181,13 +183,13 @@ export default function ChatBot() {
                   onKeyDown={handleKeyDown}
                   placeholder="메시지를 입력하세요..."
                   rows={1}
-                  className="flex-1 resize-none bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
+                  className="flex-1 resize-none bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-violet-500 transition-colors"
                   style={{ maxHeight: '120px' }}
                 />
                 <button
                   onClick={handleSubmit}
                   disabled={!input.trim() || isLoading}
-                  className="p-3 rounded-xl bg-blue-500 hover:bg-blue-600 disabled:opacity-30 disabled:cursor-not-allowed text-white transition-colors flex-shrink-0"
+                  className="p-3 rounded-xl bg-violet-500 hover:bg-violet-600 disabled:opacity-30 disabled:cursor-not-allowed text-white transition-colors flex-shrink-0"
                   aria-label="메시지 전송"
                 >
                   <Send className="w-4 h-4" />

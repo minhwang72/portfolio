@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -10,13 +11,12 @@ const Hero = () => {
     offset: ['start end', 'end start']
   });
 
-  // 스크롤에 따른 섹션 전환 효과
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [50, 0, 0, -50]);
 
   const getTextVariants = (direction: 'left' | 'right' | 'up' | 'down') => ({
-    hidden: { 
+    hidden: {
       opacity: 0,
       x: direction === 'left' ? -100 : direction === 'right' ? 100 : 0,
       y: direction === 'up' ? -50 : direction === 'down' ? 50 : 0,
@@ -62,12 +62,12 @@ const Hero = () => {
                   variants={getTextVariants(line.direction as 'left' | 'right' | 'up' | 'down')}
                   className={`inline-block ${line.color}`}
                   style={{
-                    fontSize: line.size === "small" 
+                    fontSize: line.size === "small"
                       ? 'clamp(1.25rem, 4vw, 3.5rem)'
-                      : lineIndex === 0 
-                      ? 'clamp(2rem, 6vw, 7rem)' 
-                      : lineIndex === 1 
-                      ? 'clamp(1.75rem, 5vw, 6rem)' 
+                      : lineIndex === 0
+                      ? 'clamp(2rem, 6vw, 7rem)'
+                      : lineIndex === 1
+                      ? 'clamp(1.75rem, 5vw, 6rem)'
                       : 'clamp(1.5rem, 4vw, 4.5rem)',
                     fontWeight: lineIndex === 2 ? '700' : '900',
                     letterSpacing: line.size === "small" ? '-0.02em' : '-0.04em',
@@ -81,6 +81,22 @@ const Hero = () => {
             </div>
           </motion.div>
         ))}
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <span className="text-xs text-slate-500 font-mono tracking-widest">SCROLL</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ChevronDown className="w-5 h-5 text-slate-500" />
+        </motion.div>
       </motion.div>
     </div>
   );
