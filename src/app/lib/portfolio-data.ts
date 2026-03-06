@@ -33,6 +33,7 @@ Tools & IDE: Android Studio, Cursor, Figma, IntelliJ IDEA, VS Code, Zeplin
    - Gemini AI로 악보 이미지에서 코드와 가사를 자동 추출하고, 음악 이론 기반으로 원하는 키로 변환한 뒤 악보를 재생성
    - 드래그 앤 드롭 셋리스트 관리와 PNG/PDF/DOCX 내보내기 지원
    - 기술: Next.js, TypeScript, Google Gemini AI, DnD Kit, Shadcn UI
+   - 사이트: https://conti.eungming.com
    - GitHub: https://github.com/minhwang72/conti
 
 2. 포트폴리오

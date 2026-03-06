@@ -16,7 +16,8 @@ const projects: Project[] = [
     title: "CONTI",
     description: "악보 키 변환 및 셋리스트 관리 도구입니다. Gemini AI로 악보 이미지에서 코드와 가사를 자동 추출하고, 음악 이론 기반으로 원하는 키로 변환한 뒤 악보를 재생성합니다. 드래그 앤 드롭 셋리스트 관리와 PNG/PDF/DOCX 내보내기를 지원합니다.",
     tags: ["Next.js", "TypeScript", "Google Gemini AI", "DnD Kit", "Shadcn UI"],
-    github: "https://github.com/minhwang72/conti"
+    github: "https://github.com/minhwang72/conti",
+    demo: "https://conti.eungming.com"
   },
   {
     title: "포트폴리오",
