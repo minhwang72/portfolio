@@ -48,6 +48,8 @@ export default function ChatBot() {
     }
   }, [isOpen]);
 
+  const [isWaiting, setIsWaiting] = useState(false);
+
   const sendMessage = async (text: string) => {
     if (!text || isLoading) return;
 
@@ -55,7 +57,11 @@ export default function ChatBot() {
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     setInput('');
+    if (textareaRef.current) {
+      textareaRef.current.value = '';
+    }
     setIsLoading(true);
+    setIsWaiting(true);
 
     try {
       const res = await fetch('/api/chat', {
@@ -72,6 +78,7 @@ export default function ChatBot() {
       const decoder = new TextDecoder();
       let accumulated = '';
 
+      setIsWaiting(false);
       setMessages((prev) => [...prev, { role: 'model', content: '' }]);
 
       while (true) {
@@ -86,6 +93,7 @@ export default function ChatBot() {
         });
       }
     } catch {
+      setIsWaiting(false);
       setMessages((prev) => [
         ...prev,
         { role: 'model', content: '죄송합니다, 오류가 발생했습니다. 다시 시도해주세요.' },
@@ -96,7 +104,8 @@ export default function ChatBot() {
   };
 
   const handleSubmit = () => {
-    sendMessage(input.trim());
+    const value = textareaRef.current?.value.trim() || input.trim();
+    sendMessage(value);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -192,6 +201,19 @@ export default function ChatBot() {
                   </div>
                 </div>
               ))}
+
+              {/* Waiting indicator - shown after user sends, before stream starts */}
+              {isWaiting && (
+                <div className="flex justify-start">
+                  <div className="bg-slate-100 text-slate-700 rounded-2xl rounded-bl-md px-4 py-2.5">
+                    <span className="inline-flex items-center gap-1.5 py-0.5">
+                      <span className="typing-dot" style={{ animationDelay: '0ms' }} />
+                      <span className="typing-dot" style={{ animationDelay: '200ms' }} />
+                      <span className="typing-dot" style={{ animationDelay: '400ms' }} />
+                    </span>
+                  </div>
+                </div>
+              )}
               <div ref={messagesEndRef} />
             </div>
 
