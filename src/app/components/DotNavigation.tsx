@@ -100,8 +100,8 @@ export default function DotNavigation() {
           >
             <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
               activeSection === section.id
-                ? 'bg-violet-500 scale-125'
-                : 'bg-zinc-600 hover:bg-zinc-400'
+                ? 'bg-[#C4A882] scale-125'
+                : 'bg-stone-600 hover:bg-stone-400'
             }`} />
           </button>
           <div className="absolute right-6 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">

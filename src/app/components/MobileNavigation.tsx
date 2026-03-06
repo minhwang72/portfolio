@@ -80,8 +80,8 @@ export default function MobileNavigation({ sections, activeSection, scrollToSect
                     onClick={() => handleSectionClick(section.id)}
                     className={`w-full px-4 py-3 text-left text-sm rounded-lg transition-all duration-200 ${
                       activeSection === section.id
-                        ? 'bg-violet-500/10 text-violet-400 font-medium'
-                        : 'text-gray-400 hover:bg-zinc-800 hover:text-slate-200'
+                        ? 'bg-[#C4A882]/10 text-[#C4A882] font-medium'
+                        : 'text-stone-400 hover:bg-stone-800 hover:text-stone-200'
                     }`}
                   >
                     {section.label}

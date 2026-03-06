@@ -47,7 +47,7 @@ const Career = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-violet-400 text-xl sm:text-2xl mr-2"
+              className="text-[#C4A882] text-xl sm:text-2xl mr-2"
             >
               {'//'}
             </motion.span>
@@ -71,7 +71,7 @@ const Career = () => {
         </h2>
 
           {/* 코코아소프트 경력 */}
-          <div className="bg-zinc-900/80 border border-zinc-800 p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl overflow-hidden hover:border-violet-500/30 transition-colors duration-300 mb-10">
+          <div className="bg-zinc-900/80 border border-zinc-800 p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl overflow-hidden hover:border-[#C4A882]/20 transition-colors duration-300 mb-10">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-white p-2 shadow-xl">
                 <Image
@@ -85,7 +85,7 @@ const Career = () => {
               <div className="flex-1 text-center md:text-left">
                 <div className="flex flex-col md:flex-row md:items-end mb-1">
                   <h3 className="text-2xl sm:text-3xl font-bold text-white">코코아소프트</h3>
-                  <p className="text-sm sm:text-base text-violet-400 font-semibold ml-2">선임연구원</p>
+                  <p className="text-sm sm:text-base text-[#C4A882] font-semibold ml-2">선임연구원</p>
                 </div>
                 <p className="text-sm sm:text-base text-gray-400 mb-4">2025.06.16 - 현재 ({cocoa.formatted})</p>
                 <div className="space-y-8">
@@ -99,27 +99,27 @@ const Career = () => {
                   <div className="bg-zinc-800/40 rounded-lg p-4 sm:p-6">
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base text-gray-300 font-medium">
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         MCP 기반 UiPath 구동 시스템 설계 및 개발
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         UiPath Studio를 활용한 업무 자동화 프로세스 개발
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         UiPath Orchestrator를 통한 로봇 관리 및 모니터링
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         외부 운영사 RPA 기술 지원 및 장애 대응
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         RPA 프로세스 최적화 및 성능 개선
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         AI/ML 기술과 RPA 연동 시스템 구축
                       </li>
                     </ul>
@@ -130,7 +130,7 @@ const Career = () => {
           </div>
 
           {/* HEXAVEIL 경력 */}
-          <div className="bg-zinc-900/80 border border-zinc-800 p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl overflow-hidden hover:border-violet-500/30 transition-colors duration-300">
+          <div className="bg-zinc-900/80 border border-zinc-800 p-6 sm:p-8 lg:p-10 rounded-3xl shadow-xl overflow-hidden hover:border-[#C4A882]/20 transition-colors duration-300">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-white p-2 shadow-xl">
                 <Image
@@ -144,7 +144,7 @@ const Career = () => {
               <div className="flex-1 text-center md:text-left">
                 <div className="flex flex-col md:flex-row md:items-end mb-1">
                   <h3 className="text-2xl sm:text-3xl font-bold text-white">HEXAVEIL</h3>
-                  <p className="text-sm sm:text-base text-violet-400 font-semibold ml-2">주임연구원</p>
+                  <p className="text-sm sm:text-base text-[#C4A882] font-semibold ml-2">주임연구원</p>
                 </div>
                 <p className="text-sm sm:text-base text-gray-400 mb-4">2023.03.27 - 2025.05.16 ({hexa.formatted})</p>
                 <div className="space-y-8">
@@ -157,27 +157,27 @@ const Career = () => {
                   <div className="bg-zinc-800/40 rounded-lg p-4 sm:p-6">
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm sm:text-base text-gray-300 font-medium">
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         Flutter/Android/iOS 앱 설계 및 구현
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         Next.js 기반 웹 프론트엔드 개발
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         Firebase, Django, Spring Boot 백엔드 구축
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         Docker, GitHub Actions, TeamCity 기반 배포 자동화
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         AWS 환경에서 인프라 및 DB 운영 (MariaDB)
                       </li>
                       <li className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-violet-400 flex-shrink-0"></span>
+                        <span className="w-2 h-2 rounded-full bg-[#C4A882] flex-shrink-0"></span>
                         디자인 협업 및 UI/UX 개선 (Figma, Zeplin)
                       </li>
                     </ul>

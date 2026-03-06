@@ -49,9 +49,9 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-zinc-900/80 border border-zinc-800 p-4 sm:p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:border-violet-500/30 hover:shadow-violet-500/5 flex flex-col items-center justify-center gap-3 sm:gap-4 group cursor-pointer"
+                className="bg-zinc-900/80 border border-zinc-800 p-4 sm:p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:border-[#C4A882]/20 hover:shadow-[#C4A882]/5 flex flex-col items-center justify-center gap-3 sm:gap-4 group cursor-pointer"
               >
-                <div className="p-2 sm:p-3 rounded-full bg-violet-500/10 group-hover:bg-violet-500/20 transition-colors duration-300">
+                <div className="p-2 sm:p-3 rounded-full bg-[#C4A882]/10 group-hover:bg-[#C4A882]/15 transition-colors duration-300">
                   {button.icon}
                 </div>
                 <div className="text-center">

@@ -82,7 +82,7 @@ const Skills = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {skills.map((group) => (
-              <div key={group.category} className="bg-zinc-900/80 border border-zinc-800 p-4 sm:p-6 lg:p-8 rounded-2xl hover:border-violet-500/30 transition-colors duration-300">
+              <div key={group.category} className="bg-zinc-900/80 border border-zinc-800 p-4 sm:p-6 lg:p-8 rounded-2xl hover:border-[#C4A882]/20 transition-colors duration-300">
                 <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-white">{group.category}</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
                   {group.items.map((skill) => (

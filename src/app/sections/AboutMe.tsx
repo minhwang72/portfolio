@@ -27,7 +27,7 @@ const AboutMe = () => {
         <div className="w-full">
           <SectionTitle>ABOUT ME</SectionTitle>
 
-          <div className="bg-zinc-900/80 border border-zinc-800 p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl overflow-hidden hover:border-violet-500/30 transition-colors duration-300">
+          <div className="bg-zinc-900/80 border border-zinc-800 p-4 sm:p-6 lg:p-8 rounded-2xl shadow-xl overflow-hidden hover:border-[#C4A882]/20 transition-colors duration-300">
             <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
               <div className="flex justify-center md:justify-start w-full md:w-auto">
                 <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-2xl">
@@ -49,11 +49,11 @@ const AboutMe = () => {
                       initial="hidden"
                       animate="visible"
                       variants={contentVariants}
-                      className={`flex items-start gap-3 text-gray-200 hover:text-violet-400 transition-colors duration-300 ${
+                      className={`flex items-start gap-3 text-gray-200 hover:text-[#C4A882] transition-colors duration-300 ${
                         info.long ? 'col-span-2 sm:col-span-1' : ''
                       }`}
                     >
-                      <div className="text-violet-400 mt-1 flex-shrink-0">
+                      <div className="text-[#C4A882] mt-1 flex-shrink-0">
                         {info.icon}
                       </div>
                       <div className="flex flex-col min-w-0">
@@ -88,7 +88,7 @@ const AboutMe = () => {
                         initial="hidden"
                         animate="visible"
                         variants={contentVariants}
-                        className="hover:text-violet-400 transition-colors duration-300 break-words"
+                        className="hover:text-[#C4A882] transition-colors duration-300 break-words"
                       >
                         {text}
                       </motion.p>
