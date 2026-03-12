@@ -276,7 +276,7 @@ export default function ChatBot() {
             </div>
 
             {/* Input */}
-            <div className="px-5 py-4 border-t border-slate-100">
+            <div className="px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] border-t border-slate-100">
               <div className="flex items-end gap-2">
                 <textarea
                   ref={textareaRef}
