@@ -26,8 +26,10 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const [suggestions] = useState(() => {
     const shuffled = [...allSuggestions].sort(() => Math.random() - 0.5);
@@ -46,6 +48,53 @@ export default function ChatBot() {
     if (isOpen && textareaRef.current) {
       textareaRef.current.focus();
     }
+  }, [isOpen]);
+
+  // Lock body scroll when chat is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${window.scrollY}px`;
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+    };
+  }, [isOpen]);
+
+  // Handle mobile keyboard via visualViewport API
+  useEffect(() => {
+    if (!isOpen) return;
+    const vv = window.visualViewport;
+    if (!vv) return;
+
+    const handleResize = () => {
+      setViewportHeight(vv.height);
+      // Scroll input into view when keyboard opens
+      setTimeout(() => {
+        textareaRef.current?.scrollIntoView({ block: 'nearest' });
+      }, 50);
+    };
+
+    handleResize();
+    vv.addEventListener('resize', handleResize);
+    vv.addEventListener('scroll', handleResize);
+    return () => {
+      vv.removeEventListener('resize', handleResize);
+      vv.removeEventListener('scroll', handleResize);
+      setViewportHeight(null);
+    };
   }, [isOpen]);
 
   const [isWaiting, setIsWaiting] = useState(false);
@@ -136,7 +185,16 @@ export default function ChatBot() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 z-50 h-full w-full sm:w-[400px] bg-white border-l border-slate-200 shadow-2xl flex flex-col"
+            ref={panelRef}
+            className="fixed top-0 right-0 z-50 w-full sm:w-[400px] bg-white border-l border-slate-200 shadow-2xl flex flex-col"
+            style={{ height: viewportHeight ? `${viewportHeight}px` : '100dvh' }}
+            onTouchMove={(e) => {
+              // Allow scroll inside messages area, prevent elsewhere
+              const target = e.target as HTMLElement;
+              if (!target.closest('.chat-messages')) {
+                e.preventDefault();
+              }
+            }}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
@@ -154,7 +212,7 @@ export default function ChatBot() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+            <div className="chat-messages flex-1 overflow-y-auto px-5 py-4 space-y-4 overscroll-contain">
               {messages.length === 0 && (
                 <div className="text-center mt-12">
                   <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-teal-50 flex items-center justify-center">
