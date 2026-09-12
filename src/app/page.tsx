@@ -8,6 +8,7 @@ const About = dynamic(() => import('./sections/AboutMe'));
 const Skills = dynamic(() => import('./sections/Skills'));
 const Projects = dynamic(() => import('./sections/Projects'));
 const Career = dynamic(() => import('./sections/Career'));
+const Certifications = dynamic(() => import('./sections/Certifications'));
 const Contact = dynamic(() => import('./sections/Contact'));
 
 export default function Home() {
@@ -40,6 +41,11 @@ export default function Home() {
           <section id="career" className="relative z-10 w-full">
             <div className="w-full max-w-7xl mx-auto">
               <Career />
+            </div>
+          </section>
+          <section id="certifications" className="relative z-10 w-full">
+            <div className="w-full max-w-7xl mx-auto">
+              <Certifications />
             </div>
           </section>
           <section id="contact" className="relative z-10 w-full">

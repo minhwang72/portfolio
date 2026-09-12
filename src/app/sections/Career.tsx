@@ -3,34 +3,13 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import SectionTitle from '../components/SectionTitle';
-
-const formatDuration = (years: number, months: number): string => {
-  if (years === 0 && months === 0) return '';
-  if (years === 0) return `${months}개월`;
-  if (months === 0) return `${years}년`;
-  return `${years}년 ${months}개월`;
-};
-
-const calculateDuration = (startDate: Date, endDate: Date) => {
-  const diff = Math.abs(endDate.getTime() - startDate.getTime());
-  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-  const years = Math.floor(days / 365);
-  const remainingDays = days % 365;
-  const months = Math.floor(remainingDays / 30.44);
-  return { days, years, months, formatted: formatDuration(years, months) };
-};
+import { getCareerDurations } from '../lib/portfolio-data';
 
 const Career = () => {
-  const hexa = calculateDuration(new Date('2023-03-27'), new Date('2025-05-16'));
-  const cocoa = calculateDuration(new Date('2025-06-16'), new Date());
-
-  const totalDays = hexa.days + cocoa.days;
-  const totalYears = Math.floor(totalDays / 365);
-  const totalMonths = Math.floor((totalDays % 365) / 30);
-  const totalDuration = formatDuration(totalYears, totalMonths);
+  const { hexa, cocoa, total: totalDuration } = getCareerDurations();
 
   return (
-    <div className="w-full">
+    <div className="w-full py-12 sm:py-16 md:py-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +23,7 @@ const Career = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-sm sm:text-base text-slate-400 ml-6"
+              className="text-sm sm:text-base text-slate-500 ml-6"
             >
               총 경력 {totalDuration}
             </motion.span>
@@ -67,9 +46,9 @@ const Career = () => {
               <div className="flex-1 text-center md:text-left">
                 <div className="flex flex-col md:flex-row md:items-end mb-1">
                   <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">코코아소프트</h3>
-                  <p className="text-sm sm:text-base text-teal-600 font-semibold ml-2">선임연구원</p>
+                  <p className="text-sm sm:text-base text-teal-600 font-semibold ml-2">책임연구원</p>
                 </div>
-                <p className="text-sm sm:text-base text-slate-400 mb-4">2025.06.16 - 현재 ({cocoa.formatted})</p>
+                <p className="text-sm sm:text-base text-slate-500 mb-4">2025.06.16 - 현재 ({cocoa.formatted})</p>
                 <div className="space-y-6">
                   <div className="bg-slate-50 rounded-lg p-4 sm:p-6">
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
@@ -117,23 +96,24 @@ const Career = () => {
                   <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">HEXAVEIL</h3>
                   <p className="text-sm sm:text-base text-teal-600 font-semibold ml-2">주임연구원</p>
                 </div>
-                <p className="text-sm sm:text-base text-slate-400 mb-4">2023.03.27 - 2025.05.16 ({hexa.formatted})</p>
+                <p className="text-sm sm:text-base text-slate-500 mb-4">2023.03.27 - 2025.05.16 ({hexa.formatted})</p>
                 <div className="space-y-6">
                   <div className="bg-slate-50 rounded-lg p-4 sm:p-6">
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
-                      Flutter 기반 모바일 앱부터 React 기반 웹 프론트엔드, Django 및 Spring Boot를 활용한 백엔드 API 개발,
-                      CI/CD 자동화, 클라우드 인프라 운영까지 전방위로 담당했습니다.
+                      Kotlin과 Spring Boot 기반 백엔드 API 개발을 중심으로, 커머스 플랫폼을 약 2년간 운영하며
+                      결제 연동과 배치 처리, 조회 부하 분산을 담당했습니다. 신규 프로젝트는 Spring Boot 3.x 기반
+                      논블로킹 구조로 설계했고, 서비스 인프라의 Kubernetes 이전과 프론트엔드·모바일 앱 개발도 함께 맡았습니다.
                     </p>
                   </div>
                   <div className="bg-slate-50 rounded-lg p-4 sm:p-6">
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm sm:text-base text-slate-600 font-medium">
                       {[
-                        'Flutter/Android/iOS 앱 설계 및 구현',
-                        'Next.js 기반 웹 프론트엔드 개발',
-                        'Firebase, Django, Spring Boot 백엔드 구축',
+                        'Kotlin + Spring Boot 3.x API 설계 (WebFlux · 코루틴 · R2DBC)',
+                        '커머스 백엔드 운영 — PG 결제 및 본인인증 연동',
+                        '배치 처리 설계 및 조회 부하 분산 (read/write 분리)',
+                        'Kubernetes 이전 및 30여 개 서비스 매니페스트 운영',
                         'Docker, GitHub Actions, TeamCity 기반 배포 자동화',
-                        'AWS 환경에서 인프라 및 DB 운영 (MariaDB)',
-                        '디자인 협업 및 UI/UX 개선 (Figma, Zeplin)',
+                        'Flutter 앱 · Next.js 프론트엔드 · 다국어(i18n) 대응',
                       ].map((item, i) => (
                         <li key={i} className="flex items-center gap-3">
                           <span className="w-1.5 h-1.5 rounded-full bg-teal-600 flex-shrink-0" />

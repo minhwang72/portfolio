@@ -200,14 +200,14 @@ export default function ChatBot() {
             <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
               <div>
                 <h3 className="text-base font-semibold text-slate-900">AI Assistant</h3>
-                <p className="text-xs text-slate-400 mt-0.5">황민에 대해 무엇이든 물어보세요</p>
+                <p className="text-xs text-slate-500 mt-0.5">황민에 대해 무엇이든 물어보세요</p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
                 aria-label="패널 닫기"
               >
-                <X className="w-5 h-5 text-slate-400" />
+                <X className="w-5 h-5 text-slate-500" />
               </button>
             </div>
 
@@ -219,7 +219,7 @@ export default function ChatBot() {
                     <MessageCircle className="w-6 h-6 text-teal-600" />
                   </div>
                   <p className="text-sm text-slate-500 mb-1">안녕하세요!</p>
-                  <p className="text-sm text-slate-400 mb-6">포트폴리오에 대해 궁금한 점을 물어보세요.</p>
+                  <p className="text-sm text-slate-500 mb-6">포트폴리오에 대해 궁금한 점을 물어보세요.</p>
                   <div className="space-y-2">
                     {suggestions.map((suggestion) => (
                       <button

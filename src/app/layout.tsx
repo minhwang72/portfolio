@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR, Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import DotNavigation from "./components/DotNavigation";
 import ScrollToTop from './components/ScrollToTop';
 import ChatBot from './components/ChatBot';
@@ -35,29 +34,57 @@ const jsonLd = {
   "@type": "Person",
   "name": "Min Hwang",
   "url": "https://pf.eungming.com",
-  "jobTitle": "Full-Stack & AI Engineer",
-  "description": "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and RPA automation. Building intelligent web applications with modern technologies.",
+  "jobTitle": "Backend & AI Engineer",
+  "description": "Backend engineer building services with Kotlin and Spring Boot, with hands-on experience in Kubernetes, payment integration, and AI/LLM automation. Based in Seoul, South Korea.",
   "worksFor": {
     "@type": "Organization",
-    "name": "Freelance"
+    "name": "CocoaSoft"
   },
   "sameAs": [
     "https://github.com/minhwang72",
-    "https://www.linkedin.com/in/min-hwang-72b2b724b/"
+    "https://www.linkedin.com/in/min-hwang-071b18316/"
   ],
   "knowsAbout": [
-    "React",
-    "Next.js",
+    "Kotlin",
+    "Spring Boot",
+    "Java",
+    "Backend Development",
+    "REST API",
+    "JPA",
+    "Kubernetes",
+    "Docker",
+    "AWS",
+    "MySQL",
+    "MariaDB",
     "TypeScript",
-    "Node.js",
+    "Next.js",
+    "React",
     "Python",
-    "Web Development",
-    "Full Stack Development",
     "AI/ML",
-    "RPA Automation",
+    "LLM",
     "MCP",
+    "Claude API",
     "Gemini API",
-    "Claude API"
+    "RPA Automation"
+  ],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Korea National Open University"
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Claude Certified Architect - Foundations",
+      "credentialCategory": "certificate",
+      "recognizedBy": { "@type": "Organization", "name": "Anthropic" },
+      "url": "https://www.credly.com/badges/59b07b26-51a1-43df-b080-a2ff6b39bbd4/public_url"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Network Administrator Level 2",
+      "credentialCategory": "certificate",
+      "recognizedBy": { "@type": "Organization", "name": "Korea Information & Communication Qualification Association" }
+    }
   ],
   "address": {
     "@type": "PostalAddress",
@@ -66,15 +93,23 @@ const jsonLd = {
   }
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://pf.eungming.com'),
-  title: "Min Hwang | Full-Stack & AI Engineer",
-  description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and RPA automation. Building intelligent web applications with modern technologies. Based in Seoul, South Korea.",
+  title: "Min Hwang | Backend & AI Engineer",
+  description: "Kotlin · Spring Boot 백엔드 엔지니어. 커머스 플랫폼 운영과 결제 연동, Kubernetes 기반 서비스 운영, MCP·LLM을 활용한 AI 자동화를 다룹니다. Backend engineer in Seoul, South Korea.",
   keywords: [
-    "풀스택 개발자", "웹 개발자", "프론트엔드 개발자", "백엔드 개발자",
-    "React", "Next.js", "TypeScript", "Node.js", "Python", "Express.js", "Django", "Flask",
-    "Tailwind CSS", "GraphQL", "Redux",
-    "AWS", "Docker", "GitHub Actions", "CI/CD", "Nginx", "MariaDB", "MySQL", "PostgreSQL",
+    "백엔드 개발자", "서버 개발자", "풀스택 개발자", "웹 개발자",
+    "Kotlin", "Spring Boot", "Spring", "Java", "JPA", "WebFlux", "R2DBC", "REST API",
+    "Kubernetes", "k8s", "Docker", "AWS", "GitHub Actions", "CI/CD", "Nginx",
+    "MariaDB", "MySQL", "PostgreSQL", "Redis",
+    "React", "Next.js", "TypeScript", "Python", "Django", "Flutter",
+    "Claude", "MCP", "LLM", "AI 자동화",
     "개발자 포트폴리오", "웹 포트폴리오", "프로젝트 소개", "웹서비스 개발", "앱 개발",
     "사이드 프로젝트", "오픈소스", "개인 서버", "자동화", "RPA", "UiPath",
     "황민", "Min Hwang", "Fullstack Developer", "Frontend Developer", "Backend Developer",
@@ -105,12 +140,6 @@ export const metadata: Metadata = {
     email: false,
     address: false,
     telephone: false,
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
   },
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
@@ -167,7 +196,6 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta name="naver-site-verification" content="8bbd77d95e169bcaf54dc7840b0553693db295d6" />
         <meta name="google-site-verification" content="_6y4DjCJpX30-CdY9nGiBrTi4GBpxu1vjrXbxLDnq6M" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
         <Script
           id="schema-org"
@@ -176,12 +204,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} ${notoSansKR.className} ${playfair.variable} ${jetbrainsMono.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          {children}
-          <DotNavigation />
-          <ScrollToTop />
-          <ChatBot />
-        </ThemeProvider>
+        {children}
+        <DotNavigation />
+        <ScrollToTop />
+        <ChatBot />
       </body>
     </html>
   );

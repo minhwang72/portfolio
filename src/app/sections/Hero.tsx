@@ -7,8 +7,8 @@ const Hero = () => {
   const codeLines = [
     { indent: 0, content: [{ text: 'const ', color: '#C792EA' }, { text: 'developer', color: '#82AAFF' }, { text: ' = {', color: '#E2E8F0' }] },
     { indent: 1, content: [{ text: 'name', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'황민'", color: '#C3E88D' }, { text: ',', color: '#E2E8F0' }] },
-    { indent: 1, content: [{ text: 'role', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'Full-Stack & AI Engineer'", color: '#C3E88D' }, { text: ',', color: '#E2E8F0' }] },
-    { indent: 1, content: [{ text: 'stack', color: '#F78C6C' }, { text: ': [', color: '#E2E8F0' }, { text: "'React'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'Spring'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'AI/ML'", color: '#C3E88D' }, { text: '],', color: '#E2E8F0' }] },
+    { indent: 1, content: [{ text: 'role', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'Backend & AI Engineer'", color: '#C3E88D' }, { text: ',', color: '#E2E8F0' }] },
+    { indent: 1, content: [{ text: 'stack', color: '#F78C6C' }, { text: ': [', color: '#E2E8F0' }, { text: "'Kotlin'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'Spring Boot'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'AI/ML'", color: '#C3E88D' }, { text: '],', color: '#E2E8F0' }] },
     { indent: 1, content: [{ text: 'passion', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'기술과 AI로 문제를 해결하다'", color: '#C3E88D' }] },
     { indent: 0, content: [{ text: '};', color: '#E2E8F0' }] },
   ];
@@ -28,7 +28,7 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-sm font-medium tracking-widest text-teal-600 uppercase mb-4"
           >
-            Full-Stack & AI Engineer
+            Backend & AI Engineer
           </motion.p>
 
           <motion.h1
@@ -55,7 +55,7 @@ const Hero = () => {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="text-base sm:text-lg text-slate-500 leading-relaxed mb-8 max-w-md"
           >
-            풀스택 개발부터 AI 자동화까지,
+            서버를 만들고, 배포하고, 운영합니다.
             <br />
             기술로 문제를 해결합니다.
           </motion.p>
@@ -70,7 +70,7 @@ const Hero = () => {
               href="https://github.com/minhwang72"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full border border-slate-200 text-slate-400 hover:text-teal-600 hover:border-teal-600 transition-colors"
+              className="p-2.5 rounded-full border border-slate-200 text-slate-500 hover:text-teal-600 hover:border-teal-600 transition-colors"
               aria-label="GitHub"
             >
               <Github className="w-5 h-5" />
@@ -79,14 +79,14 @@ const Hero = () => {
               href="https://www.linkedin.com/in/min-hwang-071b18316/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full border border-slate-200 text-slate-400 hover:text-teal-600 hover:border-teal-600 transition-colors"
+              className="p-2.5 rounded-full border border-slate-200 text-slate-500 hover:text-teal-600 hover:border-teal-600 transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a
               href="mailto:zxcyui6181@naver.com"
-              className="p-2.5 rounded-full border border-slate-200 text-slate-400 hover:text-teal-600 hover:border-teal-600 transition-colors"
+              className="p-2.5 rounded-full border border-slate-200 text-slate-500 hover:text-teal-600 hover:border-teal-600 transition-colors"
               aria-label="Email"
             >
               <Mail className="w-5 h-5" />
@@ -135,12 +135,12 @@ const Hero = () => {
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-slate-400 font-mono tracking-widest uppercase">Scroll</span>
+        <span className="text-xs text-slate-500 font-mono tracking-widest uppercase">Scroll</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <ChevronDown className="w-4 h-4 text-slate-400" />
+          <ChevronDown className="w-4 h-4 text-slate-500" />
         </motion.div>
       </motion.div>
     </div>
