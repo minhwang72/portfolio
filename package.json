@@ -14,7 +14,7 @@
     "@google/genai": "^1.44.0",
     "framer-motion": "^12.9.2",
     "lucide-react": "^0.503.0",
-    "next": "^15.5.9",
+    "next": "15.5.28",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -27,7 +27,7 @@
     "@types/react-dom": "^19",
     "autoprefixer": "10.4.14",
     "eslint": "^9",
-    "eslint-config-next": "15.3.1",
+    "eslint-config-next": "15.5.28",
     "next-sitemap": "^4.2.3",
     "postcss": "8.4.23",
     "tailwindcss": "3.3.0",
