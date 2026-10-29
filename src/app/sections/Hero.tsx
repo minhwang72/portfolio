@@ -7,8 +7,8 @@ const Hero = () => {
   const codeLines = [
     { indent: 0, content: [{ text: 'const ', color: '#C792EA' }, { text: 'developer', color: '#82AAFF' }, { text: ' = {', color: '#E2E8F0' }] },
     { indent: 1, content: [{ text: 'name', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'황민'", color: '#C3E88D' }, { text: ',', color: '#E2E8F0' }] },
-    { indent: 1, content: [{ text: 'role', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'Backend & AI Engineer'", color: '#C3E88D' }, { text: ',', color: '#E2E8F0' }] },
-    { indent: 1, content: [{ text: 'stack', color: '#F78C6C' }, { text: ': [', color: '#E2E8F0' }, { text: "'Kotlin'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'Spring Boot'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'AI/ML'", color: '#C3E88D' }, { text: '],', color: '#E2E8F0' }] },
+    { indent: 1, content: [{ text: 'role', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'Fullstack & AI Engineer'", color: '#C3E88D' }, { text: ',', color: '#E2E8F0' }] },
+    { indent: 1, content: [{ text: 'stack', color: '#F78C6C' }, { text: ': [', color: '#E2E8F0' }, { text: "'Next.js'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'Spring Boot'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'AI/ML'", color: '#C3E88D' }, { text: '],', color: '#E2E8F0' }] },
     { indent: 1, content: [{ text: 'passion', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'기술과 AI로 문제를 해결하다'", color: '#C3E88D' }] },
     { indent: 0, content: [{ text: '};', color: '#E2E8F0' }] },
   ];
@@ -28,7 +28,7 @@ const Hero = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-sm font-medium tracking-widest text-teal-600 uppercase mb-4"
           >
-            Backend & AI Engineer
+            Fullstack & AI Engineer
           </motion.p>
 
           <motion.h1

@@ -52,20 +52,20 @@ const Career = () => {
                 <div className="space-y-6">
                   <div className="bg-slate-50 rounded-lg p-4 sm:p-6">
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
-                      AI센터에서 UiPath 기반 RPA 자동화 시스템 개발 및 운영을 담당하고 있습니다.
-                      현재는 MCP(Model Context Protocol) 기반 UiPath 구동 시스템을 개발 중이며,
-                      외부 운영 기업의 RPA 기술 지원 및 장애 대응 업무를 수행하고 있습니다.
+                      AI센터에서 대기업 그룹사 8개 계열사의 RPA 900여 과제를 단독으로 운영하고,
+                      RPA 개발자 중심 조직에서 사내 웹앱 개발과 서버 관리를 전담하고 있습니다.
+                      LLM 기반 RAG 챗봇, n8n 업무 자동화, MCP 기반 시스템 등 AI를 실무에 적용하고 있습니다.
                     </p>
                   </div>
                   <div className="bg-slate-50 rounded-lg p-4 sm:p-6">
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm sm:text-base text-slate-600 font-medium">
                       {[
+                        '그룹사 8개 계열사 RPA 900여 과제 단독 운영',
+                        '공통 모듈 표준화로 월 장애 90건 → 10건',
+                        '그룹웨어 전면 전환 대응 — 메일·DRM 모듈 신규 개발',
+                        '사내 웹앱 개발 및 서버 관리 전담',
+                        'n8n + LLM 기반 RAG 챗봇·업무 자동화',
                         'MCP 기반 UiPath 구동 시스템 설계 및 개발',
-                        'UiPath Studio를 활용한 업무 자동화 프로세스 개발',
-                        'UiPath Orchestrator를 통한 로봇 관리 및 모니터링',
-                        '외부 운영사 RPA 기술 지원 및 장애 대응',
-                        'RPA 프로세스 최적화 및 성능 개선',
-                        'AI/ML 기술과 RPA 연동 시스템 구축',
                       ].map((item, i) => (
                         <li key={i} className="flex items-center gap-3">
                           <span className="w-1.5 h-1.5 rounded-full bg-teal-600 flex-shrink-0" />
@@ -100,20 +100,20 @@ const Career = () => {
                 <div className="space-y-6">
                   <div className="bg-slate-50 rounded-lg p-4 sm:p-6">
                     <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
-                      Kotlin과 Spring Boot 기반 백엔드 API 개발을 중심으로, 커머스 플랫폼을 약 2년간 운영하며
-                      결제 연동과 배치 처리, 조회 부하 분산을 담당했습니다. 신규 프로젝트는 Spring Boot 3.x 기반
-                      논블로킹 구조로 설계했고, 서비스 인프라의 Kubernetes 이전과 프론트엔드·모바일 앱 개발도 함께 맡았습니다.
+                      웹·앱 풀스택 개발자로 커머스 서비스의 백엔드 API부터 웹 프론트엔드, 모바일 앱까지 개발했습니다.
+                      결제·본인인증 연동과 한국어·베트남어 다국어 서비스를 다뤘고,
+                      Docker·Kubernetes 환경에서 CI/CD로 배포했습니다.
                     </p>
                   </div>
                   <div className="bg-slate-50 rounded-lg p-4 sm:p-6">
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm sm:text-base text-slate-600 font-medium">
                       {[
-                        'Kotlin + Spring Boot 3.x API 설계 (WebFlux · 코루틴 · R2DBC)',
-                        '커머스 백엔드 운영 — PG 결제 및 본인인증 연동',
-                        '배치 처리 설계 및 조회 부하 분산 (read/write 분리)',
-                        'Kubernetes 이전 및 30여 개 서비스 매니페스트 운영',
-                        'Docker, GitHub Actions, TeamCity 기반 배포 자동화',
-                        'Flutter 앱 · Next.js 프론트엔드 · 다국어(i18n) 대응',
+                        'Kotlin · Spring Boot, Django 기반 백엔드 API 개발',
+                        '커머스 서비스 PG 결제 및 본인인증 연동',
+                        'Flutter 모바일 앱(Android · iOS) 개발',
+                        'React · Next.js 웹 프론트엔드 개발',
+                        '한국어 · 베트남어 다국어(i18n) 서비스',
+                        'Docker · Kubernetes 환경, GitHub Actions · TeamCity 배포',
                       ].map((item, i) => (
                         <li key={i} className="flex items-center gap-3">
                           <span className="w-1.5 h-1.5 rounded-full bg-teal-600 flex-shrink-0" />

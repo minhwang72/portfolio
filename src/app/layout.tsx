@@ -34,8 +34,8 @@ const jsonLd = {
   "@type": "Person",
   "name": "Min Hwang",
   "url": "https://pf.eungming.com",
-  "jobTitle": "Backend & AI Engineer",
-  "description": "Backend engineer building services with Kotlin and Spring Boot, with hands-on experience in Kubernetes, payment integration, and AI/LLM automation. Based in Seoul, South Korea.",
+  "jobTitle": "Fullstack & AI Engineer",
+  "description": "Fullstack engineer building web and mobile services with Next.js and Spring Boot, running in-house apps and servers, and applying AI/LLM automation (RAG, n8n, MCP) to RPA operations. Based in Seoul, South Korea.",
   "worksFor": {
     "@type": "Organization",
     "name": "CocoaSoft"
@@ -101,11 +101,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://pf.eungming.com'),
-  title: "Min Hwang | Backend & AI Engineer",
-  description: "Kotlin · Spring Boot 백엔드 엔지니어. 커머스 플랫폼 운영과 결제 연동, Kubernetes 기반 서비스 운영, MCP·LLM을 활용한 AI 자동화를 다룹니다. Backend engineer in Seoul, South Korea.",
+  title: "Min Hwang | Fullstack & AI Engineer",
+  description: "웹·앱 풀스택 엔지니어. 커머스 서비스 개발, 사내 웹앱·서버 운영, MCP·LLM을 활용한 AI 자동화를 다룹니다. Fullstack engineer in Seoul, South Korea.",
   keywords: [
     "백엔드 개발자", "서버 개발자", "풀스택 개발자", "웹 개발자",
-    "Kotlin", "Spring Boot", "Spring", "Java", "JPA", "WebFlux", "R2DBC", "REST API",
+    "Kotlin", "Spring Boot", "Spring", "Java", "JPA", "REST API",
     "Kubernetes", "k8s", "Docker", "AWS", "GitHub Actions", "CI/CD", "Nginx",
     "MariaDB", "MySQL", "PostgreSQL", "Redis",
     "React", "Next.js", "TypeScript", "Python", "Django", "Flutter",

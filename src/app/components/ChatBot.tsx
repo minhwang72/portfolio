@@ -10,7 +10,7 @@ interface Message {
 }
 
 const allSuggestions = [
-  '백엔드 기술 스택은?',
+  '기술 스택은?',
   'AI 관련해서 뭘 해보셨나요?',
   '경력이 어떻게 되나요?',
   '프로젝트를 소개해주세요',

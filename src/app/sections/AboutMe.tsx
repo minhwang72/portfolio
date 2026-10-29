@@ -75,12 +75,12 @@ const AboutMe = () => {
                     variants={contentVariants}
                     className="text-xl sm:text-2xl font-bold text-slate-900 text-left"
                   >
-                    안녕하세요, 백엔드 엔지니어 황민입니다.
+                    안녕하세요, 풀스택 엔지니어 황민입니다.
                   </motion.h3>
                   <div className="space-y-3 sm:space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
                     {[
-                      "Kotlin과 Spring Boot로 서버를 만들고, 만든 것을 직접 배포하고 운영하는 일까지 합니다. 커머스 플랫폼 백엔드를 2년간 운영하며 결제 연동과 배치 처리, 조회 부하 분산을 다뤘습니다.",
-                      "현재는 MCP(Model Context Protocol) 기반 AI 자동화 시스템을 설계하고, Gemini·Claude 등 LLM API를 활용한 지능형 서비스를 개발하고 있습니다.",
+                      "웹·앱 풀스택 개발자로 시작해 커머스 서비스의 백엔드부터 프론트엔드, 모바일 앱까지 만들었습니다. 지금은 RPA 운영과 함께 사내 웹앱 개발과 서버 관리를 맡아, 만든 것을 직접 배포하고 운영합니다.",
+                      "현재는 MCP(Model Context Protocol) 기반 AI 자동화 시스템을 설계하고, n8n과 Claude·Gemini 등 LLM API로 RAG 챗봇과 업무 자동화를 실무에 적용하고 있습니다.",
                       "기술을 배우는 데 그치지 않고 실제 서비스에 적용하며 성장하는 것을 지향하며, 문제를 직접 해결해나가는 과정에서 가장 큰 보람을 느낍니다."
                     ].map((text, index) => (
                       <motion.p
