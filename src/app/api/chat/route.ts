@@ -32,10 +32,8 @@ function isRateLimited(ip: string): boolean {
 
 export async function POST(request: Request) {
   try {
-    const ip =
-      request.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
-      request.headers.get('x-real-ip') ??
-      'unknown';
+    // nginx가 X-Real-IP를 실제 접속 IP로 덮어씀. X-Forwarded-For 첫 값은 클라이언트가 꾸밀 수 있어 쓰지 않는다.
+    const ip = request.headers.get('x-real-ip') ?? 'unknown';
     if (isRateLimited(ip)) {
       return new Response('요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.', { status: 429 });
     }
