@@ -86,9 +86,9 @@ export const projects: Project[] = [
     description:
       '악보 사진을 넣으면 원하는 키로 바꾼 새 악보를 만들어 주는 서비스. 1세대(CONTI)는 Gemini에 악보 이미지를 통째로 맡겼지만 음표·박자를 자주 틀려, 2세대는 CV 검출 + AI 판독 + MusicXML 재조판 파이프라인으로 다시 설계했습니다. 악보 4종 내부 측정에서 음높이 727/727, 코드 141/141 일치(전체 악보 일반화 평가는 진행 중).',
     tags: ['Python', 'YOLO', 'OpenCV', 'Claude API', 'MusicXML', 'Verovio'],
-    github: 'https://github.com/minhwang72/mut',
+    // 판독 엔진 공개 소스(AGPL-3.0). 서비스 저장소(mut)는 비공개
+    github: 'https://github.com/minhwang72/mut-source',
     demo: 'https://conti.eungming.com',
-    isPrivate: true,
     badge: '개발 중 · 초대 계정',
     line: '악보 사진을 원하는 키의 새 악보로. AI 통째 판독을 좌표 계산 + AI 판독 + 재조판으로 다시 설계해 음높이 727/727, 코드 141/141 일치(내부 측정)',
     thumb: '/images/work/mut.png',
@@ -150,11 +150,32 @@ export const projects: Project[] = [
     color: '#fb923c',
     thumb: '/images/work/oneulun.png',
     description:
-      '앱인토스 미니앱 · 사주 기반 일일 운세. 생년월일로 사주 원국을 계산하고 오늘 날짜와의 관계로 운세를 산출합니다. 개인정보 보호를 위해 사주 계산은 전량 클라이언트에서 처리하며 서버로 전송하지 않습니다.',
+      '앱인토스 미니앱(2026.08 출시) · 사주 기반 일일 운세. 생년월일로 사주 원국을 계산하고 오늘 날짜와의 관계로 운세를 산출합니다. 개인정보 보호를 위해 사주 계산은 전량 클라이언트에서 처리하며 서버로 전송하지 않습니다.',
     tags: ['React', 'TypeScript', '앱인토스', '사주 알고리즘'],
     github: 'https://github.com/minhwang72/oneulun',
     isPrivate: true,
     line: '토스 앱 안에서 도는 사주 운세 미니앱. 계산은 전부 휴대폰에서만',
+  },
+  {
+    title: '정책메이트',
+    color: '#3b82f6',
+    thumb: '/images/work/policymate.png',
+    description:
+      '앱인토스 미니앱 · 청년정책 매칭. 생년월일과 지역을 고르면 지금 신청할 수 있는 정부·지자체 청년정책을 찾아 나이·지역 조건 충족 여부를 배지로, 마감은 D-day로 보여 줍니다. 2026.08 출시.',
+    line: '생년월일·지역만 넣으면 지금 신청할 수 있는 청년정책을 찾아 주는 미니앱',
+    tags: ['React', 'Node.js API', '앱인토스'],
+    github: 'https://github.com/minhwang72/policymate',
+    isPrivate: true,
+  },
+  {
+    title: '애니믹스',
+    color: '#8b5cf6',
+    thumb: '/images/work/animix.png',
+    description: '앱인토스 미니앱 · 동물 합치기 캐주얼 퍼즐 게임. 같은 동물을 합쳐 다음 단계로 키우는 게임으로 2026.10 출시.',
+    line: '같은 동물을 합쳐 키우는 캐주얼 퍼즐 게임',
+    tags: ['JavaScript', '앱인토스'],
+    github: 'https://github.com/minhwang72/animix',
+    isPrivate: true,
   },
   {
     title: '포트폴리오',

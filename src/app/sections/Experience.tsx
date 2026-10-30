@@ -32,13 +32,6 @@ export default function Experience() {
                     </li>
                   ))}
               </ul>
-              <div className="mt-5 flex flex-wrap gap-1.5">
-                {e.tech.map((t) => (
-                  <span key={t} className="rounded-md border border-line bg-surface px-2 py-1 font-mono text-xs tracking-normal text-fg/70">
-                    {t}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         ))}

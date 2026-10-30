@@ -61,16 +61,16 @@ export default function Hero() {
   };
 
   return (
-    <div className="mx-auto max-w-[1104px] px-5 pb-10 pt-32 sm:pt-44">
+    <div className="mx-auto flex min-h-[100svh] max-w-[1104px] flex-col justify-center px-5 pb-10 pt-24">
       <div className="grid items-end gap-8 lg:grid-cols-[1fr_360px] lg:gap-16">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease }}>
           <a href="#projects" className={`mb-6 inline-block font-mono text-xs tracking-normal hover:text-fg ${allUp ? 'text-sub' : 'text-down'}`}>
             {allUp ? 'status: all OK · 1분마다 직접 확인' : 'status: 일부 서비스 응답 없음'}
           </a>
           <h1 className="text-[44px] font-bold leading-[1.04] tracking-[-0.05em] text-fg sm:text-[64px] lg:text-[76px]">
-            만들고, 배포하고,
+            직접 만들고,
             <br />
-            운영합니다.
+            끝까지 운영합니다.
           </h1>
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease }}>
@@ -85,7 +85,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.2, ease }}
-        className="dot-grid relative mt-12 overflow-x-auto rounded-2xl border border-line bg-surface"
+        className="dot-grid relative mt-10 overflow-x-auto rounded-2xl border border-line bg-surface"
       >
         <div className="pointer-events-none absolute inset-x-4 top-3.5 flex justify-between text-xs text-sub">
           <span>지금 돌아가는 서비스</span>

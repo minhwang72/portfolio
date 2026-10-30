@@ -50,14 +50,16 @@ export default function Contact() {
             </a>
           </div>
           {links.map(({ icon: Icon, label, value, href }) => (
-            <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={`${row} group`}>
+            <div key={label} className={row}>
               <Icon className="h-5 w-5 flex-none text-sub" />
               <div className="min-w-0 flex-1">
                 <p className="text-xs text-sub">{label}</p>
                 <p className="truncate font-mono text-[15px] tracking-normal text-fg">{value}</p>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-sub transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
-            </a>
+              <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-lg border border-line px-3 py-2 text-[13px] font-semibold text-fg hover:border-fg/40">
+                이동 <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
           ))}
         </div>
       </div>

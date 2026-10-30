@@ -2,34 +2,43 @@
 
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { BookOpen, Cloud, Database, Globe, Heart, LineChart, Music, PenLine, Server, type LucideIcon } from 'lucide-react';
+import { BookOpen, Cloud, Database, Globe, Heart, LineChart, Music, PenLine, Server, Smartphone, type LucideIcon } from 'lucide-react';
 import type { ServiceStatus } from '../lib/useStatus';
 
 // 서비스 구성도 — 실제 구성 그대로(2026-10 monsil 기준):
 //   나 → monsil(nginx·docker) → 뮤직시트·블로그·포트폴리오·CBT·Balance Desk, 그중 넷은 MariaDB 공유
-//   나 → AWS → MOID
+//   나 → AWS → MOID, 나 → 토스(앱인토스) → 미니앱 3개
 // 빛 점은 '나 → 허브 → 서비스 → 허브 → 나' 로 오가고, 왕복 시간은 실제 응답 속도(ms)에 비례.
 // 무채색. 응답이 없을 때만 빨강.
 const W = 1104;
 const H = 440;
 const ME = { x: 552, y: 220 };
 
+type HubKey = 'monsil' | 'aws' | 'toss' | 'db';
 type Hub = { label: string; sub: string; x: number; y: number; icon: LucideIcon };
-const hubs: Record<'monsil' | 'aws' | 'db', Hub> = {
-  monsil: { label: 'monsil', sub: 'nginx · docker', x: 360, y: 220, icon: Server },
-  aws: { label: 'aws', sub: 'seoul', x: 760, y: 130, icon: Cloud },
-  db: { label: 'mariadb', sub: 'shared', x: 560, y: 360, icon: Database },
+const hubs: Record<HubKey, Hub> = {
+  monsil: { label: 'monsil', sub: 'nginx · docker', x: 340, y: 210, icon: Server },
+  aws: { label: 'aws', sub: 'seoul', x: 745, y: 95, icon: Cloud },
+  toss: { label: 'toss', sub: 'apps-in-toss', x: 760, y: 280, icon: Smartphone },
+  db: { label: 'mariadb', sub: 'shared', x: 470, y: 380, icon: Database },
 };
 
 type Node = { name: string; hub: 'monsil' | 'aws'; x: number; y: number; icon: LucideIcon; tech: string; db?: boolean };
 const nodes: Record<string, Node> = {
-  'pf.eungming.com': { name: '포트폴리오', hub: 'monsil', x: 380, y: 52, icon: Globe, tech: 'RAG · Claude' },
-  'eungming.com': { name: '블로그', hub: 'monsil', x: 230, y: 120, icon: PenLine, tech: 'WordPress', db: true },
-  'conti.eungming.com': { name: '뮤직시트', hub: 'monsil', x: 230, y: 300, icon: Music, tech: 'YOLO · Claude', db: true },
-  'cbt.eungming.com': { name: 'CBT', hub: 'monsil', x: 340, y: 360, icon: BookOpen, tech: 'Prisma', db: true },
-  'stock.eungming.com': { name: 'Balance Desk', hub: 'monsil', x: 800, y: 350, icon: LineChart, tech: 'KIS API · Redis', db: true },
-  'moid.co.kr': { name: 'MOID', hub: 'aws', x: 880, y: 120, icon: Heart, tech: 'S3 · Prisma' },
+  'pf.eungming.com': { name: '포트폴리오', hub: 'monsil', x: 360, y: 52, icon: Globe, tech: 'RAG · Claude' },
+  'eungming.com': { name: '블로그', hub: 'monsil', x: 200, y: 110, icon: PenLine, tech: 'WordPress', db: true },
+  'conti.eungming.com': { name: '뮤직시트', hub: 'monsil', x: 190, y: 290, icon: Music, tech: 'YOLO · Claude', db: true },
+  'cbt.eungming.com': { name: 'CBT', hub: 'monsil', x: 300, y: 380, icon: BookOpen, tech: 'Prisma', db: true },
+  'stock.eungming.com': { name: 'Balance Desk', hub: 'monsil', x: 610, y: 395, icon: LineChart, tech: 'KIS API · Redis', db: true },
+  'moid.co.kr': { name: 'MOID', hub: 'aws', x: 890, y: 75, icon: Heart, tech: 'S3 · Prisma' },
 };
+
+// 토스 앱 안의 미니앱(앱인토스) — URL 헬스체크 대상이 아니라 상태 없이 표시
+const apps = [
+  { name: '애니믹스', icon: '/images/apps/animix.png', x: 900, y: 185, tech: '게임 · 2026.10 출시' },
+  { name: '오늘운', icon: '/images/apps/oneulun.png', x: 915, y: 280, tech: '운세 · 2026.08 출시' },
+  { name: '정책메이트', icon: '/images/apps/policymate.png', x: 900, y: 375, tech: '청년정책 · 2026.08 출시' },
+];
 
 const C = { ink: 'rgb(var(--fg))', sub: 'rgb(var(--sub))', line: 'rgb(var(--line))', node: 'rgb(var(--surface))', live: 'rgb(var(--live))', down: 'rgb(var(--down))' };
 const MONO = 'ui-monospace, SFMono-Regular, Menlo, monospace';
@@ -48,7 +57,7 @@ export default function ServiceMap({ services, photo }: { services: ServiceStatu
       </defs>
 
       {/* 연결선: 나 → 허브, monsil → DB */}
-      {(['monsil', 'aws'] as const).map((k) => (
+      {(['monsil', 'aws', 'toss'] as const).map((k) => (
         <line key={k} x1={ME.x} y1={ME.y} x2={hubs[k].x} y2={hubs[k].y} stroke={C.sub} strokeWidth="1.2" />
       ))}
       <line x1={hubs.monsil.x} y1={hubs.monsil.y} x2={hubs.db.x} y2={hubs.db.y} stroke={C.line} strokeDasharray="3 4" />
@@ -64,6 +73,22 @@ export default function ServiceMap({ services, photo }: { services: ServiceStatu
           </g>
         );
       })}
+
+      {/* 토스 → 미니앱 */}
+      {apps.map((a) => (
+        <line key={`la-${a.name}`} x1={hubs.toss.x} y1={hubs.toss.y} x2={a.x} y2={a.y} stroke={C.line} />
+      ))}
+      {!reduce &&
+        apps.map((a, i) => (
+          <motion.circle
+            key={`pa-${a.name}`}
+            r="3"
+            fill={C.ink}
+            initial={{ cx: ME.x, cy: ME.y, opacity: 0 }}
+            animate={{ cx: [ME.x, hubs.toss.x, a.x, hubs.toss.x, ME.x], cy: [ME.y, hubs.toss.y, a.y, hubs.toss.y, ME.y], opacity: [0, 1, 1, 1, 0] }}
+            transition={{ duration: 3.2, repeat: Infinity, repeatDelay: 1.6 + i * 0.3, delay: 1 + i * 0.6, ease: 'easeInOut' }}
+          />
+        ))}
 
       {/* 요청 빛 점 */}
       {!reduce &&
@@ -124,6 +149,23 @@ export default function ServiceMap({ services, photo }: { services: ServiceStatu
           </a>
         );
       })}
+
+      {/* 미니앱 노드: 실제 앱 아이콘 */}
+      {apps.map((a, i) => (
+        <g key={a.name}>
+          <clipPath id={`app-${i}`}>
+            <rect x={a.x - 20} y={a.y - 20} width="40" height="40" rx="11" />
+          </clipPath>
+          <rect x={a.x - 21} y={a.y - 21} width="42" height="42" rx="12" fill={C.node} stroke={C.line} />
+          <image href={a.icon} x={a.x - 20} y={a.y - 20} width="40" height="40" clipPath={`url(#app-${i})`} />
+          <text x={a.x + 32} y={a.y - 3} fontSize="14" fontWeight="700" fill={C.ink}>
+            {a.name}
+          </text>
+          <text x={a.x + 32} y={a.y + 14} fontFamily={MONO} fontSize="11" fill={C.sub}>
+            {a.tech}
+          </text>
+        </g>
+      ))}
 
       {/* 가운데: 나 */}
       <circle cx={ME.x} cy={ME.y} r="38" fill={C.node} stroke={C.ink} strokeWidth="1.5" />
