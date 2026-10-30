@@ -40,7 +40,7 @@ export default function Intro() {
   ];
 
   return (
-    <div className="mx-auto max-w-[1104px] px-5 pt-20 sm:pt-24">
+    <div className="mx-auto max-w-[1104px] px-5 pt-28 sm:pt-36">
       <dl className="grid grid-cols-2 border-t border-fg lg:grid-cols-4">
         {stats.map((s, i) => (
           <motion.div

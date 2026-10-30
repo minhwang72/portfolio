@@ -5,6 +5,7 @@ import Intro from './sections/Intro';
 import Projects from './sections/Projects';
 import Stack from './sections/Stack';
 import Experience from './sections/Experience';
+import Certs from './sections/Certs';
 import Contact from './sections/Contact';
 
 // 경력 기간이 날짜에 따라 바뀌므로 하루마다 다시 생성
@@ -29,6 +30,9 @@ export default function Home() {
         </section>
         <section id="experience">
           <Experience />
+        </section>
+        <section id="certs">
+          <Certs />
         </section>
         <section id="contact">
           <Contact />

@@ -215,8 +215,10 @@ export interface Experience {
   summary: string;
   /** 화면에 보이는 핵심 3~4줄 */
   highlights: string[];
-  /** 챗봇 검색 자료용 상세 */
+  /** 챗봇 검색 자료용 상세(화면에도 목록으로 보여 줌) */
   details: string[];
+  /** 그 회사에서 쓴 기술 */
+  tech: string[];
 }
 
 export const experience: Experience[] = [
@@ -239,6 +241,7 @@ export const experience: Experience[] = [
       'MCP(Model Context Protocol) 기반 업무 자동화 시스템 설계·개발',
       '고객사 이름은 공개하지 않음',
     ],
+    tech: ['Next.js', 'n8n', 'Claude · Gemini API', 'MCP', 'Linux 서버'],
   },
   {
     key: 'hexa',
@@ -257,6 +260,7 @@ export const experience: Experience[] = [
       '한국어/베트남어 다국어(i18n) 서비스 개발',
       'Docker·Kubernetes 환경에서 GitHub Actions·TeamCity로 배포 (Kubernetes는 사용 경험 수준)',
     ],
+    tech: ['Kotlin', 'Spring Boot', 'Django', 'React', 'Next.js', 'Flutter', 'Docker', 'GitHub Actions', 'TeamCity'],
   },
 ];
 
@@ -272,10 +276,30 @@ export const services = [
 
 /** 기술 — 배지 대신 '어디에 썼는지'와 함께 */
 export const stack = [
-  { area: 'Backend', items: ['Kotlin · Spring Boot', 'Django', 'Next.js API', 'MySQL · MariaDB', 'Prisma'], usedIn: '커머스 API, Balance Desk, CBT' },
-  { area: 'Frontend · App', items: ['TypeScript', 'React · Next.js', 'Tailwind CSS', 'Flutter'], usedIn: '커머스 웹·앱, 앱인토스 미니앱, 이 사이트' },
-  { area: 'AI', items: ['Claude API', 'Gemini API', 'MCP', 'RAG', 'YOLO · OpenCV'], usedIn: '뮤직시트(MuT), 이 챗봇, MCP 기반 업무 자동화' },
-  { area: 'Ops · Automation', items: ['Docker', 'nginx', 'GitHub Actions', 'Linux 홈서버', 'n8n'], usedIn: '집 서버로 서비스 직접 운영, 사내 서버 관리' },
+  {
+    area: 'Backend',
+    items: ['Kotlin · Spring Boot', 'Django', 'Next.js API', 'MySQL · MariaDB', 'Prisma'],
+    usedIn: '커머스 API, Balance Desk, CBT',
+    points: ['Kotlin·Spring Boot, Django로 커머스 API 개발, PG 결제·본인인증 연동', 'Next.js API + Prisma·MySQL로 사이드 서비스 백엔드', 'KIS Open API를 연동한 계좌 대시보드'],
+  },
+  {
+    area: 'Frontend · App',
+    items: ['TypeScript', 'React · Next.js', 'Tailwind CSS', 'Flutter'],
+    usedIn: '커머스 웹·앱, 앱인토스 미니앱, 이 사이트',
+    points: ['React·Next.js 웹과 Flutter(Android/iOS) 앱 개발', '토스 앱인토스 미니앱 3개', '한국어·베트남어 다국어(i18n) 서비스'],
+  },
+  {
+    area: 'AI',
+    items: ['Claude API', 'Gemini API', 'MCP', 'RAG', 'YOLO · OpenCV'],
+    usedIn: '뮤직시트(MuT), 이 사이트의 질문창, MCP 기반 업무 자동화',
+    points: ['임베딩 검색 + Claude 답변 + 출처 표시 RAG 질문창', 'YOLO·OpenCV 검출과 LLM 판독을 나눠 맡긴 악보 인식', 'MCP 기반 사내 업무 자동화 시스템 설계'],
+  },
+  {
+    area: 'Ops · Automation',
+    items: ['Docker', 'nginx', 'GitHub Actions', 'Linux 홈서버', 'n8n'],
+    usedIn: '집 서버로 서비스 직접 운영, 사내 서버 관리',
+    points: ['집 서버 한 대에서 Docker·nginx로 서비스 여러 개 운영, DB 공유', 'GitHub Actions로 빌드·배포 자동화', '1분 간격 상태 확인, 요청 한도 같은 운영 장치'],
+  },
 ];
 
 export interface KnowledgeDoc {

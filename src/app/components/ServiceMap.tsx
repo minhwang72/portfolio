@@ -9,7 +9,7 @@ import type { ServiceStatus } from '../lib/useStatus';
 //   나 → monsil(nginx·docker) → 뮤직시트·블로그·포트폴리오·CBT·Balance Desk, 그중 넷은 MariaDB 공유
 //   나 → AWS → MOID
 // 빛 점은 '나 → 허브 → 서비스 → 허브 → 나' 로 오가고, 왕복 시간은 실제 응답 속도(ms)에 비례.
-// 색은 상태(초록/빨강)에만 쓰고 나머지는 무채색.
+// 무채색. 응답이 없을 때만 빨강.
 const W = 1104;
 const H = 440;
 const ME = { x: 552, y: 220 };
@@ -76,7 +76,7 @@ export default function ServiceMap({ services, photo }: { services: ServiceStatu
             <motion.circle
               key={`pk-${host}`}
               r="3"
-              fill={C.live}
+              fill={C.ink}
               initial={{ cx: ME.x, cy: ME.y, opacity: 0 }}
               animate={{ cx: [ME.x, h.x, n.x, h.x, ME.x], cy: [ME.y, h.y, n.y, h.y, ME.y], opacity: [0, 1, 1, 1, 0] }}
               transition={{ duration: dur, repeat: Infinity, repeatDelay: 0.8 + i * 0.2, delay: i * 0.45, ease: 'easeInOut' }}
@@ -112,14 +112,13 @@ export default function ServiceMap({ services, photo }: { services: ServiceStatu
         return (
           <a key={host} href={`https://${host}`} target="_blank" rel="noopener noreferrer" onMouseEnter={() => setHover(host)} onMouseLeave={() => setHover(null)}>
             <g style={{ cursor: 'pointer' }}>
-              <rect x={n.x - 22} y={n.y - 22} width="44" height="44" rx="12" fill={C.node} stroke={on ? C.ink : C.line} strokeWidth={on ? 1.5 : 1} />
+              <rect x={n.x - 22} y={n.y - 22} width="44" height="44" rx="12" fill={C.node} stroke={!up ? C.down : on ? C.ink : C.line} strokeWidth={on || !up ? 1.5 : 1} />
               <Icon x={n.x - 10} y={n.y - 10} width="20" height="20" color={C.ink} strokeWidth={1.75} />
-              <circle cx={n.x + 18} cy={n.y - 18} r="4.5" fill={up ? C.live : C.down} stroke={C.node} strokeWidth="2" />
               <text x={tx} y={n.y - 3} textAnchor={side > 0 ? 'start' : 'end'} fontSize="14" fontWeight="700" fill={C.ink}>
                 {n.name}
               </text>
               <text x={tx} y={n.y + 14} textAnchor={side > 0 ? 'start' : 'end'} fontFamily={MONO} fontSize="11" fill={up ? C.sub : C.down}>
-                {s ? (up ? `${s.ms}ms` : '응답 없음') : '…'} · {n.tech}
+                {s ? (up ? `OK ${s.ms}ms` : 'DOWN') : '…'} · {n.tech}
               </text>
             </g>
           </a>

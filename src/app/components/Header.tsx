@@ -7,6 +7,7 @@ const links = [
   { label: '프로젝트', href: '#projects' },
   { label: '기술', href: '#stack' },
   { label: '경력', href: '#experience' },
+  { label: '자격', href: '#certs' },
   { label: '연락', href: '#contact' },
 ];
 

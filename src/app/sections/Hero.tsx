@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUp, Search } from 'lucide-react';
-import Live from '../components/Live';
 import ServiceMap from '../components/ServiceMap';
 import { getCareerDurations } from '../lib/portfolio-data';
 import { openAsk } from '../lib/useAsk';
@@ -62,12 +61,11 @@ export default function Hero() {
   };
 
   return (
-    <div className="mx-auto max-w-[1104px] px-5 pb-10 pt-28 sm:pt-36">
+    <div className="mx-auto max-w-[1104px] px-5 pb-10 pt-32 sm:pt-44">
       <div className="grid items-end gap-8 lg:grid-cols-[1fr_360px] lg:gap-16">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease }}>
-          <a href="#projects" className="mb-6 inline-flex items-center gap-2 text-[13px] text-sub hover:text-fg">
-            <Live up={allUp} pulse />
-            {allUp ? '모든 서비스 정상 · 1분마다 직접 확인' : '일부 서비스 응답 없음'}
+          <a href="#projects" className={`mb-6 inline-block font-mono text-xs tracking-normal hover:text-fg ${allUp ? 'text-sub' : 'text-down'}`}>
+            {allUp ? 'status: all OK · 1분마다 직접 확인' : 'status: 일부 서비스 응답 없음'}
           </a>
           <h1 className="text-[44px] font-bold leading-[1.04] tracking-[-0.05em] text-fg sm:text-[64px] lg:text-[76px]">
             만들고, 배포하고,

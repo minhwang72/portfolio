@@ -2,21 +2,37 @@ import SectionHead from '../components/SectionHead';
 import { stack } from '../lib/portfolio-data';
 
 const ko: Record<string, string> = { AI: 'AI', Backend: '백엔드', 'Frontend · App': '프론트 · 앱', 'Ops · Automation': '운영' };
-const order = ['AI', 'Backend', 'Frontend · App', 'Ops · Automation'];
+const order = ['Backend', 'Frontend · App', 'AI', 'Ops · Automation'];
 
-/** 기술: 세로선으로 나눈 네 칸 */
+/** 기술: 분야마다 쓰는 기술 + 그걸로 실제로 한 일 */
 export default function Stack() {
   return (
-    <div className="mx-auto max-w-[1104px] px-5 pt-24 sm:pt-32">
+    <div className="mx-auto max-w-[1104px] px-5 pt-32 sm:pt-44">
       <SectionHead title="기술" note="써 본 것 말고, 쓰고 있는 것" />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:border-l lg:border-line">
+      <div className="grid gap-5 sm:grid-cols-2">
         {order.map((area) => {
           const s = stack.find((x) => x.area === area)!;
           return (
-            <div key={area} className="border-b border-line py-4 lg:border-b-0 lg:border-r lg:px-6 lg:py-1">
-              <h3 className="text-[15px] font-bold text-fg">{ko[area]}</h3>
-              <p className="mt-3 text-[15px] leading-[1.75] text-fg/75">{s.items.join(' · ')}</p>
-              <p className="mt-4 text-xs leading-relaxed text-sub">{s.usedIn}</p>
+            <div key={area} className="rounded-[14px] border border-line bg-surface p-6 sm:p-7">
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="text-lg font-bold tracking-[-0.03em] text-fg">{ko[area]}</h3>
+                <span className="font-mono text-xs tracking-normal text-sub">{s.items.length} stacks</span>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {s.items.map((it) => (
+                  <span key={it} className="rounded-md border border-line bg-bg px-2 py-1 font-mono text-xs tracking-normal text-fg/80">
+                    {it}
+                  </span>
+                ))}
+              </div>
+              <ul className="mt-5 space-y-2 border-t border-line pt-4">
+                {s.points.map((p) => (
+                  <li key={p} className="flex gap-2.5 text-[15px] leading-relaxed text-fg/80">
+                    <span className="mt-[11px] h-px w-3 flex-none bg-sub" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
             </div>
           );
         })}

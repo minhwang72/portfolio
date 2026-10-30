@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Github, Lock } from 'lucide-react';
-import Live from '../components/Live';
+import Status from '../components/Status';
 import SectionHead from '../components/SectionHead';
 import { projects } from '../lib/portfolio-data';
 import { useStatus } from '../lib/useStatus';
@@ -18,14 +18,10 @@ export default function Projects() {
   list.sort((a, b) => Number(!!b.feature) - Number(!!a.feature));
 
   return (
-    <div className="mx-auto max-w-[1104px] px-5 pt-24 sm:pt-32">
+    <div className="mx-auto max-w-[1104px] px-5 pt-32 sm:pt-44">
       <SectionHead
         title="프로젝트"
-        note={
-          <>
-            <Live /> 표시는 지금 응답하는 서비스
-          </>
-        }
+        note="OK · ms 는 서버가 1분마다 직접 확인한 실제 응답"
       />
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -57,9 +53,7 @@ export default function Projects() {
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="text-lg font-bold tracking-[-0.03em] text-fg">{p.title === 'CBT 학습 플랫폼' ? 'CBT 학습' : p.title}</h3>
                   {s ? (
-                    <span className={`flex items-center gap-1.5 text-xs text-sub ${MONO}`}>
-                      <Live up={s.up} /> {s.up ? `${s.ms}ms` : 'down'}
-                    </span>
+                    <Status up={s.up} ms={s.ms} />
                   ) : (
                     appintoss && <span className="text-xs text-sub">앱인토스</span>
                   )}
