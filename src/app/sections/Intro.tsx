@@ -7,7 +7,7 @@ import { certifications, getCareerDurations } from '../lib/portfolio-data';
 import { useStatus } from '../lib/useStatus';
 
 const sentence =
-  '웹과 앱을 만드는 풀스택 엔지니어입니다. 커머스 서비스의 API부터 웹·앱까지 만들었고, 지금은 LLM과 MCP로 일을 자동화합니다. 퇴근 후에도 제가 만든 서비스 여섯 개가 집 서버에서 돌아가고 있어요.';
+  '웹과 앱을 만드는 풀스택 엔지니어입니다. 커머스 서비스의 API부터 웹·앱까지 만들었고, 지금은 LLM과 MCP로 일을 자동화합니다. 퇴근 후에도 제가 만든 서비스들이 집 서버에서 돌아가고 있어요.';
 
 function Word({ word, i, n, progress }: { word: string; i: number; n: number; progress: MotionValue<number> }) {
   const opacity = useTransform(progress, [i / n, (i + 1) / n], [0.15, 1]);
@@ -44,11 +44,13 @@ export default function Intro() {
   const words = sentence.split(' ');
   const status = useStatus();
   const { hexa, cocoa } = getCareerDurations();
+  const ups = status?.services.filter((s) => s.up && s.ms != null).map((s) => s.ms as number) ?? [];
+  const avg = ups.length ? Math.round(ups.reduce((a, b) => a + b, 0) / ups.length) : 0;
   const months = (hexa.years + cocoa.years) * 12 + hexa.months + cocoa.months;
 
   const stats = [
     { node: <><Count to={Math.floor(months / 12)} />년 <Count to={months % 12} />개월</>, label: '개발 경력' },
-    { node: <Count to={status?.services.filter((s) => s.up).length ?? 6} />, label: '지금 운영 중인 서비스', live: true },
+    { node: avg ? <><Count to={avg} />ms</> : '—', label: '직접 운영 중인 서비스 평균 응답', live: true },
     { node: <Count to={3} />, label: '토스 앱인토스 미니앱' },
     { node: <Count to={certifications.length} />, label: '자격증 · Claude 아키텍트 포함' },
   ];
