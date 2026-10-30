@@ -87,6 +87,8 @@ export const projects: Project[] = [
     demo: 'https://conti.eungming.com',
     isPrivate: true,
     badge: '개발 중 · 초대 계정',
+    line: '악보 사진을 원하는 키의 새 악보로. AI 통째 판독을 좌표 계산 + AI 판독 + 재조판으로 다시 설계해 음높이 727/727, 코드 141/141 일치(내부 측정)',
+    thumb: '/images/work/mut.png',
     feature: {
       image: '/images/work/mut.png',
       story:
@@ -265,7 +267,7 @@ export const stack = [
   { area: 'Backend', items: ['Kotlin · Spring Boot', 'Django', 'Next.js API', 'MySQL · MariaDB', 'Prisma'], usedIn: '커머스 API, Balance Desk, CBT' },
   { area: 'Frontend · App', items: ['TypeScript', 'React · Next.js', 'Tailwind CSS', 'Flutter'], usedIn: '커머스 웹·앱, 앱인토스 미니앱, 이 사이트' },
   { area: 'AI', items: ['Claude API', 'Gemini API', 'MCP', 'RAG', 'YOLO · OpenCV'], usedIn: '뮤직시트(MuT), 이 챗봇, MCP 기반 업무 자동화' },
-  { area: 'Ops · Automation', items: ['Docker', 'nginx', 'GitHub Actions', 'Linux 홈서버', 'n8n'], usedIn: '서비스 6개 자체 운영, 사내 서버 관리' },
+  { area: 'Ops · Automation', items: ['Docker', 'nginx', 'GitHub Actions', 'Linux 홈서버', 'n8n'], usedIn: '집 서버로 서비스 직접 운영, 사내 서버 관리' },
 ];
 
 export interface KnowledgeDoc {

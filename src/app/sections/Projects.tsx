@@ -11,9 +11,8 @@ const host = (url?: string) => (url ? new URL(url).host : '');
 
 export default function Projects() {
   const status = useStatus();
-  // 0번(MuT)은 대표작 섹션에서 따로. 화면용 한 줄(line)이 있는 것만 카드로
-  const list = projects.slice(1).filter((p) => p.line);
-  // 대표작이 먼저 보이게 MOID 를 앞으로
+  // 화면용 한 줄(line)이 있는 것만 카드로. 대표작(feature: MuT·MOID)을 앞으로
+  const list = projects.filter((p) => p.line);
   list.sort((a, b) => Number(!!b.feature) - Number(!!a.feature));
 
   return (
@@ -55,7 +54,10 @@ export default function Projects() {
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-xl font-bold tracking-[-0.03em] text-fg">{p.title === '포트폴리오' ? '이 사이트' : p.title}</h3>
+                  <h3 className="flex items-center gap-2 text-xl font-bold tracking-[-0.03em] text-fg">
+                    {p.title === '포트폴리오' ? '이 사이트' : p.title}
+                    {i === 0 && <span className="rounded-md bg-accent/10 px-1.5 py-0.5 text-[11px] font-semibold text-accent">대표작</span>}
+                  </h3>
                   {s && (
                     <span className="flex items-center gap-1.5 whitespace-nowrap text-xs text-sub">
                       <Live up={s.up} /> {s.up ? `${s.ms}ms` : '응답 없음'}

@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
 const links = [
-  { label: '대표작', href: '#featured' },
   { label: '프로젝트', href: '#projects' },
   { label: '경력', href: '#experience' },
   { label: '연락', href: '#contact' },

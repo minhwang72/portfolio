@@ -3,7 +3,6 @@ import Footer from './components/Footer';
 import Scene from './components/Scene';
 import Hero from './sections/Hero';
 import Intro from './sections/Intro';
-import Featured from './sections/Featured';
 import Projects from './sections/Projects';
 import Stack from './sections/Stack';
 import Experience from './sections/Experience';
@@ -22,9 +21,6 @@ export default function Home() {
         </section>
         <Scene id="intro" className="bg-bg">
           <Intro />
-        </Scene>
-        <Scene id="featured" className="bg-surface">
-          <Featured />
         </Scene>
         <Scene id="projects" className="bg-bg">
           <Projects />
