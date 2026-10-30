@@ -117,10 +117,8 @@ export async function POST(request: Request) {
     const docs = await retrieve(ai, query);
 
     const context = withFeatured(docs);
-    // 대표 프로젝트를 따로 넣었다면 출처 맨 앞에 보여 줌(답변이 주로 그 문서에서 나옴)
-    const pinned = context.slice(docs.length).map((d) => ({ ...d, score: docs[0]?.score ?? 0 }));
     // ponytail: 1등과 점수 차가 작은 문서만 출처로 표시(실측으로 정한 0.04). 문서가 늘면 다시 맞출 것
-    const sources = [...pinned, ...docs.filter((d) => d.score >= docs[0].score - 0.04)];
+    const sources = docs.filter((d) => d.score >= docs[0].score - 0.04);
 
     const response = claude.messages.stream({
       model: 'claude-haiku-5-5',
