@@ -38,7 +38,7 @@ jobs:
       run: yarn install --frozen-lockfile --production=false
 
     - name: Build
-      run: yarn build
+      run: yarn build || (sleep 5 && yarn build) || (sleep 15 && yarn build)   # Google Fonts 간헐 실패 재시도(Dockerfile 참고)
       env:
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 

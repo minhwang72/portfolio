@@ -13,7 +13,8 @@ RUN yarn install --frozen-lockfile --production=false
 COPY . .
 
 # Build the application
-RUN yarn build
+# ponytail: next/font/google 이 Google Fonts 응답에 따라 가끔 실패(확장자 없는 폰트 주소) → 2번까지 재시도. 계속 실패하면 폰트를 next/font/local 로 직접 두기
+RUN yarn build || (sleep 5 && yarn build) || (sleep 15 && yarn build)
 
 # Production stage
 FROM --platform=linux/amd64 node:22-alpine AS runner
