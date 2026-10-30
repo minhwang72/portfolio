@@ -1,31 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_KR, Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import ChatBot from './components/ChatBot';
+import AskDock from './components/AskDock';
 import Script from 'next/script';
 
-const notoSansKR = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-  variable: "--font-noto",
-});
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  display: 'swap',
-  variable: '--font-playfair',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  display: 'swap',
-  variable: '--font-jetbrains',
-});
+// 처음 그릴 때 저장된 테마(없으면 시스템 설정)를 바로 적용해 깜빡임 방지
+const themeScript = `try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}`;
 
 // 구조화된 데이터 정의
 const jsonLd = {
@@ -139,7 +118,10 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  themeColor: "#0A0D0C",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
   manifest: "https://pf.eungming.com/manifest.json",
   appleWebApp: {
     capable: true,
@@ -187,6 +169,9 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
         <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta name="naver-site-verification" content="8bbd77d95e169bcaf54dc7840b0553693db295d6" />
@@ -198,9 +183,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${notoSansKR.variable} ${playfair.variable} ${jetbrainsMono.variable} font-sans bg-ink text-fg`}>
+      <body className="font-sans bg-bg text-fg">
         {children}
-        <ChatBot />
+        <AskDock />
       </body>
     </html>
   );

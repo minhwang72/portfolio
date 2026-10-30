@@ -1,10 +1,12 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Scene from './components/Scene';
 import Hero from './sections/Hero';
+import Intro from './sections/Intro';
 import Featured from './sections/Featured';
-import Work from './sections/Work';
-import Experience from './sections/Experience';
+import Projects from './sections/Projects';
 import Stack from './sections/Stack';
+import Experience from './sections/Experience';
 import Contact from './sections/Contact';
 
 // 경력 기간이 날짜에 따라 바뀌므로 하루마다 다시 생성
@@ -12,28 +14,30 @@ export const revalidate = 86400;
 
 export default function Home() {
   return (
-    <div id="top" className="relative min-h-screen bg-ink">
-      <div className="grid-bg pointer-events-none absolute inset-x-0 top-0 h-[900px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
+    <div id="top" className="bg-bg">
       <Header />
-      <main className="relative">
+      <main>
         <section id="home">
           <Hero />
         </section>
-        <section id="featured" className="border-t border-line">
+        <Scene id="intro" className="bg-bg">
+          <Intro />
+        </Scene>
+        <Scene id="featured" className="bg-surface">
           <Featured />
-        </section>
-        <section id="work-list" className="border-t border-line">
-          <Work />
-        </section>
-        <section id="experience" className="border-t border-line">
-          <Experience />
-        </section>
-        <section id="stack" className="border-t border-line">
+        </Scene>
+        <Scene id="projects" className="bg-bg">
+          <Projects />
+        </Scene>
+        <Scene id="stack" className="bg-bg">
           <Stack />
-        </section>
-        <section id="contact" className="border-t border-line">
+        </Scene>
+        <Scene id="experience" className="bg-surface">
+          <Experience />
+        </Scene>
+        <Scene id="contact" className="dark bg-black">
           <Contact />
-        </section>
+        </Scene>
       </main>
       <Footer />
     </div>

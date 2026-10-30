@@ -72,6 +72,8 @@ export interface Project {
   feature?: { image: string; story: string; facts?: string[] };
   /** 화면: 목록에 쓰는 한 줄(없으면 목록에서 뺌) */
   line?: string;
+  /** 화면: 프로젝트 카드 썸네일 */
+  thumb?: string;
 }
 
 /** 프로젝트 목록 — 화면(Projects)과 챗봇 검색 자료가 같은 데이터를 쓴다. */
@@ -100,6 +102,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Balance Desk',
+    thumb: '/images/work/stock.png',
     description:
       'KIS Open API 기반 ISA 포트폴리오 대시보드. 실시간 잔고·수익률·자산 배분 현황을 시각화하고, 목표 비중 대비 드리프트 알림, 거래 내역 원장, 매매 API까지 통합한 개인 자산관리 도구입니다.',
     tags: ['Next.js', 'TypeScript', 'KIS Open API', 'MCP', 'MySQL', 'Docker'],
@@ -110,6 +113,7 @@ export const projects: Project[] = [
   },
   {
     title: 'CBT 학습 플랫폼',
+    thumb: '/images/work/cbt.png',
     description:
       '정보처리기사 필기 기출문제 CBT 서비스. 2020~2025년 전 회차 문제를 파싱·정제하여 DB에 적재하고, 랜덤 출제·오답 노트·회차별 풀기를 지원하는 학습 플랫폼입니다.',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'MySQL', 'Docker'],
@@ -130,9 +134,12 @@ export const projects: Project[] = [
       image: '/images/work/moid.png',
       story: '모바일 청첩장을 블록처럼 쌓아 만들고 공유하는 서비스입니다. 로그인 없이 시안을 만들어 보고, 결제하면 워터마크가 사라집니다.',
     },
+    line: '블록을 쌓아 만드는 모바일 청첩장. 로그인 없이 시안을 만들고, 결제하면 워터마크가 사라져요',
+    thumb: '/images/work/moid.png',
   },
   {
     title: '오늘운',
+    thumb: '/images/work/oneulun.png',
     description:
       '앱인토스 미니앱 · 사주 기반 일일 운세. 생년월일로 사주 원국을 계산하고 오늘 날짜와의 관계로 운세를 산출합니다. 개인정보 보호를 위해 사주 계산은 전량 클라이언트에서 처리하며 서버로 전송하지 않습니다.',
     tags: ['React', 'TypeScript', '앱인토스', '사주 알고리즘'],
@@ -142,6 +149,7 @@ export const projects: Project[] = [
   },
   {
     title: '포트폴리오',
+    thumb: '/images/work/pf.png',
     description:
       '현재 보고 계신 포트폴리오. 집 서버에서 운영 중인 서비스의 실제 상태(응답 속도)를 프로젝트 옆에 보여 주고, RAG 챗봇은 프로필·프로젝트 문서를 임베딩으로 검색해 관련 내용만 근거로 Claude가 답하며 출처를 함께 보여줍니다.',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Claude API', 'Gemini Embedding', 'RAG'],
@@ -161,7 +169,7 @@ export const projects: Project[] = [
       '지인들의 결혼식을 위해 제작한 모바일 청첩장 시리즈 (4개). 카카오맵 연동, 계좌 복사, 방명록, 사진 갤러리 등을 포함한 맞춤 제작 웹 청첩장입니다.',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', '카카오맵 API'],
     github: 'https://github.com/minhwang72/monsil-invitation',
-    demo: 'https://taetaecouple.eungming.com',
+    // 2026-10-30 taetaecouple 인증서 오류로 링크 제외
   },
   {
     title: 'KAIROS',

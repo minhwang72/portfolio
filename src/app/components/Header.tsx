@@ -1,50 +1,49 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { openChat } from './ChatBot';
+import { Moon, Sun } from 'lucide-react';
 
-const navLinks = [
-  { label: 'Work', href: '#featured' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Stack', href: '#stack' },
-  { label: 'Contact', href: '#contact' },
+const links = [
+  { label: '대표작', href: '#featured' },
+  { label: '프로젝트', href: '#projects' },
+  { label: '경력', href: '#experience' },
+  { label: '연락', href: '#contact' },
 ];
 
-const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
-
+export default function Header() {
+  const [dark, setDark] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    setDark(document.documentElement.classList.contains('dark'));
   }, []);
 
+  const toggle = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle('dark', next);
+    try {
+      localStorage.setItem('theme', next ? 'dark' : 'light');
+    } catch {
+      // 저장이 막혀도 이번 화면에서는 바뀜
+    }
+  };
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
-        scrolled ? 'bg-ink/85 backdrop-blur-md border-b border-line' : 'bg-transparent'
-      }`}
-    >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <a href="#top" className="font-mono text-sm text-mute hover:text-fg transition-colors">
-          <span className="text-live">min</span>@monsil<span className="text-dim">:~$</span>
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-line/50 bg-bg/70 backdrop-blur-xl">
+      <div className="mx-auto flex h-12 max-w-[1080px] items-center justify-between px-5">
+        <a href="#top" className="text-[15px] font-bold tracking-tight text-fg">
+          황민
         </a>
-        <nav className="flex items-center gap-1 sm:gap-6">
-          {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="hidden sm:inline text-sm text-mute hover:text-fg transition-colors">
+        <nav className="flex items-center gap-5 text-[13px] text-fg/80 sm:gap-7">
+          {links.map((l) => (
+            <a key={l.href} href={l.href} className="hidden hover:text-fg sm:inline">
               {l.label}
             </a>
           ))}
-          <button
-            onClick={() => openChat()}
-            className="ml-2 rounded-md border border-accent/40 bg-accent/10 px-3 py-1.5 font-mono text-xs text-accent hover:bg-accent/20 transition-colors"
-          >
-            ask&nbsp;AI
+          <button onClick={toggle} className="rounded-full p-1.5 text-fg/80 hover:bg-surface hover:text-fg" aria-label={dark ? '라이트 모드' : '다크 모드'}>
+            {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
         </nav>
       </div>
     </header>
   );
-};
-
-export default Header;
+}
