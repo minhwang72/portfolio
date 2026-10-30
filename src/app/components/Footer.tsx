@@ -8,6 +8,7 @@ const groups = [
       { label: '기술', href: '#stack' },
       { label: '경력', href: '#experience' },
       { label: '자격 · 학력', href: '#certs' },
+      { label: '이력서', href: '/resume' },
     ],
   },
   {
@@ -22,7 +23,6 @@ const groups = [
   {
     title: '연락',
     links: [
-      { label: '이력서 (PDF)', href: '/resume' },
       { label: '이메일', href: `mailto:${CONTACT.email}` },
       { label: 'GitHub', href: CONTACT.github },
       { label: 'LinkedIn', href: CONTACT.linkedin },

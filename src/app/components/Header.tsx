@@ -8,7 +8,6 @@ const links = [
   { label: '프로젝트', href: '#projects' },
   { label: '기술', href: '#stack' },
   { label: '경력', href: '#experience' },
-  { label: '자격', href: '#certs' },
   { label: '연락', href: '#contact' },
 ];
 
@@ -32,8 +31,8 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-line bg-bg/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-[1104px] items-center justify-between px-5">
-        <a href="#top" className="text-[15px] font-bold tracking-tight text-fg">
-          황민
+        <a href="#top" className="text-[15px] font-bold tracking-[0.08em] text-fg">
+          HWANG MIN
         </a>
         <nav className="flex items-center gap-5 text-sm text-sub sm:gap-7">
           {links.map((l) => (

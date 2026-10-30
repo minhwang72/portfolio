@@ -10,10 +10,11 @@ const themeScript = `try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Min Hwang",
+  "name": "황민",
+  "alternateName": "Hwang Min",
   "url": "https://pf.eungming.com",
-  "jobTitle": "Fullstack & AI Engineer",
-  "description": "Fullstack engineer building web and mobile services with Next.js and Spring Boot, running in-house apps and servers, and building AI/LLM automation (RAG, n8n, MCP). Based in Seoul, South Korea.",
+  "jobTitle": "풀스택 엔지니어 (AI · 자동화)",
+  "description": "웹·앱 풀스택 엔지니어. 사내 웹앱·서버와 업무 자동화 운영 지원, LLM·RAG·MCP 자동화, 집 서버에서 직접 만든 서비스를 운영합니다. 서울.",
   "worksFor": {
     "@type": "Organization",
     "name": "CocoaSoft"
@@ -46,7 +47,7 @@ const jsonLd = {
   ],
   "alumniOf": {
     "@type": "CollegeOrUniversity",
-    "name": "Korea National Open University"
+    "name": "한국방송통신대학교"
   },
   "hasCredential": [
     {
@@ -74,91 +75,49 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F7F7F5" },
+    { media: "(prefers-color-scheme: dark)", color: "#0C0C0C" },
+  ],
 };
 
+const TITLE = "황민 | 풀스택 엔지니어 (AI · 자동화) 포트폴리오";
+const DESC = "직접 만들고, 끝까지 운영합니다. 풀스택 엔지니어 황민(Hwang Min)의 포트폴리오 — 집 서버에서 운영 중인 서비스, 토스 앱인토스 미니앱, 경력과 이력서(PDF).";
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://pf.eungming.com'),
-  title: "Min Hwang | Fullstack & AI Engineer",
-  description: "웹·앱 풀스택 엔지니어. 커머스 서비스 개발, 사내 웹앱·서버 운영, MCP·LLM을 활용한 AI 자동화를 다룹니다. Fullstack engineer in Seoul, South Korea.",
+  metadataBase: new URL("https://pf.eungming.com"),
+  title: TITLE,
+  description: DESC,
   keywords: [
-    "백엔드 개발자", "서버 개발자", "풀스택 개발자", "웹 개발자",
-    "Kotlin", "Spring Boot", "Spring", "Java", "JPA", "REST API",
-    "Kubernetes", "k8s", "Docker", "AWS", "GitHub Actions", "CI/CD", "Nginx",
-    "MariaDB", "MySQL", "PostgreSQL", "Redis",
-    "React", "Next.js", "TypeScript", "Python", "Django", "Flutter",
-    "Claude", "MCP", "LLM", "AI 자동화",
-    "개발자 포트폴리오", "웹 포트폴리오", "프로젝트 소개", "웹서비스 개발", "앱 개발",
-    "사이드 프로젝트", "오픈소스", "개인 서버", "자동화",
-    "황민", "Min Hwang", "Fullstack Developer", "Frontend Developer", "Backend Developer",
-    "한국 개발자 포트폴리오", "Seoul Developer Portfolio"
+    "황민", "Hwang Min", "Min Hwang", "풀스택 개발자", "풀스택 엔지니어", "개발자 포트폴리오", "개발자 이력서",
+    "Next.js", "React", "TypeScript", "Kotlin", "Spring Boot", "Django", "Flutter",
+    "Docker", "nginx", "GitHub Actions", "MySQL", "MariaDB",
+    "Claude API", "RAG", "MCP", "n8n", "LLM 자동화", "업무 자동화", "RPA", "앱인토스", "토스 미니앱",
   ],
-  authors: [{ name: "Min Hwang", url: "https://pf.eungming.com" }],
-  creator: "Min Hwang",
-  publisher: "Min Hwang",
-  robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-  icons: {
-    icon: [
-      { url: "https://pf.eungming.com/favicon.svg", sizes: "any", type: "image/svg+xml" },
-    ],
-    shortcut: "https://pf.eungming.com/favicon.svg",
-    apple: "https://pf.eungming.com/favicon.svg",
-  },
+  authors: [{ name: "황민 (Hwang Min)", url: "https://pf.eungming.com" }],
+  creator: "황민",
+  publisher: "황민",
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
+  icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }], shortcut: "/favicon.svg", apple: "/favicon.svg" },
   verification: {
     google: "_6y4DjCJpX30-CdY9nGiBrTi4GBpxu1vjrXbxLDnq6M",
-    other: {
-      "naver-site-verification": "8bbd77d95e169bcaf54dc7840b0553693db295d6"
-    }
+    other: { "naver-site-verification": "8bbd77d95e169bcaf54dc7840b0553693db295d6" },
   },
-  alternates: {
-    canonical: "https://pf.eungming.com",
-  },
+  alternates: { canonical: "https://pf.eungming.com" },
   category: "portfolio",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
-  manifest: "https://pf.eungming.com/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Min Hwang Portfolio",
-  },
-  applicationName: "Min Hwang Portfolio",
+  formatDetection: { email: false, address: false, telephone: false },
+  manifest: "/manifest.json",
+  applicationName: "황민 포트폴리오",
   openGraph: {
-    title: "Min Hwang | Full-Stack & AI Engineer",
-    description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and LLM automation. Building intelligent web applications with modern technologies. Based in Seoul, South Korea.",
+    title: TITLE,
+    description: DESC,
     url: "https://pf.eungming.com",
-    siteName: "Min Hwang Portfolio",
-    images: [
-      {
-        url: "https://pf.eungming.com/images/profile/profile.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Min Hwang - Full-Stack & AI Engineer",
-      },
-    ],
+    siteName: "황민 포트폴리오",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "황민 — 직접 만들고, 끝까지 운영합니다" }],
     locale: "ko_KR",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Min Hwang | Full-Stack & AI Engineer",
-    description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and LLM automation. Building intelligent web applications with modern technologies.",
-    images: ["https://pf.eungming.com/images/profile/profile.jpeg"],
-  },
-  other: {
-    "msapplication-TileColor": "#0A0D0C",
-    "msapplication-config": "https://pf.eungming.com/browserconfig.xml",
-    "mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "black-translucent",
-    "apple-mobile-web-app-title": "Min Hwang Portfolio",
-  }
+  twitter: { card: "summary_large_image", title: TITLE, description: DESC, images: ["/og.png"] },
 };
 
 export default function RootLayout({

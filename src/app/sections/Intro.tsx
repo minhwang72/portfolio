@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { getCareerDurations } from '../lib/portfolio-data';
+import { ArrowUpRight } from 'lucide-react';
+import { certifications, getCareerDurations } from '../lib/portfolio-data';
 
 function Count({ to }: { to: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -56,6 +57,40 @@ export default function Intro() {
           </motion.div>
         ))}
       </dl>
+
+      {/* 자격 · 학력: 따로 섹션을 두지 않고 한 줄 띠로 */}
+      <div id="certs" className="mt-10 grid scroll-mt-24 gap-px overflow-hidden rounded-[14px] border border-line bg-line sm:grid-cols-3">
+        {certifications.map((c) => {
+          const body = (
+            <>
+              <p className="text-[11px] font-semibold text-sub">자격증 · {c.issued}</p>
+              <p className="mt-1 text-[15px] font-bold leading-snug tracking-[-0.02em] text-fg">{c.name}</p>
+              <p className="mt-0.5 flex items-center gap-1 text-xs text-sub">
+                {c.issuer}
+                {c.url && (
+                  <>
+                    {' · '}검증 <ArrowUpRight className="h-3 w-3" />
+                  </>
+                )}
+              </p>
+            </>
+          );
+          return c.url ? (
+            <a key={c.name} href={c.url} target="_blank" rel="noopener noreferrer" className="bg-surface px-5 py-4 hover:bg-bg">
+              {body}
+            </a>
+          ) : (
+            <div key={c.name} className="bg-surface px-5 py-4">
+              {body}
+            </div>
+          );
+        })}
+        <div className="bg-surface px-5 py-4">
+          <p className="text-[11px] font-semibold text-sub">학력</p>
+          <p className="mt-1 text-[15px] font-bold tracking-[-0.02em] text-fg">한국방송통신대학교</p>
+          <p className="mt-0.5 text-xs text-sub">컴퓨터과학과 · 재학 중</p>
+        </div>
+      </div>
     </div>
   );
 }

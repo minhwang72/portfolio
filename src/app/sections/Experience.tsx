@@ -1,5 +1,6 @@
 import SectionHead from '../components/SectionHead';
 import { experience, getCareerDurations } from '../lib/portfolio-data';
+import { resume } from '../lib/resume';
 
 /** 경력: 왼쪽 기간·회사, 오른쪽 요약 + 한 일 + 쓴 기술 */
 export default function Experience() {
@@ -32,6 +33,20 @@ export default function Experience() {
                     </li>
                   ))}
               </ul>
+              {e.key === 'hexa' && (
+                <div className="mt-6">
+                  <p className="text-xs font-semibold text-sub">주요 참여 프로젝트 (고객사 외주)</p>
+                  <ul className="mt-2 divide-y divide-line border-y border-line">
+                    {resume.jobs[1].projects?.map((p) => (
+                      <li key={p.name} className="grid grid-cols-[1fr_auto] gap-x-4 py-2.5 text-[14px] sm:grid-cols-[1fr_160px_150px]">
+                        <span className="font-medium text-fg">{p.name}</span>
+                        <span className="hidden text-fg/70 sm:block">{p.role}</span>
+                        <span className="text-right font-mono text-xs tracking-normal text-sub">{p.period}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         ))}
