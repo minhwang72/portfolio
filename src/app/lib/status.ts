@@ -32,10 +32,11 @@ async function runChecks() {
 }
 
 /** 서비스 상태(1분 캐시). /api/status 와 /api/badge 가 같이 씀 */
-export async function getStatus() {
+export async function getStatus({ wait = true } = {}) {
   if (Date.now() - lastRun > CACHE_MS) {
     running ??= runChecks().finally(() => (running = null));
-    await running;
+    // wait=false: 외부 배지 서버처럼 빨리 답해야 하는 곳은 마지막 값을 바로 주고 확인은 뒤에서
+    if (wait || lastRun === 0) await running;
   }
   return {
     checkedAt: lastRun,

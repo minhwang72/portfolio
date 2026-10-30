@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic';
 
 /** shields.io endpoint 배지(GitHub 프로필 README 용) — 운영 중 서비스 수 */
 export async function GET() {
-  const { services } = await getStatus();
+  const { services } = await getStatus({ wait: false });
   const up = services.filter((s) => s.up).length;
   return Response.json(
     {
