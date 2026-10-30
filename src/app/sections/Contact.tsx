@@ -11,7 +11,7 @@ const links = [
 export default function Contact() {
   return (
     <div className="mx-auto max-w-6xl px-4 pb-16 pt-24 sm:px-6">
-      <SectionHead no="06" label="contact" title="함께 만들 이야기가 있다면" desc="메일이 가장 빠릅니다. 이 페이지의 AI에게 먼저 물어보셔도 됩니다." />
+      <SectionHead no="05" label="contact" title="함께 만들 이야기가 있다면" desc="메일이 가장 빠릅니다. 이 페이지의 AI에게 먼저 물어보셔도 됩니다." />
       <div className="grid gap-10 lg:grid-cols-2">
         <ul className="space-y-3">
           {links.map(({ icon: Icon, label, href }) => (

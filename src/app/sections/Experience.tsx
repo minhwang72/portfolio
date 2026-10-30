@@ -8,7 +8,7 @@ export default function Experience() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-      <SectionHead no="04" label="experience" title={`경력 ${d.total}`} />
+      <SectionHead no="03" label="experience" title={`경력 ${d.total}`} />
       <div className="grid gap-10 lg:grid-cols-[240px_1fr]">
         <div className="flex items-center gap-4 lg:flex-col lg:items-start">
           <div className="relative h-20 w-20 overflow-hidden rounded-full border border-line lg:h-28 lg:w-28">

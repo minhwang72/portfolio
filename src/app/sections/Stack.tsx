@@ -4,7 +4,7 @@ import { stack } from '../lib/portfolio-data';
 export default function Stack() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-      <SectionHead no="05" label="stack" title="쓰는 기술과 쓴 곳" />
+      <SectionHead no="04" label="stack" title="쓰는 기술과 쓴 곳" />
       <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
         {stack.map((s) => (
           <div key={s.area} className="flex flex-col bg-panel p-6">

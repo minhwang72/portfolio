@@ -6,7 +6,7 @@ import StatusBoard, { useStatus } from '../components/StatusBoard';
 import { openChat } from '../components/ChatBot';
 import { CONTACT, getCareerDurations } from '../lib/portfolio-data';
 
-const examples = ['대표 프로젝트는?', 'RPA 운영은 어떻게 했나요?', '이 상태판은 어떻게 만들었나요?'];
+const examples = ['대표 프로젝트는?', '이 챗봇은 어떻게 동작하나요?', '이 상태판은 어떻게 만들었나요?'];
 
 export default function Hero() {
   const status = useStatus();
@@ -15,8 +15,8 @@ export default function Hero() {
   const up = status ? `${status.services.filter((s) => s.up).length}/${status.services.length}` : '—';
 
   const kpis = [
-    { value: '900+', label: 'RPA 과제 단독 운영', sub: '8개 계열사' },
-    { value: '90→10', label: '월 장애 건수', sub: '공통 모듈 표준화 후' },
+    { value: '727/727', label: 'MuT 음높이 판독', sub: '악보 4종 내부 측정' },
+    { value: '<1원', label: '챗봇 질문 1건 비용', sub: 'RAG + Claude Haiku' },
     { value: up, label: '지금 운영 중인 서비스', sub: '홈서버 직접 운영', live: true },
     { value: total, label: '개발 경력', sub: '풀스택 → AI·운영' },
   ];

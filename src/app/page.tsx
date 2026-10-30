@@ -22,7 +22,7 @@ export default function Home() {
         <section id="featured" className="border-t border-line">
           <Featured />
         </section>
-        <section id="operations" className="border-t border-line">
+        <section id="work-list" className="border-t border-line">
           <Work />
         </section>
         <section id="experience" className="border-t border-line">

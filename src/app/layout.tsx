@@ -34,7 +34,7 @@ const jsonLd = {
   "name": "Min Hwang",
   "url": "https://pf.eungming.com",
   "jobTitle": "Fullstack & AI Engineer",
-  "description": "Fullstack engineer building web and mobile services with Next.js and Spring Boot, running in-house apps and servers, and applying AI/LLM automation (RAG, n8n, MCP) to RPA operations. Based in Seoul, South Korea.",
+  "description": "Fullstack engineer building web and mobile services with Next.js and Spring Boot, running in-house apps and servers, and building AI/LLM automation (RAG, n8n, MCP). Based in Seoul, South Korea.",
   "worksFor": {
     "@type": "Organization",
     "name": "CocoaSoft"
@@ -63,8 +63,7 @@ const jsonLd = {
     "LLM",
     "MCP",
     "Claude API",
-    "Gemini API",
-    "RPA Automation"
+    "Gemini API"
   ],
   "alumniOf": {
     "@type": "CollegeOrUniversity",
@@ -110,7 +109,7 @@ export const metadata: Metadata = {
     "React", "Next.js", "TypeScript", "Python", "Django", "Flutter",
     "Claude", "MCP", "LLM", "AI 자동화",
     "개발자 포트폴리오", "웹 포트폴리오", "프로젝트 소개", "웹서비스 개발", "앱 개발",
-    "사이드 프로젝트", "오픈소스", "개인 서버", "자동화", "RPA", "UiPath",
+    "사이드 프로젝트", "오픈소스", "개인 서버", "자동화",
     "황민", "Min Hwang", "Fullstack Developer", "Frontend Developer", "Backend Developer",
     "한국 개발자 포트폴리오", "Seoul Developer Portfolio"
   ],
@@ -150,7 +149,7 @@ export const metadata: Metadata = {
   applicationName: "Min Hwang Portfolio",
   openGraph: {
     title: "Min Hwang | Full-Stack & AI Engineer",
-    description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and RPA automation. Building intelligent web applications with modern technologies. Based in Seoul, South Korea.",
+    description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and LLM automation. Building intelligent web applications with modern technologies. Based in Seoul, South Korea.",
     url: "https://pf.eungming.com",
     siteName: "Min Hwang Portfolio",
     images: [
@@ -167,7 +166,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Min Hwang | Full-Stack & AI Engineer",
-    description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and RPA automation. Building intelligent web applications with modern technologies.",
+    description: "Full-Stack & AI Engineer specializing in React, Next.js, AI/ML integration, and LLM automation. Building intelligent web applications with modern technologies.",
     images: ["https://pf.eungming.com/images/profile/profile.jpeg"],
   },
   other: {

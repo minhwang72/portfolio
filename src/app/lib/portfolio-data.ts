@@ -189,20 +189,18 @@ export const experience: Experience[] = [
     company: '코코아소프트',
     role: 'AI센터 책임연구원',
     period: '2025.06 ~ 현재',
-    summary: 'RPA 개발자 중심 조직에서 RPA 운영과 사내 웹앱·서버를 혼자 맡고, LLM·MCP로 업무 자동화를 만듭니다.',
+    summary: 'AI센터에서 사내 웹앱 개발과 서버 관리를 맡고, LLM·MCP로 업무 자동화를 만듭니다.',
     highlights: [
-      '대기업 그룹사 8개 계열사 RPA 900여 과제 단독 운영',
-      '공통 모듈 표준화·예외처리 보강으로 월 장애 90건 → 10건',
-      '그룹웨어 전면 전환 때 메일·DRM 모듈을 새로 만들어 약 1개월 만에 전 계열사 정상화',
-      'n8n + LLM 기반 RAG 홈페이지 챗봇 배포, MCP 기반 UiPath 구동 시스템 설계·개발',
+      '사내 웹앱 개발과 서버 관리 전담',
+      'n8n 웹훅 + LLM 기반 RAG 홈페이지 챗봇 배포',
+      'MCP(Model Context Protocol) 기반 업무 자동화 시스템 설계·개발',
+      'n8n + LLM 공수 산정 자동화 개발',
     ],
     details: [
-      'AI센터에서 대기업 그룹사 8개 계열사의 RPA 900여 과제를 단독 운영 (UiPath 경험 없이 입사해 1개월 만에 단독 운영 투입)',
-      '공통 모듈 표준화와 예외처리 보강으로 월 장애를 90건에서 10건으로 감소, UiPath 23.10 → 24 업그레이드로 반복 장애 해소',
-      '그룹웨어 전면 전환 때 차단된 메일·DRM 모듈을 새로 개발해 약 1개월 만에 전 계열사 과제 정상화',
-      'RPA 개발자 중심 조직에서 사내 웹앱 개발과 서버 관리를 전담',
-      'n8n 웹훅 + LLM 기반 RAG 홈페이지 챗봇 배포, n8n + LLM 공수 산정 자동화 개발 중',
-      'MCP(Model Context Protocol) 기반 UiPath 구동 시스템 설계·개발',
+      'AI센터에서 사내 웹앱 개발과 서버 관리를 전담',
+      'n8n 웹훅 + LLM 기반 RAG 홈페이지 챗봇 배포',
+      'n8n + LLM 공수 산정 자동화 개발 중',
+      'MCP(Model Context Protocol) 기반 업무 자동화 시스템 설계·개발',
       '고객사 이름은 공개하지 않음',
     ],
   },
@@ -240,8 +238,8 @@ export const services = [
 export const stack = [
   { area: 'Backend', items: ['Kotlin · Spring Boot', 'Django', 'Next.js API', 'MySQL · MariaDB', 'Prisma'], usedIn: '커머스 API, Balance Desk, CBT' },
   { area: 'Frontend · App', items: ['TypeScript', 'React · Next.js', 'Tailwind CSS', 'Flutter'], usedIn: '커머스 웹·앱, 앱인토스 미니앱, 이 사이트' },
-  { area: 'AI', items: ['Claude API', 'Gemini API', 'MCP', 'RAG', 'YOLO · OpenCV'], usedIn: '뮤직시트(MuT), 이 챗봇, MCP 기반 UiPath 구동' },
-  { area: 'Ops · Automation', items: ['Docker', 'nginx', 'GitHub Actions', 'Linux 홈서버', 'UiPath', 'n8n'], usedIn: 'RPA 900과제 운영, 서비스 6개 자체 운영' },
+  { area: 'AI', items: ['Claude API', 'Gemini API', 'MCP', 'RAG', 'YOLO · OpenCV'], usedIn: '뮤직시트(MuT), 이 챗봇, MCP 기반 업무 자동화' },
+  { area: 'Ops · Automation', items: ['Docker', 'nginx', 'GitHub Actions', 'Linux 홈서버', 'n8n'], usedIn: '서비스 6개 자체 운영, 사내 서버 관리' },
 ];
 
 export interface KnowledgeDoc {
@@ -259,7 +257,7 @@ export function getKnowledgeDocs(): KnowledgeDoc[] {
       title: '자기소개',
       href: '#top',
       text: `웹·앱 풀스택 엔지니어. 커머스 서비스의 백엔드 API(Kotlin·Spring Boot, Django)부터 웹 프론트엔드(React·Next.js), 모바일 앱(Flutter)까지 개발했습니다.
-지금은 대기업 그룹사 8개 계열사의 RPA 900여 과제를 단독 운영하면서, RPA 개발자 중심 조직에서 사내 웹앱 개발과 서버 관리를 전담하고 있습니다.
+지금은 AI센터에서 사내 웹앱 개발과 서버 관리를 맡고 있고, 퇴근 후에는 집 서버 한 대로 서비스 여섯 개를 직접 만들고 운영합니다.
 MCP(Model Context Protocol) 기반 AI 자동화 시스템을 설계하고, Gemini·Claude 등 LLM API를 활용한 지능형 서비스를 개발하고 있습니다.
 기술을 배우는 데 그치지 않고 실제 서비스에 적용하며, 문제를 직접 해결하는 과정에서 가장 큰 보람을 느낍니다.
 학력: 방송통신대학교 컴퓨터과학과`,
@@ -272,7 +270,7 @@ Frontend: Flutter, Next.js, React, Tailwind CSS
 Backend: Django, Firebase, MariaDB, MySQL, Spring Boot
 DevOps: AWS, Docker, Git, GitHub Actions, TeamCity, 개인 홈서버(nginx·Docker로 여러 서비스 운영)
 AI / ML: Google Gemini API, Claude API, MCP(Model Context Protocol), LangChain, RAG, YOLO·OpenCV(악보 인식)
-Automation / RPA: UiPath Studio, UiPath Orchestrator, REFramework, n8n
+Automation: n8n, MCP
 Tools & IDE: Android Studio, Cursor, Claude Code, Figma, IntelliJ IDEA, VS Code, Zeplin`,
     },
     ...experience.map((e) => ({
