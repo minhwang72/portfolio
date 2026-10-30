@@ -57,115 +57,189 @@ export const certifications: Certification[] = [
   },
 ];
 
-export function getSystemPrompt(): string {
-  const { hexa, cocoa, total } = getCareerDurations();
-  const certText = certifications
-    .map((c) => `- ${c.name} (${c.issuer}, ${c.issued} 취득${c.expires ? `, ${c.expires} 만료` : ''})\n  ${c.description}`)
-    .join('\n');
 
-  return `당신은 풀스택 & AI 엔지니어 황민의 포트폴리오 웹사이트에 있는 AI 어시스턴트입니다.
-방문자가 황민에 대해 질문하면 아래 정보를 바탕으로 친절하고 전문적으로 답변하세요.
-모르는 내용은 솔직히 모른다고 하고, 아래 정보 범위 내에서 답변하세요.
-답변은 항상 한국어로 작성하세요. 간결하되 충분한 정보를 제공하세요.
+export interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  github: string;
+  demo?: string;
+  isPrivate?: boolean;
+  badge?: string;
+  /** 화면에는 안 나오고 챗봇 검색 자료로만 쓰는 상세 설명 */
+  detail?: string;
+}
 
-=== 인적사항 ===
-- 이름: 황민
-- 위치: 서울시 구로구
-- 이메일: zxcyui6181@naver.com
-- 학력: 방송통신대학교 (컴퓨터과학과)
-- GitHub: https://github.com/minhwang72
-- LinkedIn: https://www.linkedin.com/in/min-hwang-071b18316/
+/** 프로젝트 목록 — 화면(Projects)과 챗봇 검색 자료가 같은 데이터를 쓴다. */
+export const projects: Project[] = [
+  {
+    title: '뮤직시트 (MuT)',
+    description:
+      '악보 사진을 넣으면 원하는 키로 바꾼 새 악보를 만들어 주는 서비스. 1세대(CONTI)는 Gemini에 악보 이미지를 통째로 맡겼지만 음표·박자를 자주 틀려, 2세대는 CV 검출 + AI 판독 + MusicXML 재조판 파이프라인으로 다시 설계했습니다. 악보 4종 내부 측정에서 음높이 727/727, 코드 141/141 일치(전체 악보 일반화 평가는 진행 중).',
+    tags: ['Python', 'YOLO', 'OpenCV', 'Claude API', 'MusicXML', 'Verovio'],
+    github: 'https://github.com/minhwang72/mut',
+    demo: 'https://conti.eungming.com',
+    isPrivate: true,
+    badge: '개발 중 · 초대 계정',
+    detail: `- 1세대 CONTI: Next.js + Gemini로 악보 이미지에서 코드·가사를 뽑아 키를 바꾸고 셋리스트를 관리하는 도구. LLM이 음표 위치·박자를 추측해 틀리는 문제가 반복됨
+- 2세대 MuT로 전환: 원본 픽셀을 옮기는 방식은 임시표를 다시 계산할 수 없어 버리고, 악보를 MusicXML로 다시 만든 뒤 Verovio(브라우저 WASM)로 재조판
+- 역할 분담: 음높이는 CV(음표 머리 y좌표와 오선 간격으로 계산), 음가·마디·반복 기호는 LLM, 코드는 LLM, 원조성은 조표의 ♯/♭ 개수, 이조는 자체 코어 엔진
+- 로컬 모드: YOLO 검출 + Tesseract로 유료 API 호출 없이 판독. 오픈소스 판독기(homr)로 교차 검증
+- 박자가 맞지 않거나 확정할 수 없는 마디는 결과를 내보내지 않고 사용자 확인 대상으로 남김(틀린 악보를 그럴듯하게 내지 않음)
+- 측정은 독립 검수 전 내부 표본 기준이며, 사진·손글씨 등 일반화 성능은 아직 평가 중`,
+  },
+  {
+    title: 'Balance Desk',
+    description:
+      'KIS Open API 기반 ISA 포트폴리오 대시보드. 실시간 잔고·수익률·자산 배분 현황을 시각화하고, 목표 비중 대비 드리프트 알림, 거래 내역 원장, 매매 API까지 통합한 개인 자산관리 도구입니다.',
+    tags: ['Next.js', 'TypeScript', 'KIS Open API', 'MCP', 'MySQL', 'Docker'],
+    github: 'https://github.com/minhwang72/isa-portal',
+    demo: 'https://stock.eungming.com',
+    isPrivate: true,
+  },
+  {
+    title: 'CBT 학습 플랫폼',
+    description:
+      '정보처리기사 필기 기출문제 CBT 서비스. 2020~2025년 전 회차 문제를 파싱·정제하여 DB에 적재하고, 랜덤 출제·오답 노트·회차별 풀기를 지원하는 학습 플랫폼입니다.',
+    tags: ['Next.js', 'TypeScript', 'Prisma', 'MySQL', 'Docker'],
+    github: 'https://github.com/minhwang72/cbt',
+    demo: 'https://cbt.eungming.com',
+    isPrivate: true,
+  },
+  {
+    title: 'MOID',
+    description:
+      '모바일 청첩장 SaaS MVP. 블록형 빌더로 청첩장을 만들고 공개 URL로 공유합니다. 로그인 전 무료 시안 빌더, 결제 전 워터마크 정책, RSVP 저장 API, GitHub Actions CI/CD를 갖춘 프로덕션 준비 구조입니다.',
+    tags: ['Next.js', 'TypeScript', 'Prisma', 'AWS S3', 'GitHub Actions'],
+    github: 'https://github.com/minhwang72/moid',
+    isPrivate: true,
+    badge: '개발 중',
+  },
+  {
+    title: '오늘운',
+    description:
+      '앱인토스 미니앱 · 사주 기반 일일 운세. 생년월일로 사주 원국을 계산하고 오늘 날짜와의 관계로 운세를 산출합니다. 개인정보 보호를 위해 사주 계산은 전량 클라이언트에서 처리하며 서버로 전송하지 않습니다.',
+    tags: ['React', 'TypeScript', '앱인토스', '사주 알고리즘'],
+    github: 'https://github.com/minhwang72/oneulun',
+    isPrivate: true,
+  },
+  {
+    title: '포트폴리오',
+    description:
+      '현재 보고 계신 개인 포트폴리오 웹사이트. RAG 챗봇은 프로필·프로젝트·경력 문서를 Gemini 임베딩으로 검색해 질문과 관련된 내용만 근거로 답하고, 참고한 출처를 함께 보여줍니다.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Gemini API', 'RAG'],
+    github: 'https://github.com/minhwang72/portfolio',
+    demo: 'https://pf.eungming.com',
+    badge: '현재 페이지',
+    detail: `- 문서를 항목(자기소개·기술·프로젝트·경력·자격증) 단위로 나눠 gemini-embedding-001로 임베딩, 서버 메모리에 보관
+- 질문을 임베딩해 코사인 유사도 상위 문서만 프롬프트에 넣고 gemini-2.5-flash로 스트리밍 답변
+- 답변 아래에 참고한 문서를 출처로 표시, 문서 수가 적어 별도 벡터 DB 없이 메모리 검색
+- 요청 제한(IP당 분당 20회)·입력 길이 검사로 API 남용 방지`,
+  },
+  {
+    title: '웨딩 초대장 시리즈',
+    description:
+      '지인들의 결혼식을 위해 제작한 모바일 청첩장 시리즈 (4개). 카카오맵 연동, 계좌 복사, 방명록, 사진 갤러리 등을 포함한 맞춤 제작 웹 청첩장입니다.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', '카카오맵 API'],
+    github: 'https://github.com/minhwang72/monsil-invitation',
+    demo: 'https://taetaecouple.eungming.com',
+  },
+  {
+    title: 'KAIROS',
+    description:
+      'NPC들이 스스로 살아가고 성장하는 지속형 세계 시뮬레이션 게임. LLM 기반 NPC 인지 시스템, 틱 루프 엔진, 경제·정치·사회 시뮬레이션을 설계 중입니다.',
+    tags: ['Next.js', 'TypeScript', 'Claude API', 'Docker', '시뮬레이션'],
+    github: 'https://github.com/minhwang72/kairos',
+    isPrivate: true,
+    badge: '기획 중',
+  },
+];
 
-=== 자기소개 ===
-웹·앱 풀스택 엔지니어입니다. 커머스 서비스의 백엔드 API(Kotlin·Spring Boot, Django)부터 웹 프론트엔드(React·Next.js), 모바일 앱(Flutter)까지 개발했습니다.
+export const CONTACT = {
+  email: 'zxcyui6181@naver.com',
+  github: 'https://github.com/minhwang72',
+  linkedin: 'https://www.linkedin.com/in/min-hwang-071b18316/',
+};
+
+/** 챗봇이 질문마다 꼭 알아야 하는 기본 정보(검색과 상관없이 항상 넣음) */
+export function getCoreProfile(): string {
+  const { total } = getCareerDurations();
+  return `이름: 황민 / 풀스택 & AI 엔지니어 / 서울 구로구
+총 경력 ${total}. 현재 코코아소프트 AI센터 책임연구원(2025.06~), 이전 HEXAVEIL 주임연구원(2023.03~2025.05)
+대표 프로젝트: 뮤직시트(MuT) — 악보 사진을 원하는 키의 새 악보로 바꾸는 CV + AI 파이프라인
+연락처: 이메일 ${CONTACT.email}, GitHub ${CONTACT.github}, LinkedIn ${CONTACT.linkedin}`;
+}
+
+export interface KnowledgeDoc {
+  title: string;
+  /** 출처로 보여 줄 링크(페이지 섹션 또는 외부 주소) */
+  href: string;
+  text: string;
+}
+
+/** 챗봇 검색 자료 — 항목 하나가 검색 단위 */
+export function getKnowledgeDocs(): KnowledgeDoc[] {
+  const { hexa, cocoa } = getCareerDurations();
+  return [
+    {
+      title: '자기소개',
+      href: '#about',
+      text: `웹·앱 풀스택 엔지니어. 커머스 서비스의 백엔드 API(Kotlin·Spring Boot, Django)부터 웹 프론트엔드(React·Next.js), 모바일 앱(Flutter)까지 개발했습니다.
 지금은 대기업 그룹사 8개 계열사의 RPA 900여 과제를 단독 운영하면서, RPA 개발자 중심 조직에서 사내 웹앱 개발과 서버 관리를 전담하고 있습니다.
-현재는 MCP(Model Context Protocol) 기반 AI 자동화 시스템을 설계하고, Gemini·Claude 등 LLM API를 활용한 지능형 서비스를 개발하고 있습니다.
-기술을 배우는 데 그치지 않고 실제 서비스에 적용하며 성장하는 것을 지향하며, 문제를 직접 해결해나가는 과정에서 가장 큰 보람을 느낍니다.
-
-=== 기술 스택 ===
-Language: Dart, Java, JavaScript, Kotlin, Python, TypeScript
+MCP(Model Context Protocol) 기반 AI 자동화 시스템을 설계하고, Gemini·Claude 등 LLM API를 활용한 지능형 서비스를 개발하고 있습니다.
+기술을 배우는 데 그치지 않고 실제 서비스에 적용하며, 문제를 직접 해결하는 과정에서 가장 큰 보람을 느낍니다.
+학력: 방송통신대학교 컴퓨터과학과`,
+    },
+    {
+      title: '기술 스택',
+      href: '#skills',
+      text: `Language: Dart, Java, JavaScript, Kotlin, Python, TypeScript
 Frontend: Flutter, Next.js, React, Tailwind CSS
 Backend: Django, Firebase, MariaDB, MySQL, Spring Boot
-DevOps: AWS, Docker, Git, GitHub Actions, TeamCity
-AI / ML: Google Gemini API, Claude API, MCP(Model Context Protocol), LangChain, RAG
-Automation / RPA: UiPath Studio, UiPath Orchestrator, REFramework
-Tools & IDE: Android Studio, Cursor, Figma, IntelliJ IDEA, VS Code, Zeplin
-
-=== 프로젝트 ===
-1. CONTI
-   - 악보 키 변환 및 셋리스트 관리 도구
-   - Gemini AI로 악보 이미지에서 코드·가사를 자동 추출하고 음악 이론 기반으로 키 변환 후 악보 재생성
-   - 기술: Next.js, TypeScript, Google Gemini AI, DnD Kit, Shadcn UI
-   - 사이트: https://conti.eungming.com
-   - GitHub: https://github.com/minhwang72/conti
-
-2. 뮤직시트 (MuT)
-   - 악보 이미지를 넣으면 키가 변환된 새 악보를 돌려주는 서비스 (개발 중)
-   - CV로 오선·코드 박스 검출, AI로 코드 판독, 키 변환 코어 엔진으로 재생성
-   - 코드 재현율 100%, 정밀도 98%
-   - 기술: Python, OpenCV, Claude API, Next.js, TypeScript
-
-3. Balance Desk
-   - KIS Open API 기반 ISA 포트폴리오 대시보드
-   - 실시간 잔고·수익률·자산 배분 시각화, 목표 비중 드리프트 알림, 거래 내역 원장, 매매 API 통합
-   - 기술: Next.js, TypeScript, KIS Open API, MCP, MySQL, Docker
-   - 사이트: https://stock.eungming.com
-
-4. CBT 학습 플랫폼
-   - 정보처리기사 필기 기출문제 CBT 서비스
-   - 2020~2025년 전 회차 문제 파싱·정제·DB 적재, 랜덤 출제·오답 노트·회차별 풀기 지원
-   - 기술: Next.js, TypeScript, Prisma, MySQL, Docker
-   - 사이트: https://cbt.eungming.com
-
-5. MOID
-   - 모바일 청첩장 SaaS MVP (개발 중)
-   - 블록형 빌더, 무료 시안 빌더, RSVP 저장 API, GitHub Actions CI/CD
-   - 기술: Next.js, TypeScript, Prisma, AWS S3, GitHub Actions
-
-6. 오늘운
-   - 앱인토스 미니앱 · 사주 기반 일일 운세
-   - 사주 계산 전량 클라이언트 처리 (서버로 개인정보 미전송)
-   - 기술: React, TypeScript, 앱인토스
-
-7. KAIROS
-   - NPC들이 스스로 살아가는 지속형 세계 시뮬레이션 게임 (기획 중)
-   - LLM 기반 NPC 인지 시스템, 틱 루프 엔진, 경제·정치·사회 시뮬레이션
-   - 기술: Next.js, TypeScript, Claude API, Docker
-
-8. 웨딩 초대장 시리즈
-   - 지인 결혼식을 위한 모바일 청첩장 4종 제작
-   - 카카오맵, 계좌 복사, 방명록, 사진 갤러리 포함
-   - 기술: Next.js, TypeScript, Tailwind CSS, 카카오맵 API
-
-9. 포트폴리오
-   - 현재 보고 계신 개인 포트폴리오 웹사이트
-   - Gemini AI 기반 RAG 챗봇, Framer Motion 애니메이션, 다크/라이트 모드
-   - 기술: Next.js, TypeScript, Tailwind CSS, Framer Motion, Gemini AI
-   - 사이트: https://pf.eungming.com
-   - GitHub: https://github.com/minhwang72/portfolio
-
-=== 자격증 ===
-${certText}
-
-=== 경력 ===
-총 경력: ${total}
-
-1. 코코아소프트 - 책임연구원 (2025.06.16 ~ 현재, ${cocoa.formatted})
-   - AI센터에서 대기업 그룹사 8개 계열사의 RPA 900여 과제를 단독 운영 (UiPath 경험 없이 입사해 1개월 만에 단독 운영 투입)
-   - 공통 모듈 표준화와 예외처리 보강으로 월 장애를 90건에서 10건으로 감소, UiPath 23.10 → 24 업그레이드로 반복 장애 해소
-   - 그룹웨어 전면 전환 때 차단된 메일·DRM 모듈을 새로 개발해 약 1개월 만에 전 계열사 과제 정상화
-   - RPA 개발자 중심 조직에서 사내 웹앱 개발과 서버 관리를 전담
-   - n8n 웹훅 + LLM 기반 RAG 홈페이지 챗봇 배포, n8n + LLM 공수 산정 자동화 개발 중
-   - MCP(Model Context Protocol) 기반 UiPath 구동 시스템 설계·개발
-
-2. HEXAVEIL - 주임연구원 (2023.03.27 ~ 2025.05.16, ${hexa.formatted})
-   - 웹·앱 풀스택 개발: Kotlin/Spring Boot·Django 백엔드 API, React·Next.js 웹 프론트엔드, Flutter(Android/iOS) 앱
-   - 커머스 서비스의 PG 결제·본인인증 연동
-   - 한국어/베트남어 다국어(i18n) 서비스 개발
-   - Docker·Kubernetes 환경에서 GitHub Actions·TeamCity로 배포 (Kubernetes는 사용 경험 수준)
-
-=== 연락처 ===
-이메일: zxcyui6181@naver.com
-GitHub: https://github.com/minhwang72
-LinkedIn: https://www.linkedin.com/in/min-hwang-071b18316/`;
+DevOps: AWS, Docker, Git, GitHub Actions, TeamCity, 개인 홈서버(nginx·Docker로 여러 서비스 운영)
+AI / ML: Google Gemini API, Claude API, MCP(Model Context Protocol), LangChain, RAG, YOLO·OpenCV(악보 인식)
+Automation / RPA: UiPath Studio, UiPath Orchestrator, REFramework, n8n
+Tools & IDE: Android Studio, Cursor, Claude Code, Figma, IntelliJ IDEA, VS Code, Zeplin`,
+    },
+    {
+      title: `경력: 코코아소프트 책임연구원 (2025.06 ~ 현재, ${cocoa.formatted})`,
+      href: '#career',
+      text: `- AI센터에서 대기업 그룹사 8개 계열사의 RPA 900여 과제를 단독 운영 (UiPath 경험 없이 입사해 1개월 만에 단독 운영 투입)
+- 공통 모듈 표준화와 예외처리 보강으로 월 장애를 90건에서 10건으로 감소, UiPath 23.10 → 24 업그레이드로 반복 장애 해소
+- 그룹웨어 전면 전환 때 차단된 메일·DRM 모듈을 새로 개발해 약 1개월 만에 전 계열사 과제 정상화
+- RPA 개발자 중심 조직에서 사내 웹앱 개발과 서버 관리를 전담
+- n8n 웹훅 + LLM 기반 RAG 홈페이지 챗봇 배포, n8n + LLM 공수 산정 자동화 개발 중
+- MCP(Model Context Protocol) 기반 UiPath 구동 시스템 설계·개발
+(고객사 이름은 공개하지 않음)`,
+    },
+    {
+      title: `경력: HEXAVEIL 주임연구원 (2023.03 ~ 2025.05, ${hexa.formatted})`,
+      href: '#career',
+      text: `- 웹·앱 풀스택 개발: Kotlin/Spring Boot·Django 백엔드 API, React·Next.js 웹 프론트엔드, Flutter(Android/iOS) 앱
+- 커머스 서비스의 PG 결제·본인인증 연동
+- 한국어/베트남어 다국어(i18n) 서비스 개발
+- Docker·Kubernetes 환경에서 GitHub Actions·TeamCity로 배포 (Kubernetes는 사용 경험 수준)`,
+    },
+    {
+      title: '자격증',
+      href: '#certifications',
+      text: certifications
+        .map((c) => `- ${c.name} (${c.issuer}, ${c.issued} 취득${c.expires ? `, ${c.expires} 만료` : ''}): ${c.description}`)
+        .join('\n'),
+    },
+    ...projects.map((p) => ({
+      title: `프로젝트: ${p.title}`,
+      href: p.demo && !p.demo.includes('pf.eungming.com') ? p.demo : '#projects',
+      text: [
+        p.badge && `상태: ${p.badge}`,
+        p.description,
+        p.detail,
+        `기술: ${p.tags.join(', ')}`,
+        p.demo && `사이트: ${p.demo}`,
+        p.isPrivate ? '저장소: 비공개' : `GitHub: ${p.github}`,
+      ]
+        .filter(Boolean)
+        .join('\n'),
+    })),
+  ];
 }

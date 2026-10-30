@@ -3,88 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import SectionTitle from '../components/SectionTitle';
-
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  github: string;
-  demo?: string;
-  isPrivate?: boolean;
-  badge?: string;
-}
-
-const projects: Project[] = [
-  {
-    title: "CONTI",
-    description: "악보 키 변환 및 셋리스트 관리 도구. Gemini AI로 악보 이미지에서 코드·가사를 자동 추출하고 음악 이론 기반으로 원하는 키로 변환 후 악보를 재생성합니다. 드래그 앤 드롭 셋리스트 관리와 PNG/PDF/DOCX 내보내기를 지원합니다.",
-    tags: ["Next.js", "TypeScript", "Google Gemini AI", "DnD Kit", "Shadcn UI"],
-    github: "https://github.com/minhwang72/conti",
-    demo: "https://conti.eungming.com"
-  },
-  {
-    title: "뮤직시트 (MuT)",
-    description: "악보 이미지를 넣으면 키가 변환된 새 악보를 돌려주는 서비스. CV(컴퓨터 비전)로 오선·코드 박스를 검출하고 AI로 코드를 판독한 뒤 키 변환 코어 엔진으로 재생성합니다. 코드 재현율 100%, 정밀도 98%.",
-    tags: ["Python", "OpenCV", "Claude API", "Next.js", "TypeScript"],
-    github: "https://github.com/minhwang72/conti",
-    isPrivate: true,
-    badge: "개발 중"
-  },
-  {
-    title: "Balance Desk",
-    description: "KIS Open API 기반 ISA 포트폴리오 대시보드. 실시간 잔고·수익률·자산 배분 현황을 시각화하고, 목표 비중 대비 드리프트 알림, 거래 내역 원장, 매매 API까지 통합한 개인 자산관리 도구입니다.",
-    tags: ["Next.js", "TypeScript", "KIS Open API", "MCP", "MySQL", "Docker"],
-    github: "https://github.com/minhwang72/isa-portal",
-    demo: "https://stock.eungming.com",
-    isPrivate: true
-  },
-  {
-    title: "CBT 학습 플랫폼",
-    description: "정보처리기사 필기 기출문제 CBT 서비스. 2020~2025년 전 회차 문제를 파싱·정제하여 DB에 적재하고, 랜덤 출제·오답 노트·회차별 풀기를 지원하는 학습 플랫폼입니다.",
-    tags: ["Next.js", "TypeScript", "Prisma", "MySQL", "Docker"],
-    github: "https://github.com/minhwang72/cbt",
-    demo: "https://cbt.eungming.com",
-    isPrivate: true
-  },
-  {
-    title: "MOID",
-    description: "모바일 청첩장 SaaS MVP. 블록형 빌더로 청첩장을 만들고 공개 URL로 공유합니다. 로그인 전 무료 시안 빌더, 결제 전 워터마크 정책, RSVP 저장 API, GitHub Actions CI/CD를 갖춘 프로덕션 준비 구조입니다.",
-    tags: ["Next.js", "TypeScript", "Prisma", "AWS S3", "GitHub Actions"],
-    github: "https://github.com/minhwang72/moid",
-    isPrivate: true,
-    badge: "개발 중"
-  },
-  {
-    title: "오늘운",
-    description: "앱인토스 미니앱 · 사주 기반 일일 운세. 생년월일로 사주 원국을 계산하고 오늘 날짜와의 관계로 운세를 산출합니다. 개인정보 보호를 위해 사주 계산은 전량 클라이언트에서 처리하며 서버로 전송하지 않습니다.",
-    tags: ["React", "TypeScript", "앱인토스", "사주 알고리즘"],
-    github: "https://github.com/hwangmins/oneulun",
-    isPrivate: true
-  },
-  {
-    title: "KAIROS",
-    description: "NPC들이 스스로 살아가고 성장하는 지속형 세계 시뮬레이션 게임. LLM 기반 NPC 인지 시스템, 틱 루프 엔진, 경제·정치·사회 시뮬레이션을 설계 중입니다. 유저는 그 세계에 들어가 NPC의 삶에 개입하는 참여자입니다.",
-    tags: ["Next.js", "TypeScript", "Claude API", "Docker", "시뮬레이션"],
-    github: "https://github.com/minhwang72/kairos",
-    isPrivate: true,
-    badge: "기획 중"
-  },
-  {
-    title: "웨딩 초대장 시리즈",
-    description: "지인들의 결혼식을 위해 제작한 모바일 청첩장 시리즈 (4개). 카카오맵 연동, 계좌 복사, 방명록, 사진 갤러리 등을 포함한 맞춤 제작 웹 청첩장입니다.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "카카오맵 API"],
-    github: "https://github.com/minhwang72/monsil-invitation",
-    demo: "https://taetaecouple.eungming.com"
-  },
-  {
-    title: "포트폴리오",
-    description: "현재 보고 계신 개인 포트폴리오 웹사이트. Gemini AI 기반 RAG 챗봇, Framer Motion 스크롤 애니메이션, 다크/라이트 모드를 지원합니다.",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Gemini AI"],
-    github: "https://github.com/minhwang72/portfolio",
-    demo: "https://pf.eungming.com",
-    badge: "현재 페이지"
-  }
-];
+import { projects } from '../lib/portfolio-data';
 
 const Projects = () => {
   return (
@@ -135,6 +54,8 @@ const Projects = () => {
                     ))}
                   </div>
                   <div className="flex gap-4 pt-2">
+                    {/* 비공개 저장소는 방문자에게 404라 링크를 숨김 */}
+                    {!project.isPrivate && (
                     <Link
                       href={project.github}
                       target="_blank"
@@ -154,6 +75,7 @@ const Projects = () => {
                         />
                       </svg>
                     </Link>
+                    )}
                     {project.demo && (
                       <Link
                         href={project.demo}

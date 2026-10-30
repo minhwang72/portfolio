@@ -24,7 +24,7 @@ Next.js 15와 TypeScript 기반으로 제작되었으며, Gemini AI 챗봇, 부�
 
 ## ✨ 주요 기능
 
-- **Gemini AI 챗봇**: RAG 기반으로 황민에 대한 질문에 답변
+- **Gemini RAG 챗봇**: 프로필·프로젝트 문서를 gemini-embedding-001로 검색해 관련 문서만 근거로 답하고 출처 표시 (`src/app/lib/rag.ts`)
 - **반응형 디자인**: 모바일부터 와이드스크린까지 최적화
 - **다크/라이트 모드**: 헤더 토글 버튼으로 즉시 전환
 - **Framer Motion 애니메이션**: 스크롤 기반 부드러운 진입 효과
@@ -101,7 +101,7 @@ yarn build
 - **Hero**: 메인 인트로 (이름, 직함, 소개)
 - **About**: 기본 프로필 및 자기소개
 - **Skills**: 기술 스택 (shields.io 배지)
-- **Projects**: 주요 프로젝트 (CONTI 등)
+- **Projects**: 주요 프로젝트 (뮤직시트 MuT 등, 데이터는 `src/app/lib/portfolio-data.ts`)
 - **Career**: 경력 사항 (코코아소프트, HEXAVEIL)
 - **Contact**: 연락처 및 소셜 링크
 

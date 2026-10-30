@@ -4,9 +4,15 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Send, X } from 'lucide-react';
 
+interface Source {
+  title: string;
+  href: string;
+}
+
 interface Message {
   role: 'user' | 'model';
   content: string;
+  sources?: Source[];
 }
 
 const allSuggestions = [
@@ -14,6 +20,8 @@ const allSuggestions = [
   'AI 관련해서 뭘 해보셨나요?',
   '경력이 어떻게 되나요?',
   '프로젝트를 소개해주세요',
+  '뮤직시트(MuT)는 어떻게 만들었나요?',
+  '이 챗봇은 어떻게 동작하나요?',
   '현재 어떤 일을 하고 있나요?',
   'RPA 업무는 어떤 걸 하나요?',
   '서버 운영 경험이 있나요?',
@@ -116,13 +124,21 @@ export default function ChatBot() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: newMessages }),
+        // 서버로는 역할·내용만 보냄(출처 목록 제외)
+        body: JSON.stringify({ messages: newMessages.map(({ role, content }) => ({ role, content })) }),
       });
 
       if (!res.ok) throw new Error('API 요청 실패');
 
       const reader = res.body?.getReader();
       if (!reader) throw new Error('스트림 읽기 실패');
+
+      let sources: Source[] = [];
+      try {
+        sources = JSON.parse(decodeURIComponent(res.headers.get('X-Sources') ?? '')).slice(0, 4);
+      } catch {
+        // 출처가 없어도 답변은 보여 줌
+      }
 
       const decoder = new TextDecoder();
       let accumulated = '';
@@ -137,7 +153,7 @@ export default function ChatBot() {
         accumulated += decoder.decode(value, { stream: true });
         setMessages((prev) => {
           const updated = [...prev];
-          updated[updated.length - 1] = { role: 'model', content: accumulated };
+          updated[updated.length - 1] = { role: 'model', content: accumulated, sources };
           return updated;
         });
       }
@@ -251,6 +267,24 @@ export default function ChatBot() {
                         <span className="typing-dot" style={{ animationDelay: '200ms' }} />
                         <span className="typing-dot" style={{ animationDelay: '400ms' }} />
                       </span>
+                    )}
+                    {/* 참고한 문서(RAG 검색 결과) — 답변이 끝난 뒤 표시 */}
+                    {msg.sources && msg.sources.length > 0 && !(isLoading && i === messages.length - 1) && (
+                      <div className="mt-3 pt-2 border-t border-slate-200 flex flex-wrap gap-1.5 whitespace-normal">
+                        <span className="text-[11px] text-slate-400 mr-0.5">출처</span>
+                        {msg.sources.map((s) => (
+                          <a
+                            key={s.title}
+                            href={s.href}
+                            target={s.href.startsWith('#') ? undefined : '_blank'}
+                            rel="noopener noreferrer"
+                            onClick={() => s.href.startsWith('#') && setIsOpen(false)}
+                            className="text-[11px] px-2 py-0.5 rounded-full bg-white border border-slate-200 text-slate-500 hover:border-teal-600 hover:text-teal-600 transition-colors"
+                          >
+                            {s.title}
+                          </a>
+                        ))}
+                      </div>
                     )}
                     {/* Blinking cursor - while streaming content */}
                     {isLoading && i === messages.length - 1 && msg.role === 'model' && msg.content && (
