@@ -68,6 +68,10 @@ export interface Project {
   badge?: string;
   /** 화면에는 안 나오고 챗봇 검색 자료로만 쓰는 상세 설명 */
   detail?: string;
+  /** 화면: 큰 화면 캡처와 함께 보여 줄 대표 작업 */
+  feature?: { image: string; story: string; facts?: string[] };
+  /** 화면: 목록에 쓰는 한 줄(없으면 목록에서 뺌) */
+  line?: string;
 }
 
 /** 프로젝트 목록 — 화면(Projects)과 챗봇 검색 자료가 같은 데이터를 쓴다. */
@@ -81,6 +85,12 @@ export const projects: Project[] = [
     demo: 'https://conti.eungming.com',
     isPrivate: true,
     badge: '개발 중 · 초대 계정',
+    feature: {
+      image: '/images/work/mut.png',
+      story:
+        '악보 사진을 올리면 원하는 키로 바꾼 새 악보를 만들어 줍니다. 처음엔 AI에게 이미지를 통째로 맡겼다가 박자를 자주 틀려서, 음높이는 좌표 계산으로, 음가·코드는 AI 판독으로 나누고 박자가 맞는 마디만 다시 조판하도록 고쳐 만들었습니다.',
+      facts: ['727/727 음높이 일치', '141/141 코드 일치'],
+    },
     detail: `- 1세대 CONTI: Next.js + Gemini로 악보 이미지에서 코드·가사를 뽑아 키를 바꾸고 셋리스트를 관리하는 도구. LLM이 음표 위치·박자를 추측해 틀리는 문제가 반복됨
 - 2세대 MuT로 전환: 원본 픽셀을 옮기는 방식은 임시표를 다시 계산할 수 없어 버리고, 악보를 MusicXML로 다시 만든 뒤 Verovio(브라우저 WASM)로 재조판
 - 역할 분담: 음높이는 CV(음표 머리 y좌표와 오선 간격으로 계산), 음가·마디·반복 기호는 LLM, 코드는 LLM, 원조성은 조표의 ♯/♭ 개수, 이조는 자체 코어 엔진
@@ -96,6 +106,7 @@ export const projects: Project[] = [
     github: 'https://github.com/minhwang72/isa-portal',
     demo: 'https://stock.eungming.com',
     isPrivate: true,
+    line: 'KIS Open API로 ISA 계좌의 잔고·비중을 보고 목표에서 벗어나면 알려 주는 대시보드',
   },
   {
     title: 'CBT 학습 플랫폼',
@@ -105,6 +116,7 @@ export const projects: Project[] = [
     github: 'https://github.com/minhwang72/cbt',
     demo: 'https://cbt.eungming.com',
     isPrivate: true,
+    line: '정보처리기사 기출 6년치를 정리해 넣은 시험 연습 사이트',
   },
   {
     title: 'MOID',
@@ -112,8 +124,12 @@ export const projects: Project[] = [
       '모바일 청첩장 SaaS MVP. 블록형 빌더로 청첩장을 만들고 공개 URL로 공유합니다. 로그인 전 무료 시안 빌더, 결제 전 워터마크 정책, RSVP 저장 API, GitHub Actions CI/CD를 갖춘 프로덕션 준비 구조입니다.',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'AWS S3', 'GitHub Actions'],
     github: 'https://github.com/minhwang72/moid',
+    demo: 'https://moid.co.kr',
     isPrivate: true,
-    badge: '개발 중',
+    feature: {
+      image: '/images/work/moid.png',
+      story: '모바일 청첩장을 블록처럼 쌓아 만들고 공유하는 서비스입니다. 로그인 없이 시안을 만들어 보고, 결제하면 워터마크가 사라집니다.',
+    },
   },
   {
     title: '오늘운',
@@ -122,20 +138,22 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', '앱인토스', '사주 알고리즘'],
     github: 'https://github.com/minhwang72/oneulun',
     isPrivate: true,
+    line: '토스 앱 안에서 도는 사주 운세 미니앱. 계산은 전부 휴대폰에서만',
   },
   {
     title: '포트폴리오',
     description:
-      '현재 보고 계신 포트폴리오. 홈서버에서 운영 중인 서비스의 실제 상태를 첫 화면에 보여 주고, RAG 챗봇은 프로필·프로젝트 문서를 임베딩으로 검색해 관련 내용만 근거로 Claude가 답하며 출처를 함께 보여줍니다.',
+      '현재 보고 계신 포트폴리오. 집 서버에서 운영 중인 서비스의 실제 상태(응답 속도)를 프로젝트 옆에 보여 주고, RAG 챗봇은 프로필·프로젝트 문서를 임베딩으로 검색해 관련 내용만 근거로 Claude가 답하며 출처를 함께 보여줍니다.',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Claude API', 'Gemini Embedding', 'RAG'],
     github: 'https://github.com/minhwang72/portfolio',
     demo: 'https://pf.eungming.com',
     badge: '현재 페이지',
+    line: '질문하면 포트폴리오 문서를 찾아 Claude가 답하고, 어디서 찾았는지 보여 줍니다',
     detail: `- 문서를 항목(자기소개·기술·프로젝트·경력·자격증) 단위로 나눠 gemini-embedding-001로 임베딩, 서버 메모리에 보관
 - 질문을 임베딩해 코사인 유사도 상위 문서만 프롬프트에 넣고 Claude Haiku 5.5로 스트리밍 답변(질문 1건 약 1원 미만)
 - 답변 아래에 참고한 문서를 출처로 표시, 문서 수가 적어 별도 벡터 DB 없이 메모리 검색
 - 남용 방지: IP당 분당 10회·하루 100회, 사이트 전체 하루 상한, 대화 길이·답변 길이 상한
-- 첫 화면 상태판: 서버가 1분마다 각 서비스에 실제 요청을 보내 응답 여부·응답 시간을 기록`,
+- 운영 표시: 서버가 1분마다 각 서비스에 실제 요청을 보내 응답 여부·응답 시간을 기록해 프로젝트 옆에 보여 줌`,
   },
   {
     title: '웨딩 초대장 시리즈',
