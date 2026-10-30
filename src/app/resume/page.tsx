@@ -5,7 +5,7 @@ import { CONTACT, getCareerDurations } from '../lib/portfolio-data';
 import { resume } from '../lib/resume';
 
 export const metadata: Metadata = {
-  title: '이력서 | 황민 · 풀스택 엔지니어 (AI · 자동화)',
+  title: '황민 이력서 | 풀스택 개발자 · AI 엔지니어',
   description: '풀스택 엔지니어 황민의 이력서. 사내 웹앱·서버, 그룹사 업무 자동화 운영 지원, LLM·MCP 자동화, 커머스·플랫폼 외주 개발 경력. PDF로 내려받을 수 있습니다.',
   alternates: { canonical: 'https://pf.eungming.com/resume' },
   openGraph: { title: '이력서 | 황민', description: '풀스택 엔지니어 (AI · 자동화) 황민의 이력서', url: 'https://pf.eungming.com/resume', type: 'profile' },

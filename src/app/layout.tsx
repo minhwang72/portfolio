@@ -13,7 +13,7 @@ const jsonLd = {
   "name": "황민",
   "alternateName": "Hwang Min",
   "url": "https://pf.eungming.com",
-  "jobTitle": "풀스택 엔지니어 (AI · 자동화)",
+  "jobTitle": ["풀스택 개발자", "AI 엔지니어"],
   "description": "웹·앱 풀스택 엔지니어. 사내 웹앱·서버와 업무 자동화 운영 지원, LLM·RAG·MCP 자동화, 집 서버에서 직접 만든 서비스를 운영합니다. 서울.",
   "worksFor": {
     "@type": "Organization",
@@ -23,28 +23,7 @@ const jsonLd = {
     "https://github.com/minhwang72",
     "https://www.linkedin.com/in/min-hwang-071b18316/"
   ],
-  "knowsAbout": [
-    "Kotlin",
-    "Spring Boot",
-    "Java",
-    "Backend Development",
-    "REST API",
-    "JPA",
-    "Kubernetes",
-    "Docker",
-    "AWS",
-    "MySQL",
-    "MariaDB",
-    "TypeScript",
-    "Next.js",
-    "React",
-    "Python",
-    "AI/ML",
-    "LLM",
-    "MCP",
-    "Claude API",
-    "Gemini API"
-  ],
+  "knowsAbout": ["풀스택 개발", "AI 엔지니어링", "LLM", "RAG", "MCP", "Claude API", "Gemini API", "n8n", "업무 자동화", "Next.js", "React", "TypeScript", "Kotlin", "Spring Boot", "Django", "Flutter", "Docker", "nginx", "GitHub Actions", "MySQL", "MariaDB", "AWS"],
   "alumniOf": {
     "@type": "CollegeOrUniversity",
     "name": "한국방송통신대학교"
@@ -81,19 +60,28 @@ export const viewport: Viewport = {
   ],
 };
 
-const TITLE = "황민 | 풀스택 엔지니어 (AI · 자동화) 포트폴리오";
-const DESC = "직접 만들고, 끝까지 운영합니다. 풀스택 엔지니어 황민(Hwang Min)의 포트폴리오 — 집 서버에서 운영 중인 서비스, 토스 앱인토스 미니앱, 경력과 이력서(PDF).";
+const TITLE = "황민 포트폴리오 | 풀스택 개발자 · AI 엔지니어";
+const DESC = "풀스택 개발자·AI 엔지니어 황민(Hwang Min)의 포트폴리오. Next.js·Spring Boot 웹·앱 개발, LLM·RAG·MCP AI 자동화, 집 서버에서 직접 운영하는 서비스와 토스 미니앱, 경력과 이력서(PDF).";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pf.eungming.com"),
   title: TITLE,
   description: DESC,
   keywords: [
-    "황민", "Hwang Min", "Min Hwang", "풀스택 개발자", "풀스택 엔지니어", "개발자 포트폴리오", "개발자 이력서",
-    "Next.js", "React", "TypeScript", "Kotlin", "Spring Boot", "Django", "Flutter",
-    "Docker", "nginx", "GitHub Actions", "MySQL", "MariaDB",
-    "Claude API", "RAG", "MCP", "n8n", "LLM 자동화", "업무 자동화", "RPA", "앱인토스", "토스 미니앱",
+    // 이름
+    "황민", "황민 포트폴리오", "황민 개발자", "황민 이력서", "Hwang Min", "Min Hwang", "Hwang Min portfolio",
+    // 직무
+    "개발자 포트폴리오", "개발자 이력서", "풀스택 개발자", "풀스택 엔지니어", "백엔드 개발자", "웹 개발자", "앱 개발자",
+    "AI 엔지니어", "AI 개발자", "LLM 엔지니어", "AI 자동화 엔지니어", "Fullstack Developer", "AI Engineer",
+    // AI
+    "생성형 AI", "LLM", "RAG", "MCP", "AI 에이전트", "Claude API", "Gemini API", "프롬프트 엔지니어링", "n8n", "AI 자동화", "업무 자동화", "RPA", "UiPath",
+    // 개발
+    "Next.js", "React", "TypeScript", "Kotlin", "Spring Boot", "Django", "Flutter", "Node.js",
+    "Docker", "nginx", "GitHub Actions", "Linux 서버", "MySQL", "MariaDB", "AWS",
+    // 프로젝트
+    "앱인토스", "토스 미니앱", "홈서버 운영",
   ],
+
   authors: [{ name: "황민 (Hwang Min)", url: "https://pf.eungming.com" }],
   creator: "황민",
   publisher: "황민",
