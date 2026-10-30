@@ -1,6 +1,5 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Scene from './components/Scene';
 import Hero from './sections/Hero';
 import Intro from './sections/Intro';
 import Projects from './sections/Projects';
@@ -19,21 +18,21 @@ export default function Home() {
         <section id="home">
           <Hero />
         </section>
-        <Scene id="intro" className="bg-bg">
+        <section id="stats">
           <Intro />
-        </Scene>
-        <Scene id="projects" className="bg-bg">
+        </section>
+        <section id="projects">
           <Projects />
-        </Scene>
-        <Scene id="stack" className="bg-bg">
+        </section>
+        <section id="stack">
           <Stack />
-        </Scene>
-        <Scene id="experience" className="bg-surface">
+        </section>
+        <section id="experience">
           <Experience />
-        </Scene>
-        <Scene id="contact" className="dark bg-[linear-gradient(160deg,#0f1029,#1e1b4b_45%,#2e1065)]">
+        </section>
+        <section id="contact">
           <Contact />
-        </Scene>
+        </section>
       </main>
       <Footer />
     </div>

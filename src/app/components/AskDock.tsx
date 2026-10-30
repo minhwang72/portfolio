@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUp, Sparkles, X } from 'lucide-react';
+import { ArrowUp, Search, Sparkles, X } from 'lucide-react';
 import { useAsk } from '../lib/useAsk';
 
 const examples = ['대표 프로젝트는?', '이 질문창은 어떻게 동작하나요?', '쓰는 기술은?', '연락처 알려 주세요'];
@@ -95,12 +95,12 @@ export default function AskDock() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 24 }}
               onClick={() => setOpen(true)}
-              style={{ borderRadius: 999 }}
-              className="pointer-events-auto flex w-full max-w-[420px] items-center gap-3 border border-line/70 bg-bg/75 px-4 py-3 text-left shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-xl"
+              style={{ borderRadius: 12 }}
+              className="pointer-events-auto flex w-full max-w-[400px] items-center gap-2.5 border border-line bg-surface/90 px-3.5 py-3 text-left shadow-[0_12px_30px_rgba(0,0,0,0.12)] backdrop-blur-xl"
               aria-label="황민에게 질문하기"
             >
-              <Sparkles className="h-4 w-4 flex-none text-accent" />
-              <span className="flex-1 truncate text-[15px] text-sub">황민에게 무엇이든 물어보세요</span>
+              <Search className="h-4 w-4 flex-none text-sub" />
+              <span className="flex-1 truncate text-sm text-sub">황민에게 무엇이든 물어보세요</span>
               <kbd className="hidden rounded-md border border-line px-1.5 py-0.5 font-mono text-[11px] text-sub sm:inline">⌘K</kbd>
             </motion.button>
           )}
@@ -121,12 +121,12 @@ export default function AskDock() {
             <motion.div
               layoutId="ask"
               transition={spring}
-              style={{ borderRadius: 28 }}
-              className="relative flex max-h-[78vh] w-full max-w-[640px] flex-col overflow-hidden border border-line/70 bg-bg/90 shadow-[0_30px_80px_rgba(0,0,0,0.25)] backdrop-blur-2xl"
+              style={{ borderRadius: 16 }}
+              className="relative flex max-h-[78vh] w-full max-w-[640px] flex-col overflow-hidden border border-line/70 bg-surface shadow-[0_30px_80px_rgba(0,0,0,0.25)]"
             >
               <div className="flex items-center justify-between px-5 pt-4">
                 <span className="flex items-center gap-2 text-sm font-semibold text-fg">
-                  <Sparkles className="h-4 w-4 text-accent" /> 황민에게 묻기
+                  <Sparkles className="h-4 w-4 text-sub" /> 황민에게 묻기
                 </span>
                 <button onClick={() => setOpen(false)} className="rounded-full p-1.5 text-sub hover:bg-surface" aria-label="닫기">
                   <X className="h-4 w-4" />
@@ -139,7 +139,7 @@ export default function AskDock() {
                     <p className="text-[15px] leading-relaxed text-sub">포트폴리오 문서를 찾아보고 Claude가 답해요. 어디서 찾았는지도 함께 보여 드려요.</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {examples.map((e) => (
-                        <button key={e} onClick={() => send(e)} className="rounded-full bg-surface px-3.5 py-2 text-sm text-fg hover:bg-line/60">
+                        <button key={e} onClick={() => send(e)} className="rounded-lg border border-line px-3 py-1.5 text-[13px] text-fg/80 hover:border-fg/40">
                           {e}
                         </button>
                       ))}
@@ -176,7 +176,7 @@ export default function AskDock() {
                                   target={s.href.startsWith('#') ? undefined : '_blank'}
                                   rel="noopener noreferrer"
                                   onClick={() => s.href.startsWith('#') && setOpen(false)}
-                                  className="rounded-full border border-line px-2.5 py-1 text-xs text-sub hover:border-accent hover:text-accent"
+                                  className="rounded-md border border-line px-2 py-0.5 text-xs text-sub hover:border-fg/40 hover:text-fg"
                                 >
                                   {s.title}
                                 </a>
@@ -196,7 +196,7 @@ export default function AskDock() {
                   e.preventDefault();
                   submit();
                 }}
-                className="m-3 mt-0 flex items-center gap-2 rounded-full bg-surface py-1.5 pl-5 pr-1.5"
+                className="m-3 mt-0 flex items-center gap-2 rounded-xl border border-line bg-bg py-1.5 pl-4 pr-1.5"
               >
                 <input
                   ref={inputRef}
@@ -209,7 +209,7 @@ export default function AskDock() {
                 <button
                   type="submit"
                   disabled={!q.trim() || loading}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-fg text-bg transition-opacity disabled:opacity-25"
+                  className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-fg text-bg transition-opacity disabled:opacity-25"
                   aria-label="보내기"
                 >
                   <ArrowUp className="h-4 w-4" />
