@@ -74,12 +74,15 @@ export interface Project {
   line?: string;
   /** 화면: 프로젝트 카드 썸네일 */
   thumb?: string;
+  /** 화면: 카드 강조색(히어로 지도의 행성 색과 같게) */
+  color?: string;
 }
 
 /** 프로젝트 목록 — 화면(Projects)과 챗봇 검색 자료가 같은 데이터를 쓴다. */
 export const projects: Project[] = [
   {
     title: '뮤직시트 (MuT)',
+    color: '#8b5cf6',
     description:
       '악보 사진을 넣으면 원하는 키로 바꾼 새 악보를 만들어 주는 서비스. 1세대(CONTI)는 Gemini에 악보 이미지를 통째로 맡겼지만 음표·박자를 자주 틀려, 2세대는 CV 검출 + AI 판독 + MusicXML 재조판 파이프라인으로 다시 설계했습니다. 악보 4종 내부 측정에서 음높이 727/727, 코드 141/141 일치(전체 악보 일반화 평가는 진행 중).',
     tags: ['Python', 'YOLO', 'OpenCV', 'Claude API', 'MusicXML', 'Verovio'],
@@ -104,6 +107,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Balance Desk',
+    color: '#14b8a6',
     thumb: '/images/work/stock.png',
     description:
       'KIS Open API 기반 ISA 포트폴리오 대시보드. 실시간 잔고·수익률·자산 배분 현황을 시각화하고, 목표 비중 대비 드리프트 알림, 거래 내역 원장, 매매 API까지 통합한 개인 자산관리 도구입니다.',
@@ -115,6 +119,7 @@ export const projects: Project[] = [
   },
   {
     title: 'CBT 학습 플랫폼',
+    color: '#f59e0b',
     thumb: '/images/work/cbt.png',
     description:
       '정보처리기사 필기 기출문제 CBT 서비스. 2020~2025년 전 회차 문제를 파싱·정제하여 DB에 적재하고, 랜덤 출제·오답 노트·회차별 풀기를 지원하는 학습 플랫폼입니다.',
@@ -126,6 +131,7 @@ export const projects: Project[] = [
   },
   {
     title: 'MOID',
+    color: '#f43f5e',
     description:
       '모바일 청첩장 SaaS MVP. 블록형 빌더로 청첩장을 만들고 공개 URL로 공유합니다. 로그인 전 무료 시안 빌더, 결제 전 워터마크 정책, RSVP 저장 API, GitHub Actions CI/CD를 갖춘 프로덕션 준비 구조입니다.',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'AWS S3', 'GitHub Actions'],
@@ -141,6 +147,7 @@ export const projects: Project[] = [
   },
   {
     title: '오늘운',
+    color: '#fb923c',
     thumb: '/images/work/oneulun.png',
     description:
       '앱인토스 미니앱 · 사주 기반 일일 운세. 생년월일로 사주 원국을 계산하고 오늘 날짜와의 관계로 운세를 산출합니다. 개인정보 보호를 위해 사주 계산은 전량 클라이언트에서 처리하며 서버로 전송하지 않습니다.',
@@ -151,6 +158,7 @@ export const projects: Project[] = [
   },
   {
     title: '포트폴리오',
+    color: '#6366f1',
     thumb: '/images/work/pf.png',
     description:
       '현재 보고 계신 포트폴리오. 집 서버에서 운영 중인 서비스의 실제 상태(응답 속도)를 프로젝트 옆에 보여 주고, RAG 챗봇은 프로필·프로젝트 문서를 임베딩으로 검색해 관련 내용만 근거로 Claude가 답하며 출처를 함께 보여줍니다.',

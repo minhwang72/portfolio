@@ -39,16 +39,20 @@ export default function Projects() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -4 }}
-              className="group flex flex-col overflow-hidden rounded-3xl border border-line/70 bg-surface"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-line/70 bg-surface shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_20px_50px_-20px_var(--glow)]"
+              style={{ ['--glow' as string]: p.color }}
             >
-              <div className={`relative h-44 overflow-hidden ${tall ? 'flex justify-center bg-gradient-to-b from-line/40 to-surface pt-5' : ''}`}>
+              <div
+                className={`relative h-44 overflow-hidden ${tall ? 'flex justify-center pt-5' : 'px-5 pt-5'}`}
+                style={{ background: `linear-gradient(135deg, ${p.color}26, ${p.color}0d)` }}
+              >
                 {p.thumb && (
                   <Image
                     src={p.thumb}
                     alt={`${p.title} 화면`}
                     width={tall ? 300 : 720}
                     height={tall ? 494 : 450}
-                    className={tall ? 'h-auto w-28 rounded-2xl shadow-lg' : 'h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]'}
+                    className={tall ? 'h-auto w-28 rounded-2xl shadow-lg' : 'h-full w-full rounded-t-xl object-cover object-top shadow-lg transition-transform duration-500 group-hover:scale-[1.03]'}
                   />
                 )}
               </div>
@@ -56,7 +60,7 @@ export default function Projects() {
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="flex items-center gap-2 text-xl font-bold tracking-[-0.03em] text-fg">
                     {p.title === '포트폴리오' ? '이 사이트' : p.title}
-                    {i === 0 && <span className="rounded-md bg-accent/10 px-1.5 py-0.5 text-[11px] font-semibold text-accent">대표작</span>}
+                    {i === 0 && <span className="rounded-md px-1.5 py-0.5 text-[11px] font-semibold text-white" style={{ background: p.color }}>대표작</span>}
                   </h3>
                   {s && (
                     <span className="flex items-center gap-1.5 whitespace-nowrap text-xs text-sub">
@@ -67,7 +71,7 @@ export default function Projects() {
                 <p className="mt-2 flex-1 text-[15px] leading-relaxed text-sub">{p.line}</p>
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {p.tags.slice(0, 4).map((t) => (
-                    <span key={t} className="rounded-md bg-bg px-2 py-1 text-xs text-sub">
+                    <span key={t} className="rounded-md px-2 py-1 text-xs font-medium" style={{ color: p.color, background: `${p.color}14` }}>
                       {t}
                     </span>
                   ))}

@@ -49,10 +49,10 @@ export default function Intro() {
   const months = (hexa.years + cocoa.years) * 12 + hexa.months + cocoa.months;
 
   const stats = [
-    { node: <><Count to={Math.floor(months / 12)} />년 <Count to={months % 12} />개월</>, label: '개발 경력' },
-    { node: avg ? <><Count to={avg} />ms</> : '—', label: '직접 운영 중인 서비스 평균 응답', live: true },
-    { node: <Count to={3} />, label: '토스 앱인토스 미니앱' },
-    { node: <Count to={certifications.length} />, label: '자격증 · Claude 아키텍트 포함' },
+    { node: <><Count to={Math.floor(months / 12)} />년 <Count to={months % 12} />개월</>, label: '개발 경력', color: '#6366f1' },
+    { node: avg ? <><Count to={avg} />ms</> : '—', label: '직접 운영 중인 서비스 평균 응답', color: '#14b8a6' },
+    { node: <Count to={3} />, label: '토스 앱인토스 미니앱', color: '#f59e0b' },
+    { node: <Count to={certifications.length} />, label: '자격증 · Claude 아키텍트 포함', color: '#f43f5e' },
   ];
 
   return (
@@ -73,9 +73,10 @@ export default function Intro() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, delay: i * 0.08 }}
-            className="border-l border-line pl-5"
+            className="border-l-2 pl-5"
+            style={{ borderColor: s.color }}
           >
-            <dd className={`text-[34px] font-bold tracking-[-0.04em] sm:text-[48px] ${s.live ? 'text-live' : 'text-fg'}`}>{s.node}</dd>
+            <dd className="text-[34px] font-bold tracking-[-0.04em] sm:text-[48px]" style={{ color: s.color }}>{s.node}</dd>
             <dt className="mt-1 text-sm text-sub">{s.label}</dt>
           </motion.div>
         ))}

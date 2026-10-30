@@ -27,7 +27,7 @@ export default function Contact() {
   ];
 
   return (
-    <div className="dark bg-black px-5 py-28 text-fg sm:py-36">
+    <div className="aurora dark px-5 py-28 text-fg sm:py-36">
       <div className="mx-auto max-w-[1080px] text-center">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}

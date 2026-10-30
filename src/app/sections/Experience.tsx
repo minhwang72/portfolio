@@ -20,8 +20,9 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
-            className="rounded-3xl border border-line/70 bg-bg p-8"
+            className="relative overflow-hidden rounded-3xl border border-line/70 bg-bg p-8"
           >
+            <span className="absolute inset-x-0 top-0 h-1" style={{ background: e.key === 'cocoa' ? 'linear-gradient(90deg,#6366f1,#8b5cf6)' : 'linear-gradient(90deg,#14b8a6,#3b82f6)' }} />
             <p className="text-sm text-sub">
               {e.period} · {dur[e.key]}
             </p>

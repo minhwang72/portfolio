@@ -31,7 +31,7 @@ export default function Home() {
         <Scene id="experience" className="bg-surface">
           <Experience />
         </Scene>
-        <Scene id="contact" className="dark bg-black">
+        <Scene id="contact" className="dark bg-[linear-gradient(160deg,#0f1029,#1e1b4b_45%,#2e1065)]">
           <Contact />
         </Scene>
       </main>

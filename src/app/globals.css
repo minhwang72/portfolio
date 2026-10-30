@@ -4,26 +4,44 @@
 
 /* 2026-10 애플식 재구성. 색 변수는 RGB 세 숫자(tailwind.config.ts 에서 rgb(var(--x)) 로 씀) */
 :root {
-  --bg: 255 255 255;
-  --surface: 245 245 247;
-  --fg: 29 29 31;
-  --sub: 110 110 115;
-  --line: 210 210 215;
-  --accent: 0 113 227;
-  --live: 36 179 82;
-  --down: 255 59 48;
+  /* 라이트: 살짝 푸른 기가 도는 흰 바탕 + 카드는 순백 */
+  --bg: 246 247 251;
+  --surface: 255 255 255;
+  --fg: 20 24 36;
+  --sub: 95 101 119;
+  --line: 225 228 238;
+  --accent: 79 70 229;
+  --live: 22 163 74;
+  --down: 225 29 72;
   color-scheme: light;
 }
 .dark {
-  --bg: 0 0 0;
-  --surface: 28 28 30;
-  --fg: 245 245 247;
-  --sub: 161 161 166;
-  --line: 56 56 58;
-  --accent: 41 151 255;
-  --live: 48 209 88;
-  --down: 255 69 58;
+  /* 다크: 순검정 대신 짙은 남색 */
+  --bg: 10 12 20;
+  --surface: 20 24 39;
+  --fg: 238 240 247;
+  --sub: 154 160 180;
+  --line: 38 43 61;
+  --accent: 129 140 248;
+  --live: 52 211 153;
+  --down: 251 113 133;
   color-scheme: dark;
+}
+
+/* 은은한 색 번짐(히어로·연락 배경). 라이트에서도 허전하지 않게 */
+.aurora {
+  background:
+    radial-gradient(40% 50% at 15% 20%, rgb(139 92 246 / 0.16), transparent 70%),
+    radial-gradient(35% 45% at 85% 15%, rgb(244 63 94 / 0.12), transparent 70%),
+    radial-gradient(45% 50% at 80% 85%, rgb(20 184 166 / 0.14), transparent 70%),
+    radial-gradient(40% 45% at 20% 90%, rgb(245 158 11 / 0.10), transparent 70%);
+}
+.dark .aurora, .aurora.dark {
+  background:
+    radial-gradient(40% 50% at 15% 20%, rgb(139 92 246 / 0.22), transparent 70%),
+    radial-gradient(35% 45% at 85% 15%, rgb(244 63 94 / 0.14), transparent 70%),
+    radial-gradient(45% 50% at 80% 85%, rgb(20 184 166 / 0.18), transparent 70%),
+    radial-gradient(40% 45% at 20% 90%, rgb(245 158 11 / 0.10), transparent 70%);
 }
 
 html { scroll-behavior: smooth; }

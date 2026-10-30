@@ -53,7 +53,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative flex min-h-[100svh] flex-col items-center justify-center px-5 pb-24 pt-20">
+    <div className="aurora relative flex min-h-[100svh] flex-col items-center justify-center px-5 pb-24 pt-20">
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center">
         <h1 className="text-[36px] font-bold tracking-[-0.04em] text-fg sm:text-[48px]">
           황민 <span className="font-medium text-sub">· 만들고, 배포하고, 운영합니다</span>
@@ -74,7 +74,7 @@ export default function Hero() {
           e.preventDefault();
           ask(q);
         }}
-        className="mt-6 flex w-full max-w-[600px] items-center gap-3 rounded-full border border-line bg-bg py-2 pl-5 pr-2 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow focus-within:shadow-[0_6px_30px_rgba(0,0,0,0.12)]"
+        className="mt-6 flex w-full max-w-[600px] items-center gap-3 rounded-full border border-line bg-surface py-2 pl-5 pr-2 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow focus-within:shadow-[0_6px_30px_rgba(0,0,0,0.12)]"
       >
         <Search className="h-5 w-5 flex-none text-sub" />
         <div className="relative min-w-0 flex-1">
@@ -91,14 +91,14 @@ export default function Hero() {
             </span>
           )}
         </div>
-        <button type="submit" className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-fg text-bg" aria-label="질문하기">
+        <button type="submit" className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] text-white" aria-label="질문하기">
           <ArrowUp className="h-5 w-5" />
         </button>
       </motion.form>
 
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.3 }} className="mt-4 flex flex-wrap justify-center gap-2">
         {chips.map((c) => (
-          <button key={c} onClick={() => ask(c === '연락처' ? '연락처 알려 주세요' : `${c}는?`)} className="rounded-full border border-line px-4 py-2 text-sm text-fg/80 hover:bg-surface">
+          <button key={c} onClick={() => ask(c === '연락처' ? '연락처 알려 주세요' : `${c}는?`)} className="rounded-full border border-line bg-surface/70 px-4 py-2 text-sm text-fg/80 backdrop-blur hover:border-accent/50 hover:text-accent">
             {c}
           </button>
         ))}
