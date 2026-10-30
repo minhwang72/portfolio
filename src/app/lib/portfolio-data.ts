@@ -157,7 +157,7 @@ export const projects: Project[] = [
 ];
 
 export const CONTACT = {
-  email: 'zxcyui6181@naver.com',
+  email: 'zxcyui6181@gmail.com',
   github: 'https://github.com/minhwang72',
   linkedin: 'https://www.linkedin.com/in/min-hwang-071b18316/',
 };
