@@ -37,7 +37,7 @@ export default function Certs() {
           </h3>
           <div className="rounded-[14px] border border-dashed border-line p-6">
             <h4 className="text-lg font-bold tracking-[-0.03em] text-fg">한국방송통신대학교</h4>
-            <p className="text-sm text-sub">컴퓨터과학과</p>
+            <p className="text-sm text-sub">컴퓨터과학과 · 재학 중</p>
           </div>
         </div>
       </div>

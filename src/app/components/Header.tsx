@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Moon, Sun } from 'lucide-react';
 
 const links = [
@@ -40,6 +41,9 @@ export default function Header() {
               {l.label}
             </a>
           ))}
+          <Link href="/resume" className="rounded-lg bg-fg px-3 py-1.5 text-[13px] font-semibold text-bg hover:opacity-90">
+            이력서
+          </Link>
           <button onClick={toggle} className="flex h-[30px] w-[30px] items-center justify-center rounded-lg border border-line text-fg hover:bg-surface" aria-label={dark ? '라이트 모드' : '다크 모드'}>
             {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>

@@ -59,3 +59,10 @@ section[id] { scroll-margin-top: 64px; }
   html { scroll-behavior: auto; }
   .live-dot, .typing-cursor, .typing-dot { animation: none; }
 }
+
+/* 이력서 인쇄(A4) */
+@page { size: A4; margin: 12mm 15mm; }
+@media print {
+  html, body { background: #fff !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

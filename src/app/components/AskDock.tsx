@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUp, Search, Sparkles, X } from 'lucide-react';
 import { useAsk } from '../lib/useAsk';
@@ -13,6 +14,7 @@ const spring = { type: 'spring' as const, stiffness: 380, damping: 34 };
  * 누르거나 질문하면 같은 요소가 답변 창으로 펼쳐진다(layoutId 공유). ⌘K / Ctrl+K 로도 열림.
  */
 export default function AskDock() {
+  const path = usePathname();
   const { messages, loading, send } = useAsk();
   const [open, setOpen] = useState(false);
   const [docked, setDocked] = useState(false);
@@ -82,10 +84,13 @@ export default function AskDock() {
     setQ('');
   };
 
+  // 이력서 페이지·인쇄에서는 숨김
+  if (path?.startsWith('/resume')) return null;
+
   return (
     <>
       {/* 알약 */}
-      <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 flex justify-center px-4">
+      <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 flex justify-center px-4 print:hidden">
         <AnimatePresence>
           {docked && !open && (
             <motion.button
@@ -96,12 +101,12 @@ export default function AskDock() {
               exit={{ opacity: 0, y: 24 }}
               onClick={() => setOpen(true)}
               style={{ borderRadius: 12 }}
-              className="pointer-events-auto flex w-full max-w-[400px] items-center gap-2.5 border border-line bg-surface/90 px-3.5 py-3 text-left shadow-[0_12px_30px_rgba(0,0,0,0.12)] backdrop-blur-xl"
+              className="pointer-events-auto flex w-full max-w-[400px] items-center gap-2.5 bg-fg px-4 py-3.5 text-left text-bg shadow-[0_16px_40px_rgba(0,0,0,0.35)] ring-1 ring-fg/10 transition-transform hover:-translate-y-0.5"
               aria-label="황민에게 질문하기"
             >
-              <Search className="h-4 w-4 flex-none text-sub" />
-              <span className="flex-1 truncate text-sm text-sub">황민에게 무엇이든 물어보세요</span>
-              <kbd className="hidden rounded-md border border-line px-1.5 py-0.5 font-mono text-[11px] text-sub sm:inline">⌘K</kbd>
+              <Search className="h-4 w-4 flex-none opacity-80" />
+              <span className="flex-1 truncate text-sm font-medium">황민에게 무엇이든 물어보세요</span>
+              <kbd className="hidden rounded-md border border-bg/30 px-1.5 py-0.5 font-mono text-[11px] opacity-70 sm:inline">⌘K</kbd>
             </motion.button>
           )}
         </AnimatePresence>

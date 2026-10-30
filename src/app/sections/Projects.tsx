@@ -57,6 +57,11 @@ export default function Projects() {
                       <ArrowUpRight className="h-3.5 w-3.5" /> 사이트
                     </a>
                   )}
+                  {p.play && (
+                    <a href={p.play} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline">
+                      <ArrowUpRight className="h-3.5 w-3.5" /> Google Play
+                    </a>
+                  )}
                   {!p.isPrivate && (
                     <a href={p.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:underline">
                       <Github className="h-3.5 w-3.5" /> GitHub

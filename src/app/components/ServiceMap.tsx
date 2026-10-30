@@ -35,8 +35,8 @@ const nodes: Record<string, Node> = {
 
 // 토스 앱 안의 미니앱(앱인토스) — URL 헬스체크 대상이 아니라 상태 없이 표시
 const apps = [
-  { name: '애니믹스', icon: '/images/apps/animix.png', x: 900, y: 185, tech: '게임 · 2026.10 출시' },
-  { name: '오늘운', icon: '/images/apps/oneulun.png', x: 915, y: 280, tech: '운세 · 2026.08 출시' },
+  { name: '애니믹스', icon: '/images/apps/animix.png', x: 900, y: 185, tech: '게임 · 토스·Play 출시' },
+  { name: '오늘운', icon: '/images/apps/oneulun.png', x: 915, y: 280, tech: '운세 · 토스·Play 출시' },
   { name: '정책메이트', icon: '/images/apps/policymate.png', x: 900, y: 375, tech: '청년정책 · 2026.08 출시' },
 ];
 

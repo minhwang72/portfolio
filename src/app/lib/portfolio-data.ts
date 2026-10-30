@@ -76,6 +76,8 @@ export interface Project {
   thumb?: string;
   /** 화면: 카드 강조색(히어로 지도의 행성 색과 같게) */
   color?: string;
+  /** Google Play 스토어 주소 */
+  play?: string;
 }
 
 /** 프로젝트 목록 — 화면(Projects)과 챗봇 검색 자료가 같은 데이터를 쓴다. */
@@ -147,10 +149,11 @@ export const projects: Project[] = [
   },
   {
     title: '오늘운',
+    play: 'https://play.google.com/store/apps/details?id=im.moid.oneulun',
     color: '#fb923c',
     thumb: '/images/work/oneulun.png',
     description:
-      '앱인토스 미니앱(2026.08 출시) · 사주 기반 일일 운세. 생년월일로 사주 원국을 계산하고 오늘 날짜와의 관계로 운세를 산출합니다. 개인정보 보호를 위해 사주 계산은 전량 클라이언트에서 처리하며 서버로 전송하지 않습니다.',
+      '앱인토스 미니앱(2026.08 토스 출시, Google Play에도 출시) · 사주 기반 일일 운세. 생년월일로 사주 원국을 계산하고 오늘 날짜와의 관계로 운세를 산출합니다. 개인정보 보호를 위해 사주 계산은 전량 클라이언트에서 처리하며 서버로 전송하지 않습니다.',
     tags: ['React', 'TypeScript', '앱인토스', '사주 알고리즘'],
     github: 'https://github.com/minhwang72/oneulun',
     isPrivate: true,
@@ -169,9 +172,10 @@ export const projects: Project[] = [
   },
   {
     title: '애니믹스',
+    play: 'https://play.google.com/store/apps/details?id=im.moid.animix',
     color: '#8b5cf6',
     thumb: '/images/work/animix.png',
-    description: '앱인토스 미니앱 · 동물 합치기 캐주얼 퍼즐 게임. 같은 동물을 합쳐 다음 단계로 키우는 게임으로 2026.10 출시.',
+    description: '앱인토스 미니앱 · 동물 합치기 캐주얼 퍼즐 게임. 같은 동물을 합쳐 다음 단계로 키우는 게임으로 2026.10 토스 출시, Google Play에도 출시.',
     line: '같은 동물을 합쳐 키우는 캐주얼 퍼즐 게임',
     tags: ['JavaScript', '앱인토스'],
     github: 'https://github.com/minhwang72/animix',
@@ -344,7 +348,7 @@ export function getKnowledgeDocs(): KnowledgeDoc[] {
 지금은 AI센터에서 사내 웹앱 개발과 서버 관리를 맡고 있고, 퇴근 후에는 집 서버 한 대로 서비스 여섯 개를 직접 만들고 운영합니다.
 MCP(Model Context Protocol) 기반 AI 자동화 시스템을 설계하고, Gemini·Claude 등 LLM API를 활용한 지능형 서비스를 개발하고 있습니다.
 기술을 배우는 데 그치지 않고 실제 서비스에 적용하며, 문제를 직접 해결하는 과정에서 가장 큰 보람을 느낍니다.
-학력: 방송통신대학교 컴퓨터과학과`,
+학력: 한국방송통신대학교 컴퓨터과학과 재학 중`,
     },
     {
       title: '기술 스택',

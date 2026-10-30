@@ -22,6 +22,7 @@ const groups = [
   {
     title: '연락',
     links: [
+      { label: '이력서 (PDF)', href: '/resume' },
       { label: '이메일', href: `mailto:${CONTACT.email}` },
       { label: 'GitHub', href: CONTACT.github },
       { label: 'LinkedIn', href: CONTACT.linkedin },
