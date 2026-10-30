@@ -91,10 +91,11 @@ jobs:
           docker run -d \
             --name ${{ env.CONTAINER_NAME }} \
             --restart always \
-            -p ${{ env.PORT }}:${{ env.PORT }} \
+            -p 127.0.0.1:${{ env.PORT }}:${{ env.PORT }} \
             -e HOST=${{ env.HOST }} \
             -e NODE_ENV=${{ env.NODE_ENV }} \
             -e GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }} \
+            -e ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }} \
             ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
 
           echo "Checking deployment status..."

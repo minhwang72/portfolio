@@ -1,13 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { openChat } from './ChatBot';
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Career', href: '#career' },
-  { label: 'Certs', href: '#certifications' },
+  { label: 'Work', href: '#featured' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Stack', href: '#stack' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -15,36 +14,34 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-      scrolled
-        ? 'bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm'
-        : 'bg-transparent'
-    }`}>
-      <div className="w-full max-w-6xl mx-auto">
-        <div className="flex items-center justify-between h-16 px-4">
-          <span className="text-lg font-bold text-slate-900 tracking-tight">
-            Min<span className="text-teal-600">.</span>
-          </span>
-
-          <nav className="hidden sm:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 hover:text-teal-600:text-teal-400 transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-        </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
+        scrolled ? 'bg-ink/85 backdrop-blur-md border-b border-line' : 'bg-transparent'
+      }`}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <a href="#top" className="font-mono text-sm text-mute hover:text-fg transition-colors">
+          <span className="text-live">min</span>@monsil<span className="text-dim">:~$</span>
+        </a>
+        <nav className="flex items-center gap-1 sm:gap-6">
+          {navLinks.map((l) => (
+            <a key={l.href} href={l.href} className="hidden sm:inline text-sm text-mute hover:text-fg transition-colors">
+              {l.label}
+            </a>
+          ))}
+          <button
+            onClick={() => openChat()}
+            className="ml-2 rounded-md border border-accent/40 bg-accent/10 px-3 py-1.5 font-mono text-xs text-accent hover:bg-accent/20 transition-colors"
+          >
+            ask&nbsp;AI
+          </button>
+        </nav>
       </div>
     </header>
   );

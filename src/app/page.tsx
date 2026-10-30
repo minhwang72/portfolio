@@ -1,60 +1,40 @@
-import dynamic from 'next/dynamic';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import AuroraBackground from './components/AuroraBackground';
 import Hero from './sections/Hero';
+import Featured from './sections/Featured';
+import Work from './sections/Work';
+import Experience from './sections/Experience';
+import Stack from './sections/Stack';
+import Contact from './sections/Contact';
 
-const About = dynamic(() => import('./sections/AboutMe'));
-const Skills = dynamic(() => import('./sections/Skills'));
-const Projects = dynamic(() => import('./sections/Projects'));
-const Career = dynamic(() => import('./sections/Career'));
-const Certifications = dynamic(() => import('./sections/Certifications'));
-const Contact = dynamic(() => import('./sections/Contact'));
+// 경력 기간이 날짜에 따라 바뀌므로 하루마다 다시 생성
+export const revalidate = 86400;
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen">
-      <AuroraBackground />
+    <div id="top" className="relative min-h-screen bg-ink">
+      <div className="grid-bg pointer-events-none absolute inset-x-0 top-0 h-[900px] [mask-image:linear-gradient(to_bottom,black,transparent)]" />
       <Header />
-
-      <main className="w-full max-w-[1920px] mx-auto">
-          <section id="home" className="relative z-10 w-full">
-            <div className="w-full max-w-7xl mx-auto">
-              <Hero />
-            </div>
-          </section>
-          <section id="about" className="relative z-10 w-full">
-            <div className="w-full max-w-7xl mx-auto">
-              <About />
-            </div>
-          </section>
-          <section id="skills" className="relative z-10 w-full">
-            <div className="w-full max-w-7xl mx-auto">
-              <Skills />
-            </div>
-          </section>
-          <section id="projects" className="relative z-10 w-full">
-            <div className="w-full max-w-7xl mx-auto">
-              <Projects />
-            </div>
-          </section>
-          <section id="career" className="relative z-10 w-full">
-            <div className="w-full max-w-7xl mx-auto">
-              <Career />
-            </div>
-          </section>
-          <section id="certifications" className="relative z-10 w-full">
-            <div className="w-full max-w-7xl mx-auto">
-              <Certifications />
-            </div>
-          </section>
-          <section id="contact" className="relative z-10 w-full">
-            <div className="w-full max-w-7xl mx-auto">
-              <Contact />
-            </div>
-          </section>
+      <main className="relative">
+        <section id="home">
+          <Hero />
+        </section>
+        <section id="featured" className="border-t border-line">
+          <Featured />
+        </section>
+        <section id="operations" className="border-t border-line">
+          <Work />
+        </section>
+        <section id="experience" className="border-t border-line">
+          <Experience />
+        </section>
+        <section id="stack" className="border-t border-line">
+          <Stack />
+        </section>
+        <section id="contact" className="border-t border-line">
+          <Contact />
+        </section>
       </main>
-
       <Footer />
     </div>
   );

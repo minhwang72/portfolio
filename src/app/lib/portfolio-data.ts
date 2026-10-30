@@ -126,15 +126,16 @@ export const projects: Project[] = [
   {
     title: '포트폴리오',
     description:
-      '현재 보고 계신 개인 포트폴리오 웹사이트. RAG 챗봇은 프로필·프로젝트·경력 문서를 Gemini 임베딩으로 검색해 질문과 관련된 내용만 근거로 답하고, 참고한 출처를 함께 보여줍니다.',
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Gemini API', 'RAG'],
+      '현재 보고 계신 포트폴리오. 홈서버에서 운영 중인 서비스의 실제 상태를 첫 화면에 보여 주고, RAG 챗봇은 프로필·프로젝트 문서를 임베딩으로 검색해 관련 내용만 근거로 Claude가 답하며 출처를 함께 보여줍니다.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Claude API', 'Gemini Embedding', 'RAG'],
     github: 'https://github.com/minhwang72/portfolio',
     demo: 'https://pf.eungming.com',
     badge: '현재 페이지',
     detail: `- 문서를 항목(자기소개·기술·프로젝트·경력·자격증) 단위로 나눠 gemini-embedding-001로 임베딩, 서버 메모리에 보관
-- 질문을 임베딩해 코사인 유사도 상위 문서만 프롬프트에 넣고 gemini-2.5-flash로 스트리밍 답변
+- 질문을 임베딩해 코사인 유사도 상위 문서만 프롬프트에 넣고 Claude Haiku 5.5로 스트리밍 답변(질문 1건 약 1원 미만)
 - 답변 아래에 참고한 문서를 출처로 표시, 문서 수가 적어 별도 벡터 DB 없이 메모리 검색
-- 요청 제한(IP당 분당 20회)·입력 길이 검사로 API 남용 방지`,
+- 남용 방지: IP당 분당 10회·하루 100회, 사이트 전체 하루 상한, 대화 길이·답변 길이 상한
+- 첫 화면 상태판: 서버가 1분마다 각 서비스에 실제 요청을 보내 응답 여부·응답 시간을 기록`,
   },
   {
     title: '웨딩 초대장 시리즈',
@@ -170,6 +171,79 @@ export function getCoreProfile(): string {
 연락처: 이메일 ${CONTACT.email}, GitHub ${CONTACT.github}, LinkedIn ${CONTACT.linkedin}`;
 }
 
+export interface Experience {
+  key: 'cocoa' | 'hexa';
+  company: string;
+  role: string;
+  period: string;
+  summary: string;
+  /** 화면에 보이는 핵심 3~4줄 */
+  highlights: string[];
+  /** 챗봇 검색 자료용 상세 */
+  details: string[];
+}
+
+export const experience: Experience[] = [
+  {
+    key: 'cocoa',
+    company: '코코아소프트',
+    role: 'AI센터 책임연구원',
+    period: '2025.06 ~ 현재',
+    summary: 'RPA 개발자 중심 조직에서 RPA 운영과 사내 웹앱·서버를 혼자 맡고, LLM·MCP로 업무 자동화를 만듭니다.',
+    highlights: [
+      '대기업 그룹사 8개 계열사 RPA 900여 과제 단독 운영',
+      '공통 모듈 표준화·예외처리 보강으로 월 장애 90건 → 10건',
+      '그룹웨어 전면 전환 때 메일·DRM 모듈을 새로 만들어 약 1개월 만에 전 계열사 정상화',
+      'n8n + LLM 기반 RAG 홈페이지 챗봇 배포, MCP 기반 UiPath 구동 시스템 설계·개발',
+    ],
+    details: [
+      'AI센터에서 대기업 그룹사 8개 계열사의 RPA 900여 과제를 단독 운영 (UiPath 경험 없이 입사해 1개월 만에 단독 운영 투입)',
+      '공통 모듈 표준화와 예외처리 보강으로 월 장애를 90건에서 10건으로 감소, UiPath 23.10 → 24 업그레이드로 반복 장애 해소',
+      '그룹웨어 전면 전환 때 차단된 메일·DRM 모듈을 새로 개발해 약 1개월 만에 전 계열사 과제 정상화',
+      'RPA 개발자 중심 조직에서 사내 웹앱 개발과 서버 관리를 전담',
+      'n8n 웹훅 + LLM 기반 RAG 홈페이지 챗봇 배포, n8n + LLM 공수 산정 자동화 개발 중',
+      'MCP(Model Context Protocol) 기반 UiPath 구동 시스템 설계·개발',
+      '고객사 이름은 공개하지 않음',
+    ],
+  },
+  {
+    key: 'hexa',
+    company: 'HEXAVEIL',
+    role: '주임연구원',
+    period: '2023.03 ~ 2025.05',
+    summary: '커머스 서비스의 백엔드 API부터 웹·모바일 앱까지 풀스택으로 개발했습니다.',
+    highlights: [
+      'Kotlin·Spring Boot, Django 백엔드 API',
+      'React·Next.js 웹, Flutter(Android/iOS) 앱',
+      'PG 결제·본인인증 연동, 한국어/베트남어 다국어 서비스',
+    ],
+    details: [
+      '웹·앱 풀스택 개발: Kotlin/Spring Boot·Django 백엔드 API, React·Next.js 웹 프론트엔드, Flutter(Android/iOS) 앱',
+      '커머스 서비스의 PG 결제·본인인증 연동',
+      '한국어/베트남어 다국어(i18n) 서비스 개발',
+      'Docker·Kubernetes 환경에서 GitHub Actions·TeamCity로 배포 (Kubernetes는 사용 경험 수준)',
+    ],
+  },
+];
+
+/** 상태판에 올리는 공개 서비스 — 홈서버(monsil)에서 직접 운영 중 */
+export const services = [
+  { name: '포트폴리오', host: 'pf.eungming.com', url: 'https://pf.eungming.com' },
+  { name: '뮤직시트 (MuT)', host: 'conti.eungming.com', url: 'https://conti.eungming.com' },
+  { name: 'Balance Desk', host: 'stock.eungming.com', url: 'https://stock.eungming.com' },
+  { name: 'CBT 학습 플랫폼', host: 'cbt.eungming.com', url: 'https://cbt.eungming.com' },
+  { name: 'MOID', host: 'moid.co.kr', url: 'https://moid.co.kr' },
+  { name: '기술 블로그', host: 'eungming.com', url: 'https://eungming.com' },
+];
+
+/** 기술 — 배지 대신 '어디에 썼는지'와 함께 */
+export const stack = [
+  { area: 'Backend', items: ['Kotlin · Spring Boot', 'Django', 'Next.js API', 'MySQL · MariaDB', 'Prisma'], usedIn: '커머스 API, Balance Desk, CBT' },
+  { area: 'Frontend · App', items: ['TypeScript', 'React · Next.js', 'Tailwind CSS', 'Flutter'], usedIn: '커머스 웹·앱, 앱인토스 미니앱, 이 사이트' },
+  { area: 'AI', items: ['Claude API', 'Gemini API', 'MCP', 'RAG', 'YOLO · OpenCV'], usedIn: '뮤직시트(MuT), 이 챗봇, MCP 기반 UiPath 구동' },
+  { area: 'Ops · Automation', items: ['Docker', 'nginx', 'GitHub Actions', 'Linux 홈서버', 'UiPath', 'n8n'], usedIn: 'RPA 900과제 운영, 서비스 6개 자체 운영' },
+];
+
 export interface KnowledgeDoc {
   title: string;
   /** 출처로 보여 줄 링크(페이지 섹션 또는 외부 주소) */
@@ -183,7 +257,7 @@ export function getKnowledgeDocs(): KnowledgeDoc[] {
   return [
     {
       title: '자기소개',
-      href: '#about',
+      href: '#top',
       text: `웹·앱 풀스택 엔지니어. 커머스 서비스의 백엔드 API(Kotlin·Spring Boot, Django)부터 웹 프론트엔드(React·Next.js), 모바일 앱(Flutter)까지 개발했습니다.
 지금은 대기업 그룹사 8개 계열사의 RPA 900여 과제를 단독 운영하면서, RPA 개발자 중심 조직에서 사내 웹앱 개발과 서버 관리를 전담하고 있습니다.
 MCP(Model Context Protocol) 기반 AI 자동화 시스템을 설계하고, Gemini·Claude 등 LLM API를 활용한 지능형 서비스를 개발하고 있습니다.
@@ -192,7 +266,7 @@ MCP(Model Context Protocol) 기반 AI 자동화 시스템을 설계하고, Gemin
     },
     {
       title: '기술 스택',
-      href: '#skills',
+      href: '#stack',
       text: `Language: Dart, Java, JavaScript, Kotlin, Python, TypeScript
 Frontend: Flutter, Next.js, React, Tailwind CSS
 Backend: Django, Firebase, MariaDB, MySQL, Spring Boot
@@ -201,35 +275,21 @@ AI / ML: Google Gemini API, Claude API, MCP(Model Context Protocol), LangChain, 
 Automation / RPA: UiPath Studio, UiPath Orchestrator, REFramework, n8n
 Tools & IDE: Android Studio, Cursor, Claude Code, Figma, IntelliJ IDEA, VS Code, Zeplin`,
     },
-    {
-      title: `경력: 코코아소프트 책임연구원 (2025.06 ~ 현재, ${cocoa.formatted})`,
-      href: '#career',
-      text: `- AI센터에서 대기업 그룹사 8개 계열사의 RPA 900여 과제를 단독 운영 (UiPath 경험 없이 입사해 1개월 만에 단독 운영 투입)
-- 공통 모듈 표준화와 예외처리 보강으로 월 장애를 90건에서 10건으로 감소, UiPath 23.10 → 24 업그레이드로 반복 장애 해소
-- 그룹웨어 전면 전환 때 차단된 메일·DRM 모듈을 새로 개발해 약 1개월 만에 전 계열사 과제 정상화
-- RPA 개발자 중심 조직에서 사내 웹앱 개발과 서버 관리를 전담
-- n8n 웹훅 + LLM 기반 RAG 홈페이지 챗봇 배포, n8n + LLM 공수 산정 자동화 개발 중
-- MCP(Model Context Protocol) 기반 UiPath 구동 시스템 설계·개발
-(고객사 이름은 공개하지 않음)`,
-    },
-    {
-      title: `경력: HEXAVEIL 주임연구원 (2023.03 ~ 2025.05, ${hexa.formatted})`,
-      href: '#career',
-      text: `- 웹·앱 풀스택 개발: Kotlin/Spring Boot·Django 백엔드 API, React·Next.js 웹 프론트엔드, Flutter(Android/iOS) 앱
-- 커머스 서비스의 PG 결제·본인인증 연동
-- 한국어/베트남어 다국어(i18n) 서비스 개발
-- Docker·Kubernetes 환경에서 GitHub Actions·TeamCity로 배포 (Kubernetes는 사용 경험 수준)`,
-    },
+    ...experience.map((e) => ({
+      title: `경력: ${e.company} ${e.role} (${e.period}, ${e.key === 'cocoa' ? cocoa.formatted : hexa.formatted})`,
+      href: '#experience',
+      text: [e.summary, ...e.details.map((d) => `- ${d}`)].join('\n'),
+    })),
     {
       title: '자격증',
-      href: '#certifications',
+      href: '#contact',
       text: certifications
         .map((c) => `- ${c.name} (${c.issuer}, ${c.issued} 취득${c.expires ? `, ${c.expires} 만료` : ''}): ${c.description}`)
         .join('\n'),
     },
     ...projects.map((p) => ({
       title: `프로젝트: ${p.title}`,
-      href: p.demo && !p.demo.includes('pf.eungming.com') ? p.demo : '#projects',
+      href: p.demo && !p.demo.includes('pf.eungming.com') ? p.demo : '#work',
       text: [
         p.badge && `상태: ${p.badge}`,
         p.description,

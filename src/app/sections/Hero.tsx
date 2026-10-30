@@ -1,150 +1,95 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+import StatusBoard, { useStatus } from '../components/StatusBoard';
+import { openChat } from '../components/ChatBot';
+import { CONTACT, getCareerDurations } from '../lib/portfolio-data';
 
-const Hero = () => {
-  const codeLines = [
-    { indent: 0, content: [{ text: 'const ', color: '#C792EA' }, { text: 'developer', color: '#82AAFF' }, { text: ' = {', color: '#E2E8F0' }] },
-    { indent: 1, content: [{ text: 'name', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'황민'", color: '#C3E88D' }, { text: ',', color: '#E2E8F0' }] },
-    { indent: 1, content: [{ text: 'role', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'Fullstack & AI Engineer'", color: '#C3E88D' }, { text: ',', color: '#E2E8F0' }] },
-    { indent: 1, content: [{ text: 'stack', color: '#F78C6C' }, { text: ': [', color: '#E2E8F0' }, { text: "'Next.js'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'Spring Boot'", color: '#C3E88D' }, { text: ', ', color: '#E2E8F0' }, { text: "'AI/ML'", color: '#C3E88D' }, { text: '],', color: '#E2E8F0' }] },
-    { indent: 1, content: [{ text: 'passion', color: '#F78C6C' }, { text: ': ', color: '#E2E8F0' }, { text: "'기술과 AI로 문제를 해결하다'", color: '#C3E88D' }] },
-    { indent: 0, content: [{ text: '};', color: '#E2E8F0' }] },
+const examples = ['대표 프로젝트는?', 'RPA 운영은 어떻게 했나요?', '이 상태판은 어떻게 만들었나요?'];
+
+export default function Hero() {
+  const status = useStatus();
+  const [q, setQ] = useState('');
+  const { total } = getCareerDurations();
+  const up = status ? `${status.services.filter((s) => s.up).length}/${status.services.length}` : '—';
+
+  const kpis = [
+    { value: '900+', label: 'RPA 과제 단독 운영', sub: '8개 계열사' },
+    { value: '90→10', label: '월 장애 건수', sub: '공통 모듈 표준화 후' },
+    { value: up, label: '지금 운영 중인 서비스', sub: '홈서버 직접 운영', live: true },
+    { value: total, label: '개발 경력', sub: '풀스택 → AI·운영' },
   ];
 
+  const ask = (text: string) => {
+    if (!text.trim()) return;
+    openChat(text.trim());
+    setQ('');
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        {/* Left - Editorial intro */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+    <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 pt-28 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-14 lg:pt-36">
+      <div>
+        <p className="mb-5 font-mono text-xs text-mute">
+          <span className="text-live">●</span> seoul · fullstack &amp; ai engineer
+        </p>
+        <h1 className="font-serif text-6xl font-bold leading-[0.95] tracking-tight text-fg sm:text-7xl">
+          Hwang
+          <br />
+          <span className="text-accent">Min</span>
+        </h1>
+        <p className="mt-6 max-w-md text-lg leading-relaxed text-mute">
+          서비스를 <span className="text-fg">만들고, 배포하고, 운영합니다.</span>
+          <br />
+          지금 이 순간에도 돌아가는 것으로 보여 드릴게요.
+        </p>
+
+        <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+          {kpis.map((k) => (
+            <div key={k.label} className="bg-ink px-4 py-4">
+              <dd className={`whitespace-nowrap font-mono text-xl font-semibold ${k.live ? 'text-live' : 'text-fg'}`}>{k.value}</dd>
+              <dt className="mt-1 text-xs leading-snug text-mute">{k.label}</dt>
+              <p className="mt-0.5 text-[11px] text-dim">{k.sub}</p>
+            </div>
+          ))}
+        </dl>
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            ask(q);
+          }}
+          className="mt-8 flex items-center gap-2 rounded-xl border border-line bg-panel px-4 py-3 focus-within:border-accent/60 transition-colors"
         >
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-sm font-medium tracking-widest text-teal-600 uppercase mb-4"
-          >
-            Fullstack & AI Engineer
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.05] mb-6"
-          >
-            HWANG
-            <br />
-            <span className="text-teal-600">MIN</span>
-          </motion.h1>
-
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="w-16 h-0.5 bg-teal-600 mb-6 origin-left"
+          <span className="font-mono text-sm text-accent">&gt;</span>
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="황민에 대해 무엇이든 물어보세요"
+            aria-label="AI에게 질문"
+            className="min-w-0 flex-1 bg-transparent text-sm text-fg placeholder:text-dim focus:outline-none"
           />
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="text-base sm:text-lg text-slate-500 leading-relaxed mb-8 max-w-md"
-          >
-            서버를 만들고, 배포하고, 운영합니다.
-            <br />
-            기술로 문제를 해결합니다.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="flex items-center gap-4"
-          >
-            <a
-              href="https://github.com/minhwang72"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-full border border-slate-200 text-slate-500 hover:text-teal-600 hover:border-teal-600 transition-colors"
-              aria-label="GitHub"
+          <button type="submit" aria-label="질문 보내기" className="rounded-md p-1.5 text-mute hover:bg-panel2 hover:text-accent transition-colors">
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </form>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {examples.map((e) => (
+            <button
+              key={e}
+              onClick={() => ask(e)}
+              className="rounded-full border border-line px-3 py-1 text-xs text-mute hover:border-accent/50 hover:text-fg transition-colors"
             >
-              <Github className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/min-hwang-071b18316/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-full border border-slate-200 text-slate-500 hover:text-teal-600 hover:border-teal-600 transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="mailto:zxcyui6181@naver.com"
-              className="p-2.5 rounded-full border border-slate-200 text-slate-500 hover:text-teal-600 hover:border-teal-600 transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="w-5 h-5" />
-            </a>
-          </motion.div>
-        </motion.div>
-
-        {/* Right - Code terminal */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <div className="code-terminal">
-            <div className="code-terminal-header">
-              <div className="code-terminal-dot bg-[#FF5F56]" />
-              <div className="code-terminal-dot bg-[#FFBD2E]" />
-              <div className="code-terminal-dot bg-[#27C93F]" />
-              <span className="text-xs text-slate-500 ml-2 font-mono">developer.ts</span>
-            </div>
-            <div className="code-terminal-body">
-              {codeLines.map((line, lineIndex) => (
-                <motion.div
-                  key={lineIndex}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 + lineIndex * 0.1, duration: 0.4 }}
-                  style={{ paddingLeft: `${line.indent * 1.5}rem` }}
-                >
-                  {line.content.map((segment, segIndex) => (
-                    <span key={segIndex} style={{ color: segment.color }}>
-                      {segment.text}
-                    </span>
-                  ))}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+              {e}
+            </button>
+          ))}
+          <a href={`mailto:${CONTACT.email}`} className="rounded-full px-3 py-1 text-xs text-dim hover:text-fg transition-colors">
+            {CONTACT.email}
+          </a>
+        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs text-slate-500 font-mono tracking-widest uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown className="w-4 h-4 text-slate-500" />
-        </motion.div>
-      </motion.div>
+      <StatusBoard data={status} />
     </div>
   );
-};
-
-export default Hero;
+}

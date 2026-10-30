@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR, Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import DotNavigation from "./components/DotNavigation";
-import ScrollToTop from './components/ScrollToTop';
 import ChatBot from './components/ChatBot';
 import Script from 'next/script';
 
@@ -10,9 +8,10 @@ const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   display: "swap",
+  variable: "--font-noto",
 });
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -141,10 +140,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
+  themeColor: "#0A0D0C",
   manifest: "https://pf.eungming.com/manifest.json",
   appleWebApp: {
     capable: true,
@@ -175,11 +171,11 @@ export const metadata: Metadata = {
     images: ["https://pf.eungming.com/images/profile/profile.jpeg"],
   },
   other: {
-    "msapplication-TileColor": "#000000",
+    "msapplication-TileColor": "#0A0D0C",
     "msapplication-config": "https://pf.eungming.com/browserconfig.xml",
     "mobile-web-app-capable": "yes",
     "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "default",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
     "apple-mobile-web-app-title": "Min Hwang Portfolio",
   }
 };
@@ -203,10 +199,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} ${notoSansKR.className} ${playfair.variable} ${jetbrainsMono.variable}`}>
+      <body className={`${inter.variable} ${notoSansKR.variable} ${playfair.variable} ${jetbrainsMono.variable} font-sans bg-ink text-fg`}>
         {children}
-        <DotNavigation />
-        <ScrollToTop />
         <ChatBot />
       </body>
     </html>
