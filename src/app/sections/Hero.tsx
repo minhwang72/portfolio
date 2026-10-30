@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowUp, Search } from 'lucide-react';
 import Live from '../components/Live';
+import ServiceMap from '../components/ServiceMap';
 import { openAsk } from '../lib/useAsk';
 import { useStatus } from '../lib/useStatus';
 
@@ -54,12 +54,15 @@ export default function Hero() {
 
   return (
     <div className="relative flex min-h-[100svh] flex-col items-center justify-center px-5 pb-24 pt-20">
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex flex-col items-center text-center">
-        <div className="relative h-20 w-20 overflow-hidden rounded-full ring-1 ring-line">
-          <Image src="/images/profile/profile.jpeg" alt="황민" fill sizes="80px" className="object-cover" priority />
-        </div>
-        <h1 className="mt-5 text-[40px] font-bold tracking-[-0.04em] text-fg sm:text-[52px]">황민</h1>
-        <p className="mt-1 text-[17px] text-sub">풀스택 &amp; AI 엔지니어 · 서울</p>
+      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center">
+        <h1 className="text-[36px] font-bold tracking-[-0.04em] text-fg sm:text-[48px]">
+          황민 <span className="font-medium text-sub">· 만들고, 배포하고, 운영합니다</span>
+        </h1>
+        <p className="mt-2 text-[16px] text-sub">풀스택 &amp; AI 엔지니어. 지금 제 서버에서 돌아가는 서비스들이에요.</p>
+      </motion.div>
+
+      <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }} className="mt-6 flex w-full justify-center">
+        <ServiceMap services={status?.services ?? null} photo="/_next/image?url=%2Fimages%2Fprofile%2Fprofile.jpeg&w=256&q=75" />
       </motion.div>
 
       <motion.form
@@ -71,7 +74,7 @@ export default function Hero() {
           e.preventDefault();
           ask(q);
         }}
-        className="mt-10 flex w-full max-w-[600px] items-center gap-3 rounded-full border border-line bg-bg py-2 pl-5 pr-2 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow focus-within:shadow-[0_6px_30px_rgba(0,0,0,0.12)]"
+        className="mt-6 flex w-full max-w-[600px] items-center gap-3 rounded-full border border-line bg-bg py-2 pl-5 pr-2 shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow focus-within:shadow-[0_6px_30px_rgba(0,0,0,0.12)]"
       >
         <Search className="h-5 w-5 flex-none text-sub" />
         <div className="relative min-w-0 flex-1">
@@ -101,13 +104,10 @@ export default function Hero() {
         ))}
       </motion.div>
 
-      <p className="mt-6 max-w-[520px] text-center text-[13px] leading-relaxed text-sub">
-        포트폴리오 문서를 찾아 Claude가 답하고, 어디서 찾았는지 보여 줘요. 스크롤해도 아래에서 따라와요.
-      </p>
 
       <a href="#projects" className="absolute bottom-8 inline-flex items-center gap-2 text-[13px] text-sub hover:text-fg">
         <Live up={allUp} pulse />
-        {allUp ? '직접 운영 중인 서비스 모두 정상' : '일부 서비스 응답 없음'}
+        {allUp ? '모두 정상 · 1분마다 직접 확인' : '일부 서비스 응답 없음'}
       </a>
     </div>
   );
