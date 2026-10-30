@@ -92,6 +92,7 @@ jobs:
             --name ${{ env.CONTAINER_NAME }} \
             --restart always \
             -p 127.0.0.1:${{ env.PORT }}:${{ env.PORT }} \
+            -v $HOME/pf-stats:/stats:ro \
             -e HOST=${{ env.HOST }} \
             -e NODE_ENV=${{ env.NODE_ENV }} \
             -e GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }} \

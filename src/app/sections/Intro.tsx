@@ -24,19 +24,15 @@ function Count({ to }: { to: number }) {
   return <span ref={ref}>{n}</span>;
 }
 
-// 실제 값(2026-10-30 확인): GitHub 올해 기여 = gh api contributionsCollection, 컨테이너 = monsil `docker ps`
-const GITHUB_2026 = 411;
-const CONTAINERS = 17;
-
 /** 숫자 세 개: 경력, 올해 GitHub 기여, 집 서버에서 도는 컨테이너 */
-export default function Intro() {
+export default function Intro({ github, containers }: { github: number; containers: number }) {
   const { hexa, cocoa } = getCareerDurations();
   const months = (hexa.years + cocoa.years) * 12 + hexa.months + cocoa.months;
 
   const stats = [
     { node: <><Count to={Math.floor(months / 12)} />년 <Count to={months % 12} />개월</>, label: '개발 경력', note: '풀스택 → AI·자동화' },
-    { node: <><Count to={GITHUB_2026} />회</>, label: '올해 GitHub 기여', note: '2026.10 기준 · 비공개 저장소 포함' },
-    { node: <><Count to={CONTAINERS} />개</>, label: '집 서버에서 도는 컨테이너', note: '서비스·DB·자동화 · 2026.10 기준' },
+    { node: <><Count to={github} />회</>, label: `${new Date().getFullYear()}년 GitHub 기여`, note: '비공개 저장소 포함 · 매일 갱신' },
+    { node: <><Count to={containers} />개</>, label: '집 서버에서 도는 컨테이너', note: '서비스·DB·자동화 · 매일 갱신' },
   ];
 
   return (
