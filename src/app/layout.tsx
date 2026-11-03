@@ -14,7 +14,7 @@ const jsonLd = {
   "alternateName": "Hwang Min",
   "url": "https://pf.eungming.com",
   "jobTitle": ["풀스택 개발자", "AI 엔지니어"],
-  "description": "웹·앱 풀스택 엔지니어. 사내 웹앱·서버와 업무 자동화 운영 지원, LLM·RAG·MCP 자동화, 집 서버에서 직접 만든 서비스를 운영합니다. 서울.",
+  "description": "AI 자동화 엔지니어. LLM·MCP·RAG로 업무 자동화를 만들고 그룹사 자동화 운영을 기술 지원하며, 웹·앱 풀스택 개발과 집 서버 서비스 운영을 합니다. 서울.",
   "worksFor": {
     "@type": "Organization",
     "name": "CocoaSoft"
@@ -60,8 +60,8 @@ export const viewport: Viewport = {
   ],
 };
 
-const TITLE = "황민 포트폴리오 | 풀스택 개발자 · AI 엔지니어";
-const DESC = "풀스택 개발자·AI 엔지니어 황민(Hwang Min)의 포트폴리오. Next.js·Spring Boot 웹·앱 개발, LLM·RAG·MCP AI 자동화, 집 서버에서 직접 운영하는 서비스와 토스 미니앱, 경력과 이력서(PDF).";
+const TITLE = "황민 포트폴리오 | AI 자동화 엔지니어 · 풀스택 개발자";
+const DESC = "AI 자동화 엔지니어 황민(Hwang Min)의 포트폴리오. LLM·MCP·RAG 업무 자동화, Next.js·Spring Boot 웹·앱 개발, 집 서버에서 직접 운영하는 서비스와 토스 미니앱, 경력과 이력서(PDF).";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pf.eungming.com"),

@@ -4,16 +4,16 @@
 
 export const resume = {
   name: '황민',
-  title: '풀스택 엔지니어 (AI · 자동화)',
+  title: 'AI 자동화 엔지니어 (LLM · 업무 자동화 · 풀스택)',
   summary: [
-    '웹·앱 풀스택 개발자로 시작해, 지금은 AI센터에서 사내 웹앱 개발과 서버 관리를 맡으면서 그룹사 업무 자동화(RPA) 운영을 기술 지원하고 있습니다.',
+    'LLM을 실제 업무 자동화 시스템에 붙이는 엔지니어입니다. AI센터에서 그룹사 업무 자동화(RPA) 운영을 기술 지원하며 MCP·n8n·RAG로 새 자동화를 만들고, 사내 웹앱과 서버도 맡고 있습니다. 웹·앱 풀스택 개발로 시작해 설계부터 운영까지 혼자 끝낼 수 있습니다.',
     '공통 모듈 표준화로 월 장애를 약 90건에서 10건 수준으로 줄였고, 그룹웨어 전면 전환 때 막힌 메일 연동을 새 공통 모듈로 대체해 약 1개월 만에 계열사 자동화를 정상화했습니다.',
     '퇴근 후에는 집 서버 한 대로 직접 만든 서비스들을 운영하고, 토스 앱인토스 미니앱 3개를 출시했습니다. LLM RAG, n8n, MCP를 실무와 개인 프로젝트에 적용하고 있습니다.',
   ],
   skills: [
+    { area: 'LLM · 자동화', items: 'Claude · Gemini API, MCP, RAG, n8n, UiPath Studio · Orchestrator, YOLO · OpenCV' },
     { area: '웹 · 앱', items: 'Next.js, React, TypeScript, Kotlin · Spring Boot, Django, Express, Flutter' },
     { area: '서버 · 운영', items: 'Linux 서버, Docker, nginx, GitHub Actions, MariaDB · MySQL, AWS (Kubernetes는 사용 경험)' },
-    { area: 'AI · 자동화', items: 'Claude · Gemini API, RAG, MCP, n8n, UiPath Studio · Orchestrator, YOLO · OpenCV' },
   ],
   jobs: [
     {
@@ -30,6 +30,14 @@ export const resume = {
           ],
         },
         {
+          title: 'AI 자동화',
+          items: [
+            '홈페이지 챗봇을 단순 응답에서 n8n 웹훅 + LLM 기반 RAG로 전환해 배포',
+            'n8n + LLM 공수 산정 자동화 개발 중(영상·녹음·사진 입력별로 프롬프트 분리)',
+            'MCP 기반 자동화 솔루션 구동 시스템 설계·개발, 새 자동화 도구 사내 첫 검증과 교육 영상 제작',
+          ],
+        },
+        {
           title: '그룹웨어 전면 전환 대응 (2025.12)',
           items: [
             '보안 강화로 메일 API·라이브러리·DRM이 함께 막혀 계열사 자동화가 멈출 위기',
@@ -42,14 +50,6 @@ export const resume = {
           items: [
             '자동화 개발자 중심 조직에서 사내 웹앱 대부분을 기획부터 배포까지 맡고 사내 서버(Docker·nginx·DB)를 관리',
             '운영 모니터링 대시보드(Next.js), 멀티테넌트 업무 웹앱(Express·MySQL), 사내 자격시험 CBT(Next.js·MariaDB)',
-          ],
-        },
-        {
-          title: 'AI 자동화',
-          items: [
-            '홈페이지 챗봇을 단순 응답에서 n8n 웹훅 + LLM 기반 RAG로 전환해 배포',
-            'n8n + LLM 공수 산정 자동화 개발 중(영상·녹음·사진 입력별로 프롬프트 분리)',
-            'MCP 기반 자동화 솔루션 구동 시스템 설계·개발, 새 자동화 도구 사내 첫 검증과 교육 영상 제작',
           ],
         },
         {

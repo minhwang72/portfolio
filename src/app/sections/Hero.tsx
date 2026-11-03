@@ -75,7 +75,7 @@ export default function Hero() {
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease }}>
           <p className="text-[17px] leading-[1.7] text-fg/80">
-            풀스택 &amp; AI 엔지니어 <b className="text-fg">황민</b>입니다. 웹과 앱을 만들고, 집 서버에서 서비스를 직접 운영해요.
+            AI 자동화 엔지니어 <b className="text-fg">황민</b>입니다. LLM을 실제 업무 자동화에 붙이고, 만든 서비스는 집 서버에서 직접 운영해요.
           </p>
           <p className="mt-3 text-[13px] text-sub">서울 · 경력 {total}</p>
         </motion.div>
