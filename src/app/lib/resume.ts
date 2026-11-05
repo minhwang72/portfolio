@@ -12,13 +12,13 @@ export const resume = {
   ],
   skills: [
     { area: 'LLM · 자동화', items: 'Claude · Gemini API, MCP, RAG, n8n, UiPath Studio · Orchestrator, YOLO · OpenCV' },
-    { area: '웹 · 앱', items: 'Next.js, React, TypeScript, Kotlin · Spring Boot, Django, Express, Flutter' },
+    { area: '웹 · 앱', items: 'Next.js, React, TypeScript, Kotlin · Spring Boot, Django, Flutter' },
     { area: '서버 · 운영', items: 'Linux 서버, Docker, nginx, GitHub Actions, MariaDB · MySQL, AWS (Kubernetes는 사용 경험)' },
   ],
   jobs: [
     {
       company: '코코아소프트',
-      role: 'AI센터 책임연구원',
+      role: 'AI센터 책임연구원 (2026.06 승진)',
       period: '2025.06 — 재직 중',
       blocks: [
         {
@@ -49,7 +49,16 @@ export const resume = {
           title: '사내 웹앱 · 서버',
           items: [
             '자동화 개발자 중심 조직에서 사내 웹앱 대부분을 기획부터 배포까지 맡고 사내 서버(Docker·nginx·DB)를 관리',
-            '운영 모니터링 대시보드(Next.js), 멀티테넌트 업무 웹앱(Express·MySQL), 사내 자격시험 CBT(Next.js·MariaDB)',
+            '자동화 운영 모니터링 대시보드 단독 개발·운영(2026.06~): 고객사별 멀티테넌트, 실행 현황·24시간 스케줄·오류 통계, 오류 알림·일일 보고서 메일, LLM 오류 원인 분석 (Next.js·Prisma·MySQL)',
+            '사내 자격시험 CBT 시스템 공동 개발(Next.js·MariaDB)',
+          ],
+        },
+        {
+          title: '여행사 ERP 고도화 · 가이드 앱 (정부 지원사업, 2026.10~, 2인)',
+          items: [
+            '서버 전체 담당, 분석·설계 산출물과 API·DB 명세 작성',
+            '기존 PHP ERP에 좌석 배치·증차 검토·KPI 대시보드·경비 승인·접근기록 화면 추가, AI 좌석 자동배정·증차 판단 API(Python)',
+            '가이드 앱(Flutter) 서버 API: GPS 자동 체크인, 영수증 OCR 경비 정산, 일정 알림톡. 개인정보 암호화 전환과 운영 이관 스크립트',
           ],
         },
         {
@@ -66,20 +75,22 @@ export const resume = {
         {
           title: '웹·앱 풀스택 개발 (고객사 외주 개발)',
           items: [
-            '커머스·플랫폼 서비스의 백엔드 API 개발과 운영(Kotlin·Spring Boot, Django), PG 결제·본인인증 연동',
-            'Flutter(Android/iOS) 앱과 React·Next.js 웹 프론트엔드 개발, 한국어·베트남어 다국어(i18n)',
+            '고객사 프로젝트 9개를 웹·앱 풀스택으로 개발: Flutter·React Native 앱, React·Next.js 웹, Kotlin·Spring Boot·Django 백엔드',
+            '대표: 주차 공유 앱 파킹프렌즈 — Flutter 앱 팀 개발, 결제 모듈·지도 등 앱 전 영역에 참여',
+            '자사 결제 서비스 모임페이에 PG 결제·본인인증 연동(Spring Boot·Kotlin)',
             'Docker·Kubernetes 환경에서 GitHub Actions·TeamCity로 배포 (Kubernetes는 사용 경험 수준)',
           ],
         },
       ],
       projects: [
-        { name: '파킹프렌즈', role: '앱 · 서버 개발', period: '2024.11 — 2025.05' },
+        { name: '파킹프렌즈', role: 'Flutter 앱 개발 (결제·지도 등)', period: '2024.11 — 2025.05' },
         { name: '보안 브라우저 확장 프로그램', role: '확장 프로그램 개발', period: '2024.10 — 2024.11' },
         { name: '영양알고케어', role: '웹 · 앱 개발', period: '2024.09 — 2024.10' },
         { name: '공정관리 시스템', role: '개발 · 유지보수', period: '2024.05' },
         { name: '픽키즈 (Pickids)', role: '앱 개발', period: '2023.12 — 2024.04' },
         { name: '클린벨', role: '개발 · 유지보수', period: '2023.12' },
         { name: '아테나 (강사 매칭)', role: '앱 · API 개발', period: '2023.09 — 2023.11' },
+        { name: '모임페이 (자사)', role: 'PG 결제 · 본인인증 연동', period: '2023.04 —' },
       ],
     },
   ],
