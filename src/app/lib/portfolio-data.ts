@@ -227,7 +227,7 @@ export const CONTACT = {
 export function getCoreProfile(): string {
   const { total } = getCareerDurations();
   return `이름: 황민 / 풀스택 & AI 엔지니어 / 서울 구로구
-총 경력 ${total}. 현재 코코아소프트 AI센터 책임연구원(2025.06~), 이전 HEXAVEIL 주임연구원(2023.03~2025.05)
+총 경력 ${total}. 현재 코코아소프트 AI센터 책임연구원(2025.06~), 이전 HEXAVEIL 연구원(2023.03~2025.05)
 대표 프로젝트: 뮤직시트(MuT) — 악보 사진을 원하는 키의 새 악보로 바꾸는 CV + AI 파이프라인
 연락처: 이메일 ${CONTACT.email}, GitHub ${CONTACT.github}, LinkedIn ${CONTACT.linkedin}`;
 }
@@ -274,7 +274,7 @@ export const experience: Experience[] = [
   {
     key: 'hexa',
     company: 'HEXAVEIL',
-    role: '주임연구원',
+    role: '연구원',
     period: '2023.03 ~ 2025.05',
     summary: '커머스 서비스의 백엔드 API부터 웹·모바일 앱까지 풀스택으로 개발했습니다.',
     highlights: [

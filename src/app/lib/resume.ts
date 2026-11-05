@@ -60,7 +60,7 @@ export const resume = {
     },
     {
       company: 'HEXAVEIL',
-      role: '주임연구원',
+      role: '연구원',
       period: '2023.03 — 2025.05',
       blocks: [
         {
